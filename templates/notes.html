@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}笔记库 · AI Learning Workbench{% endblock %}
+{% block content %}
+<section class="page-head"><div><div class="eyebrow">LOCAL NOTES</div><h1>笔记库</h1><p>你的 Markdown 笔记保存在本地 SQLite，不会上传到 GitHub。</p></div></section>
+<div class="notes-grid">
+  {% for lesson in lessons %}
+  <article class="card note-card">
+    <div class="note-card-head"><span class="lesson-number">{{ '%02d'|format(lesson.number) }}</span><span class="status-pill">{{ '有笔记' if notes.get(lesson.id) else '空白' }}</span></div>
+    <h3>{{ lesson.title }}</h3>
+    <pre class="note-preview">{{ notes.get(lesson.id, '还没有笔记。') }}</pre>
+    <a class="button ghost" href="{{ url_for('lesson_detail', lesson_id=lesson.id) }}#notes">打开课程笔记</a>
+  </article>
+  {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,26 @@
+[
+  {
+    "id": "local-ai-agent",
+    "name": "Local AI Agent",
+    "repo": "https://github.com/lianhongrui555/Local-AI-Agent",
+    "description": "使用本地 Ollama、Dify、Flask、CLI、Web、桌面应用和微信小程序构建的本地 AI 助手。",
+    "skills": ["Ollama", "Dify API", "Flask", "知识库", "工具调用"],
+    "tasks": ["理解客户端到模型的数据流", "运行一次本地对话", "解释 API Key 为什么要放在后端"]
+  },
+  {
+    "id": "code-harness",
+    "name": "CodeHarness",
+    "repo": "https://github.com/lianhongrui555/CodeHarness",
+    "description": "围绕本地模型构建的代码项目 Agent Harness，强调工具、循环、会话和可观察性。",
+    "skills": ["Agent Loop", "工具注册", "文件工具", "会话存储", "上下文压缩"],
+    "tasks": ["画出 Agent Loop", "描述一个工具 Schema", "解释最大步数为什么重要"]
+  },
+  {
+    "id": "yolo-detection",
+    "name": "YOLO-Detection",
+    "repo": "https://github.com/lianhongrui555/YOLO-Detection",
+    "description": "从 YOLO 训练、验证到 Flask 摄像头推理的计算机视觉项目。",
+    "skills": ["数据集", "训练", "mAP", "Flask", "实时推理"],
+    "tasks": ["理解训练集和验证集", "解释检测框和置信度", "比较不同输入尺寸的性能"]
+  }
+]

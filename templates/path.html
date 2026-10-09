@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}学习路线 · AI Learning Workbench{% endblock %}
+{% block content %}
+<section class="page-head">
+  <div><div class="eyebrow">CURRICULUM MAP</div><h1>学习路线</h1><p>12 节导学课，分成 4 个阶段；外部深度链接按需打开。</p></div>
+</section>
+{% for module, lessons in modules.items() %}
+<section class="module-block">
+  <div class="module-title"><span>{{ loop.index }}</span><div><h2>{{ module }}</h2><p>{{ lessons[0].summary }}</p></div></div>
+  <div class="lesson-grid">
+    {% for lesson in lessons %}
+    <a class="card lesson-card" href="{{ url_for('lesson_detail', lesson_id=lesson.id) }}">
+      <div class="lesson-card-top"><span class="lesson-number">{{ '%02d'|format(lesson.number) }}</span><span class="status-pill">{{ 'DONE' if progress_rows.get(lesson.id, {}).get('completed') else 'TODO' }}</span></div>
+      <h3>{{ lesson.title }}</h3><p>{{ lesson.summary }}</p><div class="meta">{{ lesson.duration }}</div>
+    </a>
+    {% endfor %}
+  </div>
+</section>
+{% endfor %}
+{% endblock %}

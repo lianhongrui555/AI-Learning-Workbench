@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}AI 助教 · AI Learning Workbench{% endblock %}
+{% block content %}
+<section class="page-head"><div><div class="eyebrow">LOCAL TUTOR</div><h1>AI 助教</h1><p>助教通过本地 Dify 调用 Ollama，并自动带上当前课程上下文。</p></div></section>
+<div class="card tutor-page" data-tutor-page data-lesson-id="{{ lesson.id if lesson else '' }}">
+  <label class="field-label" for="tutor-lesson-select">当前课程</label>
+  <select id="tutor-lesson-select">
+    {% for item in lessons %}<option value="{{ item.id }}" {% if lesson and item.id == lesson.id %}selected{% endif %}>{{ '%02d'|format(item.number) }} {{ item.title }}</option>{% endfor %}
+  </select>
+  <div id="tutor-messages" class="tutor-messages" aria-live="polite">
+    <div class="tutor-line tutor"><span>tutor@local:~$</span><p>选择课程后，可以问我任何概念、代码或练习题。</p></div>
+  </div>
+  <form id="tutor-form" class="tutor-form">
+    <textarea id="tutor-input" rows="3" placeholder="例如：什么是注意力机制？"></textarea>
+    <button class="button primary" type="submit">发送问题</button>
+  </form>
+  <div id="tutor-status" class="status-line"></div>
+</div>
+{% endblock %}

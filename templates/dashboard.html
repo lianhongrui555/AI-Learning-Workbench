@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block title %}总览 · AI Learning Workbench{% endblock %}
+{% block content %}
+<section class="hero-grid">
+  <div class="card hero-card">
+    <div class="eyebrow">SYSTEM DASHBOARD</div>
+    <h1>从零开始，把 AI 学成项目。</h1>
+    <p>课程正文保持短小，外部深度资料按需打开；进度、笔记、小测和助教都保存在本地。</p>
+    <div class="hero-actions">
+      {% if next_lesson %}
+      <a class="button primary" href="{{ url_for('lesson_detail', lesson_id=next_lesson.id) }}">继续第 {{ next_lesson.number }} 课</a>
+      {% endif %}
+      <a class="button ghost" href="{{ url_for('learning_path') }}">查看完整路线</a>
+    </div>
+  </div>
+  <div class="card progress-card">
+    <div class="eyebrow">LEARNING PROGRESS</div>
+    <div class="big-number">{{ completed_count }}<span>/{{ total_count }}</span></div>
+    <div class="progress-track"><div class="progress-fill" style="width: {{ (completed_count / total_count * 100) if total_count else 0 }}%"></div></div>
+    <p class="muted">完成课程后，这个进度条会同步更新。</p>
+  </div>
+</section>
+
+<section class="section-block">
+  <div class="section-heading"><h2>下一步</h2><span class="muted">NEXT ACTION</span></div>
+  {% if next_lesson %}
+  <a class="next-lesson card" href="{{ url_for('lesson_detail', lesson_id=next_lesson.id) }}">
+    <span class="lesson-number">{{ '%02d'|format(next_lesson.number) }}</span>
+    <div><h3>{{ next_lesson.title }}</h3><p>{{ next_lesson.summary }}</p></div>
+    <span class="arrow">→</span>
+  </a>
+  {% else %}
+  <div class="card">全部课程已完成。</div>
+  {% endif %}
+</section>
+
+<section class="section-block">
+  <div class="section-heading"><h2>项目实战</h2><span class="muted">3 REPOS</span></div>
+  <div class="project-grid compact">
+    {% for project in projects %}
+    <a class="card project-mini" href="{{ url_for('project_gallery') }}">
+      <span class="eyebrow">{{ 'DONE' if project_progress.get(project.id, {}).get('completed') else 'OPEN' }}</span>
+      <h3>{{ project.name }}</h3>
+      <p>{{ project.description }}</p>
+    </a>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

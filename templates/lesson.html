@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block title %}{{ lesson.title }} · AI Learning Workbench{% endblock %}
+{% block content %}
+<article class="lesson-page" data-lesson-id="{{ lesson.id }}">
+  <div class="lesson-header card">
+    <div class="eyebrow">LESSON {{ '%02d'|format(lesson.number) }} · {{ lesson.module }}</div>
+    <h1>{{ lesson.title }}</h1>
+    <p>{{ lesson.summary }}</p>
+    <div class="lesson-meta"><span>{{ lesson.duration }}</span><span id="lesson-progress-label">{{ '已完成' if progress.completed else '未完成' }}</span></div>
+    <button id="lesson-complete" class="button primary" type="button" data-completed="{{ 1 if progress.completed else 0 }}">{{ '标记未完成' if progress.completed else '标记完成' }}</button>
+  </div>
+
+  <section class="card markdown-body">
+    {{ lesson_html|safe }}
+  </section>
+
+  <section class="card quiz-card">
+    <div class="eyebrow">QUICK CHECK</div><h2>课后小测</h2>
+    <form id="quiz-form">
+      {% for question in lesson.quiz %}
+      <fieldset class="quiz-question">
+        <legend>{{ loop.index }}. {{ question.question }}</legend>
+        {% for option in question.options %}
+        <label><input type="radio" name="{{ question.id }}" value="{{ loop.index0 }}"> {{ option }}</label>
+        {% endfor %}
+      </fieldset>
+      {% endfor %}
+      <button class="button primary" type="submit">提交小测</button>
+    </form>
+    <div id="quiz-result" class="result-box"></div>
+  </section>
+
+  <section class="card note-editor" id="notes">
+    <div class="eyebrow">MARKDOWN NOTES</div><h2>我的笔记</h2>
+    <textarea id="note-content" rows="10" placeholder="用自己的话记录这一节最重要的内容。">{{ note }}</textarea>
+    <div class="button-row"><button id="save-note" class="button primary" type="button">保存笔记</button><span id="note-status" class="status-line"></span></div>
+  </section>
+
+  <section class="card lesson-tutor">
+    <div class="eyebrow">LESSON TUTOR</div><h2>问 AI 助教</h2>
+    <div id="tutor-messages" class="tutor-messages" aria-live="polite"></div>
+    <form id="tutor-form" class="tutor-form">
+      <textarea id="tutor-input" rows="3" placeholder="问一个和本节课有关的问题。"></textarea>
+      <button class="button primary" type="submit">发送</button>
+    </form>
+    <div id="tutor-status" class="status-line"></div>
+  </section>
+</article>
+{% endblock %}

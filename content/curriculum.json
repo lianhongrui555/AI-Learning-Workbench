@@ -1,0 +1,257 @@
+{
+  "title": "零基础 AI 学习路线",
+  "description": "从 AI 基本概念出发，逐步理解机器学习、深度学习、本地模型、RAG 和 Agent。每节课都有中文导学、自测和动手任务。",
+  "modules": [
+    {
+      "id": "foundation",
+      "title": "第一阶段：建立 AI 世界观",
+      "description": "先弄清 AI、机器学习、数据和模型之间的关系，不被术语吓住。"
+    },
+    {
+      "id": "methods",
+      "title": "第二阶段：理解核心方法",
+      "description": "用直觉理解向量、概率、神经网络和 Transformer，建立技术地图。"
+    },
+    {
+      "id": "local-llm",
+      "title": "第三阶段：让模型跑在自己电脑上",
+      "description": "学习 Prompt、Ollama、API、向量检索、RAG 和 Agent 工具调用。"
+    },
+    {
+      "id": "capstone",
+      "title": "第四阶段：把知识变成项目",
+      "description": "综合之前的课程，理解并完成一个本地 AI 助手项目。"
+    }
+  ],
+  "lessons": [
+    {
+      "id": "ai-overview",
+      "number": 1,
+      "title": "什么是 AI、机器学习和生成式 AI",
+      "module": "第一阶段：建立 AI 世界观",
+      "duration": "30-45 分钟",
+      "summary": "弄清人工智能、机器学习、深度学习和生成式 AI 的关系，知道它们分别解决什么问题。",
+      "file": "01-ai-overview.md",
+      "practice": "用自己的话写下三个例子：一个规则程序、一个机器学习任务、一个生成式 AI 任务。",
+      "external": [
+        {"title": "Microsoft AI for Beginners", "url": "https://github.com/microsoft/AI-For-Beginners"},
+        {"title": "mlabonne LLM Course", "url": "https://github.com/mlabonne/llm-course"}
+      ],
+      "quiz": [
+        {"id": "q1", "question": "以下哪项最符合“机器学习”的核心思路？", "options": ["程序员把每个答案写死", "从数据中寻找规律", "只有显卡才能运行", "不使用任何数学"], "answer": 1, "explanation": "机器学习的核心是从数据中学习规律，而不是把每个答案手工写死。"},
+        {"id": "q2", "question": "生成式 AI 最擅长做的事情是？", "options": ["生成文字、图片、代码等内容", "替代所有数据库", "保证所有回答百分之百正确", "只负责删除文件"], "answer": 0, "explanation": "生成式 AI 的主要能力是根据输入生成新的内容。"},
+        {"id": "q3", "question": "参数可以把它理解成什么？", "options": ["模型内部可以调整的数字", "电脑的电源开关", "用户输入的密码", "网页的标题"], "answer": 0, "explanation": "训练的过程可以理解为不断调整模型内部参数。"}
+      ]
+    },
+    {
+      "id": "data-and-training",
+      "number": 2,
+      "title": "数据、特征、标签、训练与推理",
+      "module": "第一阶段：建立 AI 世界观",
+      "duration": "35-50 分钟",
+      "summary": "认识数据、特征、标签、训练集、测试集、推理和评估之间的关系。",
+      "file": "02-data-and-training.md",
+      "practice": "找一个小数据集，写出它的特征列、标签列和一条预测任务。",
+      "external": [
+        {"title": "Microsoft AI for Beginners", "url": "https://github.com/microsoft/AI-For-Beginners"},
+        {"title": "Microsoft ML for Beginners", "url": "https://github.com/microsoft/ML-For-Beginners"}
+      ],
+      "quiz": [
+        {"id": "q1", "question": "特征通常指什么？", "options": ["用来描述样本的输入信息", "模型的最终答案", "电脑的品牌", "训练需要几天"], "answer": 0, "explanation": "特征就是描述一个样本的输入信息。"},
+        {"id": "q2", "question": "测试集为什么不能拿来训练？", "options": ["因为它没有文件名", "因为它要用来检验新数据上的表现", "因为它一定很小", "因为测试集不能联网"], "answer": 1, "explanation": "测试集要模拟没见过的数据，检验模型是否真正学会了。"},
+        {"id": "q3", "question": "推理指的是什么？", "options": ["训练完成后用模型做预测或生成", "重新安装系统", "把所有数据删除", "修改数据库名字"], "answer": 0, "explanation": "推理是模型训练完成后对新输入进行计算的过程。"}
+      ]
+    },
+    {
+      "id": "python-toolchain",
+      "number": 3,
+      "title": "Python 与 AI 开发工具链",
+      "module": "第一阶段：建立 AI 世界观",
+      "duration": "40-60 分钟",
+      "summary": "知道 Python、虚拟环境、包管理、Git、终端和 GPU 驱动各自负责什么。",
+      "file": "03-python-toolchain.md",
+      "practice": "创建一个项目虚拟环境，安装并运行一个最小 Python 程序。",
+      "external": [
+        {"title": "Python 官方教程", "url": "https://docs.python.org/zh-cn/3/tutorial/"},
+        {"title": "Datawhale LLM Universe", "url": "https://github.com/datawhalechina/llm-universe"}
+      ],
+      "quiz": [
+        {"id": "q1", "question": "虚拟环境的主要作用是什么？", "options": ["隔离项目依赖", "让电脑变得更亮", "替代显卡", "自动写代码"], "answer": 0, "explanation": "虚拟环境让不同项目使用各自独立的依赖。"},
+        {"id": "q2", "question": "pip 负责什么？", "options": ["安装和管理 Python 包", "压缩图片", "管理显示器亮度", "创建 GitHub 账号"], "answer": 0, "explanation": "pip 是 Python 常用的包管理工具。"},
+        {"id": "q3", "question": "Git 主要解决什么问题？", "options": ["记录代码版本和变更历史", "提高显卡频率", "帮你写所有代码", "替代操作系统"], "answer": 0, "explanation": "Git 是版本控制工具，可以记录并比较每次修改。"}
+      ]
+    },
+    {
+      "id": "vectors-probability",
+      "number": 4,
+      "title": "向量、相似度与概率直觉",
+      "module": "第二阶段：理解核心方法",
+      "duration": "40-55 分钟",
+      "summary": "用地图坐标和投票比例理解向量、相似度和概率，不依赖高等数学公式。",
+      "file": "04-vectors-probability.md",
+      "practice": "为三个短句画一个二维坐标点，写出哪两个点更接近。",
+      "external": [
+        {"title": "Microsoft AI for Beginners", "url": "https://github.com/microsoft/AI-For-Beginners"},
+        {"title": "3Blue1Brown 线性代数", "url": "https://www.3blue1brown.com/topics/linear-algebra"}
+      ],
+      "quiz": [
+        {"id": "q1", "question": "向量可以直观理解成什么？", "options": ["一组有方向和大小或位置含义的数字", "一张图片的文件名", "一个操作系统", "一段密码"], "answer": 0, "explanation": "向量通常是一组数字，用来表示位置、方向或特征。"},
+        {"id": "q2", "question": "两个向量很相似，通常意味着什么？", "options": ["它们在特征空间中距离较近", "它们的文件大小相同", "它们的名字一样", "它们一定来自同一台电脑"], "answer": 0, "explanation": "相似度通常通过向量距离或夹角来衡量。"},
+        {"id": "q3", "question": "概率最适合描述什么？", "options": ["某件事发生的可能性", "硬盘容量", "屏幕分辨率", "代码行数"], "answer": 0, "explanation": "概率用数字表示不确定性。"}]
+    },
+    {
+      "id": "classic-machine-learning",
+      "number": 5,
+      "title": "经典机器学习：分类、回归与评估",
+      "module": "第二阶段：理解核心方法",
+      "duration": "45-60 分钟",
+      "summary": "理解分类和回归的区别，知道准确率、精确率、召回率和过拟合为什么重要。",
+      "file": "05-classic-machine-learning.md",
+      "practice": "用表格描述一个分类任务和一个回归任务，并写出一条评估指标。",
+      "external": [
+        {"title": "Microsoft ML for Beginners", "url": "https://github.com/microsoft/ML-For-Beginners"},
+        {"title": "Scikit-learn 用户指南", "url": "https://scikit-learn.org/stable/user_guide.html"}
+      ],
+      "quiz": [
+        {"id": "q1", "question": "预测明天会不会下雨属于什么任务？", "options": ["分类", "回归", "压缩", "排序文件"], "answer": 0, "explanation": "下雨和不下雨是离散类别，因此是分类。"},
+        {"id": "q2", "question": "预测房价通常属于什么任务？", "options": ["回归", "分类", "加密", "渲染"], "answer": 0, "explanation": "房价是连续数值，因此是回归。"},
+        {"id": "q3", "question": "过拟合是什么意思？", "options": ["训练集表现很好但新数据表现差", "模型太小", "电脑没电", "数据完全没有特征"], "answer": 0, "explanation": "过拟合是模型记住了训练数据，却没有学到可迁移规律。"}
+      ]
+    },
+    {
+      "id": "neural-networks",
+      "number": 6,
+      "title": "神经网络与深度学习基础",
+      "module": "第二阶段：理解核心方法",
+      "duration": "45-65 分钟",
+      "summary": "用“层层加工信息”的比喻理解神经元、层、激活函数、损失和反向传播。",
+      "file": "06-neural-networks.md",
+      "practice": "用自己的话画出一个输入层、隐藏层、输出层的最小神经网络。",
+      "external": [
+        {"title": "Microsoft AI for Beginners", "url": "https://github.com/microsoft/AI-For-Beginners"},
+        {"title": "PyTorch 官方教程", "url": "https://pytorch.org/tutorials/"}
+      ],
+      "quiz": [
+        {"id": "q1", "question": "神经网络中的“层”可以理解成什么？", "options": ["一层层加工信息的步骤", "电脑屏幕的层数", "数据库表", "用户权限"], "answer": 0, "explanation": "每一层都会对输入做一次变换，再把结果传给下一层。"},
+        {"id": "q2", "question": "损失函数用来衡量什么？", "options": ["预测结果和正确答案之间的差距", "电脑价格", "网络带宽", "文件数量"], "answer": 0, "explanation": "损失越大，通常说明当前预测越偏离目标。"},
+        {"id": "q3", "question": "反向传播的核心作用是什么？", "options": ["把误差信息传回去来调整参数", "把文件发送到邮箱", "关闭显卡", "生成网页颜色"], "answer": 0, "explanation": "反向传播用于计算各层参数应该如何调整。"}
+      ]
+    },
+    {
+      "id": "transformer-llm",
+      "number": 7,
+      "title": "Transformer 与大语言模型",
+      "module": "第二阶段：理解核心方法",
+      "duration": "50-70 分钟",
+      "summary": "理解注意力机制、Token、上下文窗口、预训练和生成文字的基本过程。",
+      "file": "07-transformer-llm.md",
+      "practice": "把一句中文拆成几个 Token，并说明上下文窗口为什么有限。",
+      "external": [
+        {"title": "Microsoft Generative AI for Beginners", "url": "https://github.com/microsoft/generative-ai-for-beginners"},
+        {"title": "Hugging Face Agents Course", "url": "https://github.com/huggingface/agents-course"}
+      ],
+      "quiz": [
+        {"id": "q1", "question": "Token 最接近什么概念？", "options": ["模型处理文字的小块单位", "数据库账户", "显卡型号", "网页按钮"], "answer": 0, "explanation": "模型通常先把文字拆成 Token，再进行处理。"},
+        {"id": "q2", "question": "注意力机制帮助模型做什么？", "options": ["判断当前词应该关注上下文的哪些部分", "提高屏幕亮度", "删除训练数据", "自动安装系统"], "answer": 0, "explanation": "注意力机制让模型能够根据上下文动态分配关注程度。"},
+        {"id": "q3", "question": "大语言模型生成文字的本质是？", "options": ["根据上下文预测下一个 Token", "从数据库直接复制唯一答案", "播放录音", "把图片转成 PDF"], "answer": 0, "explanation": "自回归语言模型通常不断预测下一个 Token。"}
+      ]
+    },
+    {
+      "id": "prompt-dialogue",
+      "number": 8,
+      "title": "Prompt 工程与多轮对话",
+      "module": "第三阶段：让模型跑在自己电脑上",
+      "duration": "40-55 分钟",
+      "summary": "学会把目标、背景、格式和限制说清楚，并理解多轮对话如何携带上下文。",
+      "file": "08-prompt-dialogue.md",
+      "practice": "为“把一段话总结成三点”写出包含背景、格式和限制的 Prompt。",
+      "external": [
+        {"title": "Microsoft Generative AI for Beginners", "url": "https://github.com/microsoft/generative-ai-for-beginners"},
+        {"title": "OpenAI Prompt Engineering Guide", "url": "https://platform.openai.com/docs/guides/prompt-engineering"}
+      ],
+      "quiz": [
+        {"id": "q1", "question": "一个好 Prompt 通常应该包含什么？", "options": ["目标、背景、输出格式和限制", "只有一句“帮我写”", "越短越好且不说明目标", "只写一个标点"], "answer": 0, "explanation": "明确目标、背景、格式和限制能显著减少歧义。"},
+        {"id": "q2", "question": "多轮对话为什么要保存对话编号？", "options": ["让后续问题延续同一上下文", "提高硬盘温度", "自动修改系统时间", "关闭网络"], "answer": 0, "explanation": "对话编号让服务端把当前问题与之前的对话关联起来。"},
+        {"id": "q3", "question": "Prompt 中有哪些内容时，模型更容易给出稳定格式？", "options": ["明确给出示例和输出结构", "不要说明格式", "只使用随机词语", "不断改变要求"], "answer": 0, "explanation": "示例和明确结构能降低模型自由发挥带来的不确定性。"}
+      ]
+    },
+    {
+      "id": "ollama-api",
+      "number": 9,
+      "title": "Ollama 本地模型部署与 Python API",
+      "module": "第三阶段：让模型跑在自己电脑上",
+      "duration": "50-75 分钟",
+      "summary": "理解 Ollama 的模型管理和 API 调用方式，并用 Python 完成一次本地生成。",
+      "file": "09-ollama-api.md",
+      "practice": "启动 Ollama，拉取一个模型，并用 Python 调用一次生成接口。",
+      "external": [
+        {"title": "Ollama 官方文档", "url": "https://docs.ollama.com/"},
+        {"title": "Ollama Python Library", "url": "https://github.com/ollama/ollama-python"}
+      ],
+      "quiz": [
+        {"id": "q1", "question": "Ollama 的主要职责是什么？", "options": ["在本机运行和管理大模型", "制作网页动画", "替代 Python 解释器", "管理邮箱"], "answer": 0, "explanation": "Ollama 提供本地模型运行和管理能力。"},
+        {"id": "q2", "question": "Ollama 默认常用的 API 端口是？", "options": ["11434", "80", "5000", "3389"], "answer": 0, "explanation": "Ollama 默认常监听本机 11434 端口。"},
+        {"id": "q3", "question": "本地模型相对云 API 的一个明显优势是？", "options": ["数据和推理可以留在本地", "永远不需要显存", "一定比所有云模型聪明", "不需要操作系统"], "answer": 0, "explanation": "本地运行可以减少数据外传，并获得离线或局域网使用能力。"}
+      ]
+    },
+    {
+      "id": "embeddings-rag",
+      "number": 10,
+      "title": "文本嵌入、向量检索与 RAG",
+      "module": "第三阶段：让模型跑在自己电脑上",
+      "duration": "55-80 分钟",
+      "summary": "理解 Embedding、向量数据库、切片、召回和 RAG 的完整流程。",
+      "file": "10-embeddings-rag.md",
+      "practice": "把三句短文本转成向量，并找出最相似的一组。",
+      "external": [
+        {"title": "Datawhale LLM Universe", "url": "https://github.com/datawhalechina/llm-universe"},
+        {"title": "Microsoft Generative AI for Beginners", "url": "https://github.com/microsoft/generative-ai-for-beginners"}
+      ],
+      "quiz": [
+        {"id": "q1", "question": "Embedding 的主要作用是什么？", "options": ["把文本变成可以比较的数字向量", "把网页变成图片", "让硬盘速度变快", "压缩系统文件"], "answer": 0, "explanation": "Embedding 把语义信息映射到向量空间。"},
+        {"id": "q2", "question": "RAG 中的 R 通常代表什么？", "options": ["Retrieval，先检索资料", "Restart，重启电脑", "Render，渲染网页", "Remove，删除数据"], "answer": 0, "explanation": "RAG 先检索外部知识，再把检索结果交给模型生成回答。"},
+        {"id": "q3", "question": "做 RAG 时为什么要对文档切片？", "options": ["方便检索到更相关的小段内容", "让文件看起来更整齐", "增加噪声", "避免保存原文"], "answer": 0, "explanation": "合理切片能提高检索的精准度并控制上下文长度。"}
+      ]
+    },
+    {
+      "id": "agents-tool-calling",
+      "number": 11,
+      "title": "Agent、工具调用与 CodeHarness",
+      "module": "第三阶段：让模型跑在自己电脑上",
+      "duration": "60-90 分钟",
+      "summary": "理解 Agent Loop、工具 Schema、工具执行、观察结果和停止条件，并阅读 CodeHarness 的设计。",
+      "file": "11-agents-tool-calling.md",
+      "practice": "为“查询天气”写一个工具名称、输入参数和输出格式。",
+      "external": [
+        {"title": "Hugging Face Agents Course", "url": "https://github.com/huggingface/agents-course"},
+        {"title": "Microsoft AI Agents for Beginners", "url": "https://github.com/microsoft/ai-agents-for-beginners"},
+        {"title": "CodeHarness", "url": "https://github.com/lianhongrui555/CodeHarness"}
+      ],
+      "quiz": [
+        {"id": "q1", "question": "Agent 和普通聊天的最大区别之一是什么？", "options": ["Agent 可以在循环中调用工具并观察结果", "Agent 一定能回答所有问题", "Agent 不需要模型", "Agent 只能生成图片"], "answer": 0, "explanation": "Agent 通常具备工具调用和循环决策能力。"},
+        {"id": "q2", "question": "工具调用通常需要先提供什么？", "options": ["工具名称、参数说明和 JSON Schema", "一张风景图", "一段音乐", "电脑序列号"], "answer": 0, "explanation": "模型需要知道工具能做什么以及参数如何填写。"},
+        {"id": "q3", "question": "Agent Loop 为什么需要停止条件？", "options": ["避免无限循环和资源浪费", "让页面颜色变深", "隐藏 API Key", "提高屏幕分辨率"], "answer": 0, "explanation": "最大步数、超时或任务完成都可以作为停止条件。"}
+      ]
+    },
+    {
+      "id": "capstone-local-ai",
+      "number": 12,
+      "title": "综合项目：搭建本地 AI 助手",
+      "module": "第四阶段：把知识变成项目",
+      "duration": "90-180 分钟",
+      "summary": "把模型、API、对话、工具、RAG 和学习工作台组合起来，形成一个可展示的本地 AI 项目。",
+      "file": "12-capstone-local-ai.md",
+      "practice": "按 README 启动一个本地 AI 助手，并记录一次完整对话或天气查询流程。",
+      "external": [
+        {"title": "Local AI Agent", "url": "https://github.com/lianhongrui555/Local-AI-Agent"},
+        {"title": "CodeHarness", "url": "https://github.com/lianhongrui555/CodeHarness"},
+        {"title": "YOLO Detection", "url": "https://github.com/lianhongrui555/YOLO-Detection"}
+      ],
+      "quiz": [
+        {"id": "q1", "question": "本地 AI 助手的典型组成不包括哪一项？", "options": ["完整替代操作系统的内核", "模型运行层", "应用 API", "前端页面"], "answer": 0, "explanation": "本地 AI 助手不需要替代操作系统内核。"},
+        {"id": "q2", "question": "为什么要让 Flask 后端保存 API Key？", "options": ["避免 Key 暴露给浏览器用户", "让 Key 看起来更长", "提高显卡温度", "让网页无法访问"], "answer": 0, "explanation": "后端代理可以隐藏密钥，浏览器只访问自己的接口。"},
+        {"id": "q3", "question": "面对一个复杂 AI 项目，最稳妥的推进方式是什么？", "options": ["先跑通最小闭环，再逐步增加能力", "先写最复杂的功能", "不做测试直接发布", "把密钥写进前端"], "answer": 0, "explanation": "先跑通端到端最小闭环，才能尽早发现环境、接口和数据问题。"}
+      ]
+    }
+  ]
+}

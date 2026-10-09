@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700">
+  <rect width="1200" height="700" fill="#080b0f"/>
+  <rect x="40" y="40" width="1120" height="620" rx="18" fill="#0d1117" stroke="#243040" stroke-width="2"/>
+  <rect x="70" y="80" width="240" height="540" rx="12" fill="#111820"/>
+  <rect x="340" y="80" width="790" height="180" rx="12" fill="#111820"/>
+  <rect x="340" y="285" width="380" height="335" rx="12" fill="#111820"/>
+  <rect x="745" y="285" width="385" height="335" rx="12" fill="#111820"/>
+  <text x="95" y="125" fill="#7ee787" font-family="monospace" font-size="22">AI-WORKBENCH</text>
+  <text x="375" y="135" fill="#d7e3ef" font-family="monospace" font-size="34">从零开始，把 AI 学成项目。</text>
+  <text x="375" y="185" fill="#7f91a7" font-family="monospace" font-size="18">课程路线 · 进度 · 笔记 · 小测 · 本地 AI 助教</text>
+  <text x="375" y="345" fill="#79c0ff" font-family="monospace" font-size="22">NEXT LESSON</text>
+  <text x="780" y="345" fill="#f2cc60" font-family="monospace" font-size="22">PROJECT STATUS</text>
+</svg>

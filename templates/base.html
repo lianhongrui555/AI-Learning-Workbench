@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}AI Learning Workbench{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/terminal.css') }}">
+</head>
+<body>
+  <div class="scanline"></div>
+  <div class="shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <span class="prompt">~/</span>
+        <strong>AI-WORKBENCH</strong>
+        <small>learning terminal v1</small>
+      </div>
+      <nav class="main-nav">
+        <a href="{{ url_for('dashboard') }}" class="{% if request.endpoint == 'dashboard' %}active{% endif %}">01 总览</a>
+        <a href="{{ url_for('learning_path') }}" class="{% if request.endpoint == 'learning_path' %}active{% endif %}">02 学习路线</a>
+        <a href="{{ url_for('project_gallery') }}" class="{% if request.endpoint == 'project_gallery' %}active{% endif %}">03 项目实战</a>
+        <a href="{{ url_for('notes_page') }}" class="{% if request.endpoint == 'notes_page' %}active{% endif %}">04 笔记库</a>
+        <a href="{{ url_for('tutor_page') }}" class="{% if request.endpoint == 'tutor_page' %}active{% endif %}">05 AI 助教</a>
+      </nav>
+      <div class="lesson-index">
+        <div class="section-label">LESSONS</div>
+        {% for item in nav_lessons %}
+        <a href="{{ url_for('lesson_detail', lesson_id=item.id) }}" class="lesson-link {% if request.view_args and request.view_args.get('lesson_id') == item.id %}active{% endif %}">
+          <span>{{ '%02d'|format(item.number) }}</span>{{ item.title }}
+        </a>
+        {% endfor %}
+      </div>
+      <div class="sidebar-status">
+        <span class="status-dot"></span>
+        <span>LOCAL MODE</span>
+        <small>127.0.0.1</small>
+      </div>
+    </aside>
+
+    <main class="content">
+      <header class="topbar">
+        <div>
+          <span class="muted">$</span>
+          <span>零基础 AI 学习工作台</span>
+        </div>
+        <div class="topbar-status">
+          <span>COURSE: 12</span>
+          <span>DATA: LOCAL</span>
+        </div>
+      </header>
+      {% block content %}{% endblock %}
+    </main>
+  </div>
+  <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+  {% block scripts %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}项目实战 · AI Learning Workbench{% endblock %}
+{% block content %}
+<section class="page-head"><div><div class="eyebrow">PROJECT GALLERY</div><h1>项目实战</h1><p>不复制原项目代码，只把完成状态、技能点和仓库入口集中在这里。</p></div></section>
+<div class="project-grid">
+  {% for project in projects %}
+  <article class="card project-card" data-project-id="{{ project.id }}">
+    <div class="project-card-top"><span class="eyebrow">REPO</span><span class="status-pill">{{ 'DONE' if project_progress.get(project.id, {}).get('completed') else 'OPEN' }}</span></div>
+    <h2>{{ project.name }}</h2><p>{{ project.description }}</p>
+    <div class="tag-row">{% for skill in project.skills %}<span>{{ skill }}</span>{% endfor %}</div>
+    <ul class="task-list">{% for task in project.tasks %}<li>{{ task }}</li>{% endfor %}</ul>
+    <div class="project-actions">
+      <a class="button ghost" href="{{ project.repo }}" target="_blank" rel="noopener noreferrer">打开 GitHub</a>
+      <button class="button primary project-toggle" type="button" data-completed="{{ 1 if project_progress.get(project.id, {}).get('completed') else 0 }}">{{ '标记未完成' if project_progress.get(project.id, {}).get('completed') else '标记完成' }}</button>
+    </div>
+  </article>
+  {% endfor %}
+</div>
+{% endblock %}
