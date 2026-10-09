@@ -59,6 +59,12 @@ def create_app(test_config: dict[str, Any] | None = None) -> Flask:
         if db is not None:
             db.close()
 
+    def ensure_column(db: sqlite3.Connection, table: str, column: str, definition: str) -> None:
+        """在旧数据库缺少新列时执行兼容迁移。"""
+        columns = {row[1] for row in db.execute(f"PRAGMA table_info({table})")}
+        if column not in columns:
+            db.execute(f"ALTER TABLE {table} ADD COLUMN {column} {definition}")
+
     def init_db() -> None:
         """创建本地进度、笔记、项目和助教数据表。"""
         db = get_db()
@@ -69,7 +75,11 @@ def create_app(test_config: dict[str, Any] | None = None) -> Flask:
                 completed INTEGER NOT NULL DEFAULT 0,
                 score INTEGER,
                 last_viewed_at TEXT,
-                completed_at TEXT
+                completed_at TEXT,
+                concept_submitted INTEGER NOT NULL DEFAULT 0,
+                code_submitted INTEGER NOT NULL DEFAULT 0,
+                concept_score INTEGER,
+                code_score INTEGER
             );
             CREATE TABLE IF NOT EXISTS notes (
                 lesson_id TEXT PRIMARY KEY,
@@ -92,6 +102,29 @@ def create_app(test_config: dict[str, Any] | None = None) -> Flask:
                 content TEXT NOT NULL,
                 created_at TEXT NOT NULL
             );
+            """
+        )
+
+        # 兼容旧数据库：缺少的新列会自动补齐，不删除旧记录。
+        ensure_column(db, "lesson_progress", "concept_submitted", "INTEGER NOT NULL DEFAULT 0")
+        ensure_column(db, "lesson_progress", "code_submitted", "INTEGER NOT NULL DEFAULT 0")
+        ensure_column(db, "lesson_progress", "concept_score", "INTEGER")
+        ensure_column(db, "lesson_progress", "code_score", "INTEGER")
+
+        # 旧版 score 迁移为概念题分数；旧完成记录继续保留。
+        db.execute(
+            """
+            UPDATE lesson_progress
+            SET concept_score = COALESCE(concept_score, score),
+                concept_submitted = 1
+            WHERE score IS NOT NULL
+            """
+        )
+        db.execute(
+            """
+            UPDATE lesson_progress
+            SET code_submitted = 1
+            WHERE completed = 1
             """
         )
         db.commit()
@@ -164,7 +197,7 @@ def create_app(test_config: dict[str, Any] | None = None) -> Flask:
             lesson=lesson,
             lesson_html=render_markdown(read_lesson_markdown(lesson_id)),
             note=(note_row["content"] if note_row else ""),
-            progress=dict(progress_row) if progress_row else {"completed": 0, "score": None},
+            progress=dict(progress_row) if progress_row else {"completed": 0, "concept_submitted": 0, "code_submitted": 0, "concept_score": None, "code_score": None},
         )
 
     @app.get("/projects")
@@ -205,7 +238,7 @@ def create_app(test_config: dict[str, Any] | None = None) -> Flask:
         progress_rows = {row["lesson_id"]: dict(row) for row in get_db().execute("SELECT * FROM lesson_progress")}
         curriculum = load_curriculum()
         for lesson in curriculum.get("lessons", []):
-            lesson["progress"] = progress_rows.get(lesson["id"], {"completed": 0, "score": None})
+            lesson["progress"] = progress_rows.get(lesson["id"], {"completed": 0, "concept_submitted": 0, "code_submitted": 0, "concept_score": None, "code_score": None})
         return jsonify(curriculum)
 
     @app.get("/api/progress")
@@ -214,26 +247,6 @@ def create_app(test_config: dict[str, Any] | None = None) -> Flask:
         rows = [dict(row) for row in get_db().execute("SELECT * FROM lesson_progress")]
         return jsonify({"items": rows})
 
-    @app.post("/api/progress/<lesson_id>")
-    def api_update_progress(lesson_id: str):
-        """更新课程完成状态。"""
-        require_lesson(lesson_id)
-        payload = request.get_json(silent=True) or {}
-        completed = bool(payload.get("completed", True))
-        now = utc_now()
-        get_db().execute(
-            """
-            INSERT INTO lesson_progress (lesson_id, completed, last_viewed_at, completed_at)
-            VALUES (?, ?, ?, ?)
-            ON CONFLICT(lesson_id) DO UPDATE SET
-                completed = excluded.completed,
-                last_viewed_at = excluded.last_viewed_at,
-                completed_at = CASE WHEN excluded.completed = 1 THEN excluded.completed_at ELSE NULL END
-            """,
-            (lesson_id, 1 if completed else 0, now, now),
-        )
-        get_db().commit()
-        return jsonify({"lesson_id": lesson_id, "completed": completed})
 
     @app.get("/api/notes/<lesson_id>")
     def api_get_note(lesson_id: str):
@@ -261,11 +274,15 @@ def create_app(test_config: dict[str, Any] | None = None) -> Flask:
 
     @app.post("/api/quiz/<lesson_id>/submit")
     def api_submit_quiz(lesson_id: str):
-        """批改课程小测并保存分数。"""
+        """批改概念题或代码理解题，并更新课程完成状态。"""
         lesson = require_lesson(lesson_id)
         payload = request.get_json(silent=True) or {}
+        quiz_type = str(payload.get("quiz_type", "concept")).strip()
+        if quiz_type not in {"concept", "code"}:
+            return jsonify({"error": "quiz_type 只能是 concept 或 code。"}), 400
+
         answers = payload.get("answers", {})
-        questions = lesson.get("quiz", [])
+        questions = lesson.get("quiz", []) if quiz_type == "concept" else lesson.get("code_quiz", [])
         correct_count = 0
         details = []
         for question in questions:
@@ -276,20 +293,67 @@ def create_app(test_config: dict[str, Any] | None = None) -> Flask:
                 selected = -1
             is_correct = selected == question["answer"]
             correct_count += 1 if is_correct else 0
-            details.append({"id": question["id"], "correct": is_correct, "answer": question["answer"], "explanation": question.get("explanation", "")})
+            details.append({
+                "id": question["id"],
+                "kind": question.get("kind"),
+                "correct": is_correct,
+                "answer": question["answer"],
+                "explanation": question.get("explanation", ""),
+            })
         total = len(questions)
         score = round(correct_count / total * 100) if total else 0
         now = utc_now()
-        get_db().execute(
+        db = get_db()
+        if quiz_type == "concept":
+            db.execute(
+                """
+                INSERT INTO lesson_progress (lesson_id, concept_submitted, concept_score, score, last_viewed_at)
+                VALUES (?, 1, ?, ?, ?)
+                ON CONFLICT(lesson_id) DO UPDATE SET
+                    concept_submitted = 1,
+                    concept_score = excluded.concept_score,
+                    score = excluded.score,
+                    last_viewed_at = excluded.last_viewed_at
+                """,
+                (lesson_id, score, score, now),
+            )
+        else:
+            db.execute(
+                """
+                INSERT INTO lesson_progress (lesson_id, code_submitted, code_score, last_viewed_at)
+                VALUES (?, 1, ?, ?)
+                ON CONFLICT(lesson_id) DO UPDATE SET
+                    code_submitted = 1,
+                    code_score = excluded.code_score,
+                    last_viewed_at = excluded.last_viewed_at
+                """,
+                (lesson_id, score, now),
+            )
+
+        progress_row = db.execute(
+            "SELECT concept_submitted, code_submitted FROM lesson_progress WHERE lesson_id = ?",
+            (lesson_id,),
+        ).fetchone()
+        completed = bool(progress_row["concept_submitted"] and progress_row["code_submitted"])
+        db.execute(
             """
-            INSERT INTO lesson_progress (lesson_id, completed, score, last_viewed_at)
-            VALUES (?, 0, ?, ?)
-            ON CONFLICT(lesson_id) DO UPDATE SET score = excluded.score, last_viewed_at = excluded.last_viewed_at
+            UPDATE lesson_progress
+            SET completed = ?,
+                completed_at = CASE WHEN ? = 1 THEN COALESCE(completed_at, ?) ELSE NULL END
+            WHERE lesson_id = ?
             """,
-            (lesson_id, score, now),
+            (1 if completed else 0, 1 if completed else 0, now, lesson_id),
         )
-        get_db().commit()
-        return jsonify({"lesson_id": lesson_id, "correct": correct_count, "total": total, "score": score, "details": details})
+        db.commit()
+        return jsonify({
+            "lesson_id": lesson_id,
+            "quiz_type": quiz_type,
+            "correct": correct_count,
+            "total": total,
+            "score": score,
+            "completed": completed,
+            "details": details,
+        })
 
     @app.get("/api/projects")
     def api_projects():

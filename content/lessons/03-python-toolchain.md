@@ -34,13 +34,23 @@ pip install -r requirements.txt
 git status
 ```
 
-## 动手任务
+## 代码阅读示例
 
-打开一个空文件夹，创建虚拟环境并运行：
+先不要运行代码，直接阅读并尝试判断它做了什么：
 
-```python
-print("环境准备完成")
+```powershell
+python -m venv .venv
+. .venv/Scripts/python.exe --version
 ```
+
+阅读提示：
+
+- 先找变量分别保存了什么。
+- 再追踪每一行执行的顺序。
+- 最后判断输出、错误或参数变化。
+
+页面下方有对应的代码理解题，提交后可以查看逐行解释。
+
 
 ## 课后小测
 

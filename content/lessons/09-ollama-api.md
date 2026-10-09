@@ -39,9 +39,23 @@ response = requests.post(
 print(response.json()["response"])
 ```
 
-## 动手任务
+## 代码阅读示例
 
-确认 `ollama list` 能看到至少一个模型，再用 Python 发出一次生成请求。
+先不要运行代码，直接阅读并尝试判断它做了什么：
+
+```python
+result = {"response": "你好"}
+print(result["response"])
+```
+
+阅读提示：
+
+- 先找变量分别保存了什么。
+- 再追踪每一行执行的顺序。
+- 最后判断输出、错误或参数变化。
+
+页面下方有对应的代码理解题，提交后可以查看逐行解释。
+
 
 ## 课后小测
 

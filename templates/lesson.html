@@ -1,33 +1,61 @@
 {% extends "base.html" %}
 {% block title %}{{ lesson.title }} · AI Learning Workbench{% endblock %}
 {% block content %}
-<article class="lesson-page" data-lesson-id="{{ lesson.id }}">
+<article class="lesson-page" data-lesson-id="{{ lesson.id }}" data-completed="{{ 1 if progress.completed else 0 }}">
   <div class="lesson-header card">
     <div class="eyebrow">LESSON {{ '%02d'|format(lesson.number) }} · {{ lesson.module }}</div>
     <h1>{{ lesson.title }}</h1>
     <p>{{ lesson.summary }}</p>
-    <div class="lesson-meta"><span>{{ lesson.duration }}</span><span id="lesson-progress-label">{{ '已完成' if progress.completed else '未完成' }}</span></div>
-    <button id="lesson-complete" class="button primary" type="button" data-completed="{{ 1 if progress.completed else 0 }}">{{ '标记未完成' if progress.completed else '标记完成' }}</button>
+    <div class="lesson-meta">
+      <span>{{ lesson.duration }}</span>
+      <span class="status-pill lesson-status">{{ '已完成' if progress.completed else '进行中' }}</span>
+    </div>
   </div>
 
   <section class="card markdown-body">
     {{ lesson_html|safe }}
   </section>
 
-  <section class="card quiz-card">
-    <div class="eyebrow">QUICK CHECK</div><h2>课后小测</h2>
-    <form id="quiz-form">
+  <section class="card quiz-card" data-quiz-type="concept">
+    <div class="quiz-heading">
+      <div><div class="eyebrow">CONCEPT CHECK</div><h2>概念自测</h2></div>
+      <span class="status-pill" id="concept-status">{{ '已提交' if progress.concept_submitted else '未提交' }}</span>
+    </div>
+    <form class="quiz-form" id="concept-quiz-form">
       {% for question in lesson.quiz %}
       <fieldset class="quiz-question">
         <legend>{{ loop.index }}. {{ question.question }}</legend>
         {% for option in question.options %}
-        <label><input type="radio" name="{{ question.id }}" value="{{ loop.index0 }}"> {{ option }}</label>
+        <label><input type="radio" name="concept_{{ question.id }}" value="{{ loop.index0 }}"> {{ option }}</label>
         {% endfor %}
       </fieldset>
       {% endfor %}
-      <button class="button primary" type="submit">提交小测</button>
+      <button class="button primary" type="submit">提交概念题</button>
     </form>
-    <div id="quiz-result" class="result-box"></div>
+    <div id="concept-quiz-result" class="result-box"></div>
+  </section>
+
+  <section class="card quiz-card code-quiz-card" data-quiz-type="code">
+    <div class="quiz-heading">
+      <div><div class="eyebrow">CODE READING</div><h2>代码阅读</h2></div>
+      <span class="status-pill" id="code-status">{{ '已提交' if progress.code_submitted else '未提交' }}</span>
+    </div>
+    <form class="quiz-form" id="code-quiz-form">
+      {% for question in lesson.code_quiz %}
+      <fieldset class="quiz-question code-question">
+        <legend>{{ loop.index }}. {{ question.question }}</legend>
+        <div class="question-kind">
+          {% if question.kind == 'output' %}预测输出{% elif question.kind == 'bug' %}找出错误{% else %}参数变化{% endif %}
+        </div>
+        <pre class="code-snippet"><code>{{ question.code }}</code></pre>
+        {% for option in question.options %}
+        <label><input type="radio" name="code_{{ question.id }}" value="{{ loop.index0 }}"> {{ option }}</label>
+        {% endfor %}
+      </fieldset>
+      {% endfor %}
+      <button class="button primary" type="submit">提交代码题</button>
+    </form>
+    <div id="code-quiz-result" class="result-box"></div>
   </section>
 
   <section class="card note-editor" id="notes">

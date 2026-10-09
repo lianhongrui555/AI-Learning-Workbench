@@ -33,26 +33,45 @@ async function sendTutorMessage(lessonId, message, messagesElement, statusElemen
   return data;
 }
 
+function setupQuizForm(formId, quizType, resultId, statusId, lessonPage) {
+  const form = document.getElementById(formId);
+  if (!form) return;
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    const lessonId = lessonPage.dataset.lessonId;
+    const answers = {};
+    new FormData(form).forEach((value, key) => {
+      answers[key.replace(`${quizType}_`, "")] = value;
+    });
+    const resultBox = document.getElementById(resultId);
+    resultBox.className = "result-box";
+    try {
+      const data = await apiJson(`/api/quiz/${lessonId}/submit`, {
+        method: "POST",
+        body: JSON.stringify({ quiz_type: quizType, answers }),
+      });
+      resultBox.classList.add(data.score >= 60 ? "success" : "error");
+      resultBox.textContent = `得分 ${data.score} 分（${data.correct}/${data.total}）。${data.details.map((item) => `${item.id}: ${item.correct ? "正确" : "需复习"}`).join("；")}`;
+      const status = document.getElementById(statusId);
+      if (status) status.textContent = "已提交";
+      if (data.completed) {
+        lessonPage.dataset.completed = "1";
+        const lessonStatus = lessonPage.querySelector(".lesson-status");
+        if (lessonStatus) lessonStatus.textContent = "已完成";
+      }
+    } catch (error) {
+      resultBox.classList.add("error");
+      resultBox.textContent = error.message;
+    }
+  });
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   const lessonPage = document.querySelector(".lesson-page");
   if (lessonPage) {
     const lessonId = lessonPage.dataset.lessonId;
-    const completeButton = document.getElementById("lesson-complete");
-    const progressLabel = document.getElementById("lesson-progress-label");
-
-    if (completeButton) {
-      completeButton.addEventListener("click", async () => {
-        const completed = completeButton.dataset.completed !== "1";
-        try {
-          await apiJson(`/api/progress/${lessonId}`, { method: "POST", body: JSON.stringify({ completed }) });
-          completeButton.dataset.completed = completed ? "1" : "0";
-          completeButton.textContent = completed ? "标记未完成" : "标记完成";
-          if (progressLabel) progressLabel.textContent = completed ? "已完成" : "未完成";
-        } catch (error) {
-          alert(error.message);
-        }
-      });
-    }
+    setupQuizForm("concept-quiz-form", "concept", "concept-quiz-result", "concept-status", lessonPage);
+    setupQuizForm("code-quiz-form", "code", "code-quiz-result", "code-status", lessonPage);
 
     const saveNoteButton = document.getElementById("save-note");
     if (saveNoteButton) {
@@ -65,25 +84,6 @@ document.addEventListener("DOMContentLoaded", () => {
           status.textContent = "笔记已保存到本地。";
         } catch (error) {
           status.textContent = `保存失败：${error.message}`;
-        }
-      });
-    }
-
-    const quizForm = document.getElementById("quiz-form");
-    if (quizForm) {
-      quizForm.addEventListener("submit", async (event) => {
-        event.preventDefault();
-        const answers = {};
-        new FormData(quizForm).forEach((value, key) => { answers[key] = value; });
-        const resultBox = document.getElementById("quiz-result");
-        resultBox.className = "result-box";
-        try {
-          const data = await apiJson(`/api/quiz/${lessonId}/submit`, { method: "POST", body: JSON.stringify({ answers }) });
-          resultBox.classList.add(data.score >= 60 ? "success" : "error");
-          resultBox.textContent = `得分 ${data.score} 分（${data.correct}/${data.total}）。${data.details.map((item) => `${item.id}: ${item.correct ? "正确" : "需复习"}`).join("；")}`;
-        } catch (error) {
-          resultBox.classList.add("error");
-          resultBox.textContent = error.message;
         }
       });
     }

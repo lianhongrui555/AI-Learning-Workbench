@@ -28,9 +28,26 @@ print(classify_temperature(35))
 print(classify_temperature(22))
 ```
 
-## 动手任务
+## 代码阅读示例
 
-写出一个分类任务和一个回归任务，并各写一个合理的评估指标。
+先不要运行代码，直接阅读并尝试判断它做了什么：
+
+```python
+def classify(value):
+    return "炎热" if value >= 30 else "舒适"
+
+print(classify(35))
+print(classify(22))
+```
+
+阅读提示：
+
+- 先找变量分别保存了什么。
+- 再追踪每一行执行的顺序。
+- 最后判断输出、错误或参数变化。
+
+页面下方有对应的代码理解题，提交后可以查看逐行解释。
+
 
 ## 课后小测
 

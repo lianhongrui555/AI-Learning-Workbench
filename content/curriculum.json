@@ -1,6 +1,6 @@
 {
   "title": "零基础 AI 学习路线",
-  "description": "从 AI 基本概念出发，逐步理解机器学习、深度学习、本地模型、RAG 和 Agent。每节课都有中文导学、自测和动手任务。",
+  "description": "从 AI 基本概念出发，逐步理解机器学习、深度学习、本地模型、RAG 和 Agent。每节课包含 3 道概念选择题和 3 道代码阅读理解题，不要求编写或运行代码。",
   "modules": [
     {
       "id": "foundation",
@@ -32,15 +32,97 @@
       "duration": "30-45 分钟",
       "summary": "弄清人工智能、机器学习、深度学习和生成式 AI 的关系，知道它们分别解决什么问题。",
       "file": "01-ai-overview.md",
-      "practice": "用自己的话写下三个例子：一个规则程序、一个机器学习任务、一个生成式 AI 任务。",
       "external": [
-        {"title": "Microsoft AI for Beginners", "url": "https://github.com/microsoft/AI-For-Beginners"},
-        {"title": "mlabonne LLM Course", "url": "https://github.com/mlabonne/llm-course"}
+        {
+          "title": "Microsoft AI for Beginners",
+          "url": "https://github.com/microsoft/AI-For-Beginners"
+        },
+        {
+          "title": "mlabonne LLM Course",
+          "url": "https://github.com/mlabonne/llm-course"
+        }
       ],
       "quiz": [
-        {"id": "q1", "question": "以下哪项最符合“机器学习”的核心思路？", "options": ["程序员把每个答案写死", "从数据中寻找规律", "只有显卡才能运行", "不使用任何数学"], "answer": 1, "explanation": "机器学习的核心是从数据中学习规律，而不是把每个答案手工写死。"},
-        {"id": "q2", "question": "生成式 AI 最擅长做的事情是？", "options": ["生成文字、图片、代码等内容", "替代所有数据库", "保证所有回答百分之百正确", "只负责删除文件"], "answer": 0, "explanation": "生成式 AI 的主要能力是根据输入生成新的内容。"},
-        {"id": "q3", "question": "参数可以把它理解成什么？", "options": ["模型内部可以调整的数字", "电脑的电源开关", "用户输入的密码", "网页的标题"], "answer": 0, "explanation": "训练的过程可以理解为不断调整模型内部参数。"}
+        {
+          "id": "q1",
+          "question": "以下哪项最符合“机器学习”的核心思路？",
+          "options": [
+            "程序员把每个答案写死",
+            "从数据中寻找规律",
+            "只有显卡才能运行",
+            "不使用任何数学"
+          ],
+          "answer": 1,
+          "explanation": "机器学习的核心是从数据中学习规律，而不是把每个答案手工写死。"
+        },
+        {
+          "id": "q2",
+          "question": "生成式 AI 最擅长做的事情是？",
+          "options": [
+            "生成文字、图片、代码等内容",
+            "替代所有数据库",
+            "保证所有回答百分之百正确",
+            "只负责删除文件"
+          ],
+          "answer": 0,
+          "explanation": "生成式 AI 的主要能力是根据输入生成新的内容。"
+        },
+        {
+          "id": "q3",
+          "question": "参数可以把它理解成什么？",
+          "options": [
+            "模型内部可以调整的数字",
+            "电脑的电源开关",
+            "用户输入的密码",
+            "网页的标题"
+          ],
+          "answer": 0,
+          "explanation": "训练的过程可以理解为不断调整模型内部参数。"
+        }
+      ],
+      "code_quiz": [
+        {
+          "id": "cq1",
+          "kind": "output",
+          "question": "运行这段代码后，终端会显示什么？",
+          "code": "def greet(name):\n    return \"你好，\" + name\n\nprint(greet(\"AI\"))",
+          "options": [
+            "你好，AI",
+            "你好，name",
+            "AI",
+            "报错"
+          ],
+          "answer": 0,
+          "explanation": "greet 接收字符串 AI，并把它拼到“你好，”后面，所以输出“你好，AI”。"
+        },
+        {
+          "id": "cq2",
+          "kind": "bug",
+          "question": "这段代码最主要的问题是什么？",
+          "code": "def greet(name)\n    return f\"你好，{name}\"\n\nprint(greet(\"同学\"))",
+          "options": [
+            "中文不能出现在函数里",
+            "def 行末尾缺少冒号",
+            "print 不能调用函数",
+            "name 必须改成数字"
+          ],
+          "answer": 1,
+          "explanation": "Python 定义函数时，def 那一行末尾必须有冒号。"
+        },
+        {
+          "id": "cq3",
+          "kind": "parameter",
+          "question": "如果把 greet() 改成 greet(\"小明\")，输出会怎样变化？",
+          "code": "def greet(name=\"同学\"):\n    return f\"你好，{name}\"\n\nprint(greet())",
+          "options": [
+            "仍然输出你好，同学",
+            "输出你好，小明",
+            "输出 name",
+            "代码无法运行"
+          ],
+          "answer": 1,
+          "explanation": "传入小明后，name 会使用传入值，默认值不再生效。"
+        }
       ]
     },
     {
@@ -51,15 +133,97 @@
       "duration": "35-50 分钟",
       "summary": "认识数据、特征、标签、训练集、测试集、推理和评估之间的关系。",
       "file": "02-data-and-training.md",
-      "practice": "找一个小数据集，写出它的特征列、标签列和一条预测任务。",
       "external": [
-        {"title": "Microsoft AI for Beginners", "url": "https://github.com/microsoft/AI-For-Beginners"},
-        {"title": "Microsoft ML for Beginners", "url": "https://github.com/microsoft/ML-For-Beginners"}
+        {
+          "title": "Microsoft AI for Beginners",
+          "url": "https://github.com/microsoft/AI-For-Beginners"
+        },
+        {
+          "title": "Microsoft ML for Beginners",
+          "url": "https://github.com/microsoft/ML-For-Beginners"
+        }
       ],
       "quiz": [
-        {"id": "q1", "question": "特征通常指什么？", "options": ["用来描述样本的输入信息", "模型的最终答案", "电脑的品牌", "训练需要几天"], "answer": 0, "explanation": "特征就是描述一个样本的输入信息。"},
-        {"id": "q2", "question": "测试集为什么不能拿来训练？", "options": ["因为它没有文件名", "因为它要用来检验新数据上的表现", "因为它一定很小", "因为测试集不能联网"], "answer": 1, "explanation": "测试集要模拟没见过的数据，检验模型是否真正学会了。"},
-        {"id": "q3", "question": "推理指的是什么？", "options": ["训练完成后用模型做预测或生成", "重新安装系统", "把所有数据删除", "修改数据库名字"], "answer": 0, "explanation": "推理是模型训练完成后对新输入进行计算的过程。"}
+        {
+          "id": "q1",
+          "question": "特征通常指什么？",
+          "options": [
+            "用来描述样本的输入信息",
+            "模型的最终答案",
+            "电脑的品牌",
+            "训练需要几天"
+          ],
+          "answer": 0,
+          "explanation": "特征就是描述一个样本的输入信息。"
+        },
+        {
+          "id": "q2",
+          "question": "测试集为什么不能拿来训练？",
+          "options": [
+            "因为它没有文件名",
+            "因为它要用来检验新数据上的表现",
+            "因为它一定很小",
+            "因为测试集不能联网"
+          ],
+          "answer": 1,
+          "explanation": "测试集要模拟没见过的数据，检验模型是否真正学会了。"
+        },
+        {
+          "id": "q3",
+          "question": "推理指的是什么？",
+          "options": [
+            "训练完成后用模型做预测或生成",
+            "重新安装系统",
+            "把所有数据删除",
+            "修改数据库名字"
+          ],
+          "answer": 0,
+          "explanation": "推理是模型训练完成后对新输入进行计算的过程。"
+        }
+      ],
+      "code_quiz": [
+        {
+          "id": "cq1",
+          "kind": "output",
+          "question": "运行后输出是什么？",
+          "code": "sample = {\"features\": [1, 0, 1], \"label\": \"通过\"}\nprint(sample[\"label\"])",
+          "options": [
+            "通过",
+            "[1, 0, 1]",
+            "label",
+            "报错"
+          ],
+          "answer": 0,
+          "explanation": "方括号里的 label 是字典键，对应值是“通过”。"
+        },
+        {
+          "id": "cq2",
+          "kind": "bug",
+          "question": "为什么这段代码会报 KeyError？",
+          "code": "sample = {\"features\": [1, 0, 1], \"label\": \"通过\"}\nprint(sample[\"labels\"])",
+          "options": [
+            "字典里没有 labels 这个键",
+            "列表不能放进字典",
+            "print 只能输出数字",
+            "字符串必须用单引号"
+          ],
+          "answer": 0,
+          "explanation": "字典里定义的键是 label，而不是 labels。"
+        },
+        {
+          "id": "cq3",
+          "kind": "parameter",
+          "question": "把 label 的值从“通过”改成“不通过”，输出会怎样变化？",
+          "code": "sample = {\"features\": [0, 0, 0], \"label\": \"通过\"}\nprint(sample[\"label\"])",
+          "options": [
+            "输出不通过",
+            "仍然输出通过",
+            "输出 None",
+            "报错"
+          ],
+          "answer": 0,
+          "explanation": "输出读取的是字典当前保存的值，修改值后输出也会改变。"
+        }
       ]
     },
     {
@@ -70,15 +234,97 @@
       "duration": "40-60 分钟",
       "summary": "知道 Python、虚拟环境、包管理、Git、终端和 GPU 驱动各自负责什么。",
       "file": "03-python-toolchain.md",
-      "practice": "创建一个项目虚拟环境，安装并运行一个最小 Python 程序。",
       "external": [
-        {"title": "Python 官方教程", "url": "https://docs.python.org/zh-cn/3/tutorial/"},
-        {"title": "Datawhale LLM Universe", "url": "https://github.com/datawhalechina/llm-universe"}
+        {
+          "title": "Python 官方教程",
+          "url": "https://docs.python.org/zh-cn/3/tutorial/"
+        },
+        {
+          "title": "Datawhale LLM Universe",
+          "url": "https://github.com/datawhalechina/llm-universe"
+        }
       ],
       "quiz": [
-        {"id": "q1", "question": "虚拟环境的主要作用是什么？", "options": ["隔离项目依赖", "让电脑变得更亮", "替代显卡", "自动写代码"], "answer": 0, "explanation": "虚拟环境让不同项目使用各自独立的依赖。"},
-        {"id": "q2", "question": "pip 负责什么？", "options": ["安装和管理 Python 包", "压缩图片", "管理显示器亮度", "创建 GitHub 账号"], "answer": 0, "explanation": "pip 是 Python 常用的包管理工具。"},
-        {"id": "q3", "question": "Git 主要解决什么问题？", "options": ["记录代码版本和变更历史", "提高显卡频率", "帮你写所有代码", "替代操作系统"], "answer": 0, "explanation": "Git 是版本控制工具，可以记录并比较每次修改。"}
+        {
+          "id": "q1",
+          "question": "虚拟环境的主要作用是什么？",
+          "options": [
+            "隔离项目依赖",
+            "让电脑变得更亮",
+            "替代显卡",
+            "自动写代码"
+          ],
+          "answer": 0,
+          "explanation": "虚拟环境让不同项目使用各自独立的依赖。"
+        },
+        {
+          "id": "q2",
+          "question": "pip 负责什么？",
+          "options": [
+            "安装和管理 Python 包",
+            "压缩图片",
+            "管理显示器亮度",
+            "创建 GitHub 账号"
+          ],
+          "answer": 0,
+          "explanation": "pip 是 Python 常用的包管理工具。"
+        },
+        {
+          "id": "q3",
+          "question": "Git 主要解决什么问题？",
+          "options": [
+            "记录代码版本和变更历史",
+            "提高显卡频率",
+            "帮你写所有代码",
+            "替代操作系统"
+          ],
+          "answer": 0,
+          "explanation": "Git 是版本控制工具，可以记录并比较每次修改。"
+        }
+      ],
+      "code_quiz": [
+        {
+          "id": "cq1",
+          "kind": "output",
+          "question": "执行这两条命令后，最可能看到什么？",
+          "code": "python -m venv .venv\n. .venv/Scripts/python.exe --version",
+          "options": [
+            "显示 Python 版本号",
+            "删除 .venv",
+            "启动网页",
+            "输出 requirements.txt"
+          ],
+          "answer": 0,
+          "explanation": "第二条命令用虚拟环境中的 Python 输出版本。"
+        },
+        {
+          "id": "cq2",
+          "kind": "bug",
+          "question": "下面哪个操作顺序是错误的？",
+          "code": ". .venv/Scripts/python.exe -m pip install -r requirements.txt\npython -m venv .venv",
+          "options": [
+            "先装依赖，后创建虚拟环境",
+            "先创建环境，后装依赖",
+            "先检查版本，后装依赖",
+            "先进入目录，后运行命令"
+          ],
+          "answer": 0,
+          "explanation": "必须先创建 .venv，之后才能使用其中的 Python 安装依赖。"
+        },
+        {
+          "id": "cq3",
+          "kind": "parameter",
+          "question": "如果把 .venv 改成 .env，最主要的后果是什么？",
+          "code": "python -m venv .venv",
+          "options": [
+            "虚拟环境名称变了",
+            "自动安装 Flask",
+            "网页端口变成 5000",
+            "所有命令都能省略"
+          ],
+          "answer": 0,
+          "explanation": "参数决定虚拟环境目录名；名称变化后，后续命令也必须一致修改。"
+        }
       ]
     },
     {
@@ -89,15 +335,98 @@
       "duration": "40-55 分钟",
       "summary": "用地图坐标和投票比例理解向量、相似度和概率，不依赖高等数学公式。",
       "file": "04-vectors-probability.md",
-      "practice": "为三个短句画一个二维坐标点，写出哪两个点更接近。",
       "external": [
-        {"title": "Microsoft AI for Beginners", "url": "https://github.com/microsoft/AI-For-Beginners"},
-        {"title": "3Blue1Brown 线性代数", "url": "https://www.3blue1brown.com/topics/linear-algebra"}
+        {
+          "title": "Microsoft AI for Beginners",
+          "url": "https://github.com/microsoft/AI-For-Beginners"
+        },
+        {
+          "title": "3Blue1Brown 线性代数",
+          "url": "https://www.3blue1brown.com/topics/linear-algebra"
+        }
       ],
       "quiz": [
-        {"id": "q1", "question": "向量可以直观理解成什么？", "options": ["一组有方向和大小或位置含义的数字", "一张图片的文件名", "一个操作系统", "一段密码"], "answer": 0, "explanation": "向量通常是一组数字，用来表示位置、方向或特征。"},
-        {"id": "q2", "question": "两个向量很相似，通常意味着什么？", "options": ["它们在特征空间中距离较近", "它们的文件大小相同", "它们的名字一样", "它们一定来自同一台电脑"], "answer": 0, "explanation": "相似度通常通过向量距离或夹角来衡量。"},
-        {"id": "q3", "question": "概率最适合描述什么？", "options": ["某件事发生的可能性", "硬盘容量", "屏幕分辨率", "代码行数"], "answer": 0, "explanation": "概率用数字表示不确定性。"}]
+        {
+          "id": "q1",
+          "question": "向量可以直观理解成什么？",
+          "options": [
+            "一组有方向和大小或位置含义的数字",
+            "一张图片的文件名",
+            "一个操作系统",
+            "一段密码"
+          ],
+          "answer": 0,
+          "explanation": "向量通常是一组数字，用来表示位置、方向或特征。"
+        },
+        {
+          "id": "q2",
+          "question": "两个向量很相似，通常意味着什么？",
+          "options": [
+            "它们在特征空间中距离较近",
+            "它们的文件大小相同",
+            "它们的名字一样",
+            "它们一定来自同一台电脑"
+          ],
+          "answer": 0,
+          "explanation": "相似度通常通过向量距离或夹角来衡量。"
+        },
+        {
+          "id": "q3",
+          "question": "概率最适合描述什么？",
+          "options": [
+            "某件事发生的可能性",
+            "硬盘容量",
+            "屏幕分辨率",
+            "代码行数"
+          ],
+          "answer": 0,
+          "explanation": "概率用数字表示不确定性。"
+        }
+      ],
+      "code_quiz": [
+        {
+          "id": "cq1",
+          "kind": "output",
+          "question": "运行后输出的距离是多少？",
+          "code": "a = [1, 2]\nb = [1, 2]\nprint(((a[0]-b[0])**2 + (a[1]-b[1])**2) ** 0.5)",
+          "options": [
+            "0.0",
+            "1.0",
+            "2.0",
+            "4.0"
+          ],
+          "answer": 0,
+          "explanation": "两个点完全相同，所以距离是 0。"
+        },
+        {
+          "id": "cq2",
+          "kind": "bug",
+          "question": "这段距离计算少了哪一步？",
+          "code": "distance = (a[0]-b[0])**2 + (a[1]-b[1])**2",
+          "options": [
+            "没有计算平方根",
+            "没有 print 字符串",
+            "没有导入 pandas",
+            "没有把列表变成字典"
+          ],
+          "answer": 0,
+          "explanation": "欧氏距离最后需要对平方和开平方。"
+        },
+        {
+          "id": "cq3",
+          "kind": "parameter",
+          "question": "如果 b 从 [1, 2] 改成 [3, 2]，会发生什么？",
+          "code": "a = [1, 2]\nb = [1, 2]",
+          "options": [
+            "距离从 0 变成 2",
+            "距离仍然是 0",
+            "a 会被删除",
+            "代码无法读取列表"
+          ],
+          "answer": 0,
+          "explanation": "两点横向相差 2，纵向相同，所以距离变成 2。"
+        }
+      ]
     },
     {
       "id": "classic-machine-learning",
@@ -107,15 +436,97 @@
       "duration": "45-60 分钟",
       "summary": "理解分类和回归的区别，知道准确率、精确率、召回率和过拟合为什么重要。",
       "file": "05-classic-machine-learning.md",
-      "practice": "用表格描述一个分类任务和一个回归任务，并写出一条评估指标。",
       "external": [
-        {"title": "Microsoft ML for Beginners", "url": "https://github.com/microsoft/ML-For-Beginners"},
-        {"title": "Scikit-learn 用户指南", "url": "https://scikit-learn.org/stable/user_guide.html"}
+        {
+          "title": "Microsoft ML for Beginners",
+          "url": "https://github.com/microsoft/ML-For-Beginners"
+        },
+        {
+          "title": "Scikit-learn 用户指南",
+          "url": "https://scikit-learn.org/stable/user_guide.html"
+        }
       ],
       "quiz": [
-        {"id": "q1", "question": "预测明天会不会下雨属于什么任务？", "options": ["分类", "回归", "压缩", "排序文件"], "answer": 0, "explanation": "下雨和不下雨是离散类别，因此是分类。"},
-        {"id": "q2", "question": "预测房价通常属于什么任务？", "options": ["回归", "分类", "加密", "渲染"], "answer": 0, "explanation": "房价是连续数值，因此是回归。"},
-        {"id": "q3", "question": "过拟合是什么意思？", "options": ["训练集表现很好但新数据表现差", "模型太小", "电脑没电", "数据完全没有特征"], "answer": 0, "explanation": "过拟合是模型记住了训练数据，却没有学到可迁移规律。"}
+        {
+          "id": "q1",
+          "question": "预测明天会不会下雨属于什么任务？",
+          "options": [
+            "分类",
+            "回归",
+            "压缩",
+            "排序文件"
+          ],
+          "answer": 0,
+          "explanation": "下雨和不下雨是离散类别，因此是分类。"
+        },
+        {
+          "id": "q2",
+          "question": "预测房价通常属于什么任务？",
+          "options": [
+            "回归",
+            "分类",
+            "加密",
+            "渲染"
+          ],
+          "answer": 0,
+          "explanation": "房价是连续数值，因此是回归。"
+        },
+        {
+          "id": "q3",
+          "question": "过拟合是什么意思？",
+          "options": [
+            "训练集表现很好但新数据表现差",
+            "模型太小",
+            "电脑没电",
+            "数据完全没有特征"
+          ],
+          "answer": 0,
+          "explanation": "过拟合是模型记住了训练数据，却没有学到可迁移规律。"
+        }
+      ],
+      "code_quiz": [
+        {
+          "id": "cq1",
+          "kind": "output",
+          "question": "两次调用的输出分别是什么？",
+          "code": "def classify(value):\n    return \"炎热\" if value >= 30 else \"舒适\"\n\nprint(classify(35))\nprint(classify(22))",
+          "options": [
+            "炎热、舒适",
+            "舒适、炎热",
+            "炎热、炎热",
+            "舒适、舒适"
+          ],
+          "answer": 0,
+          "explanation": "35 大于等于 30，返回炎热；22 小于 30，返回舒适。"
+        },
+        {
+          "id": "cq2",
+          "kind": "bug",
+          "question": "这个分类条件和注释相比哪里有问题？",
+          "code": "# 目标是 30 度及以上判断为炎热\ndef classify(value):\n    return \"炎热\" if value < 30 else \"舒适\"",
+          "options": [
+            "比较符号写反了",
+            "字符串不能返回",
+            "value 不能是数字",
+            "if 不能写在 return 后"
+          ],
+          "answer": 0,
+          "explanation": "目标是 value >= 30 为炎热，代码却写成了 value < 30。"
+        },
+        {
+          "id": "cq3",
+          "kind": "parameter",
+          "question": "把阈值 30 改成 35 后，classify(32) 会输出什么？",
+          "code": "def classify(value):\n    return \"炎热\" if value >= 30 else \"舒适\"",
+          "options": [
+            "舒适",
+            "炎热",
+            "32",
+            "报错"
+          ],
+          "answer": 0,
+          "explanation": "阈值提高后，32 不再满足 >= 35，因此返回舒适。"
+        }
       ]
     },
     {
@@ -126,15 +537,97 @@
       "duration": "45-65 分钟",
       "summary": "用“层层加工信息”的比喻理解神经元、层、激活函数、损失和反向传播。",
       "file": "06-neural-networks.md",
-      "practice": "用自己的话画出一个输入层、隐藏层、输出层的最小神经网络。",
       "external": [
-        {"title": "Microsoft AI for Beginners", "url": "https://github.com/microsoft/AI-For-Beginners"},
-        {"title": "PyTorch 官方教程", "url": "https://pytorch.org/tutorials/"}
+        {
+          "title": "Microsoft AI for Beginners",
+          "url": "https://github.com/microsoft/AI-For-Beginners"
+        },
+        {
+          "title": "PyTorch 官方教程",
+          "url": "https://pytorch.org/tutorials/"
+        }
       ],
       "quiz": [
-        {"id": "q1", "question": "神经网络中的“层”可以理解成什么？", "options": ["一层层加工信息的步骤", "电脑屏幕的层数", "数据库表", "用户权限"], "answer": 0, "explanation": "每一层都会对输入做一次变换，再把结果传给下一层。"},
-        {"id": "q2", "question": "损失函数用来衡量什么？", "options": ["预测结果和正确答案之间的差距", "电脑价格", "网络带宽", "文件数量"], "answer": 0, "explanation": "损失越大，通常说明当前预测越偏离目标。"},
-        {"id": "q3", "question": "反向传播的核心作用是什么？", "options": ["把误差信息传回去来调整参数", "把文件发送到邮箱", "关闭显卡", "生成网页颜色"], "answer": 0, "explanation": "反向传播用于计算各层参数应该如何调整。"}
+        {
+          "id": "q1",
+          "question": "神经网络中的“层”可以理解成什么？",
+          "options": [
+            "一层层加工信息的步骤",
+            "电脑屏幕的层数",
+            "数据库表",
+            "用户权限"
+          ],
+          "answer": 0,
+          "explanation": "每一层都会对输入做一次变换，再把结果传给下一层。"
+        },
+        {
+          "id": "q2",
+          "question": "损失函数用来衡量什么？",
+          "options": [
+            "预测结果和正确答案之间的差距",
+            "电脑价格",
+            "网络带宽",
+            "文件数量"
+          ],
+          "answer": 0,
+          "explanation": "损失越大，通常说明当前预测越偏离目标。"
+        },
+        {
+          "id": "q3",
+          "question": "反向传播的核心作用是什么？",
+          "options": [
+            "把误差信息传回去来调整参数",
+            "把文件发送到邮箱",
+            "关闭显卡",
+            "生成网页颜色"
+          ],
+          "answer": 0,
+          "explanation": "反向传播用于计算各层参数应该如何调整。"
+        }
+      ],
+      "code_quiz": [
+        {
+          "id": "cq1",
+          "kind": "output",
+          "question": "这个神经元的输出是多少？",
+          "code": "inputs = [1.0, 2.0]\nweights = [0.5, 0.5]\nbias = 0.0\nprint(sum(x*w for x,w in zip(inputs, weights)) + bias)",
+          "options": [
+            "1.5",
+            "1.0",
+            "2.0",
+            "3.0"
+          ],
+          "answer": 0,
+          "explanation": "计算是 1×0.5 + 2×0.5 = 1.5。"
+        },
+        {
+          "id": "cq2",
+          "kind": "bug",
+          "question": "这段代码为什么可能抛异常？",
+          "code": "inputs = [1.0, 2.0, 3.0]\nweights = [0.5, 0.5]\nprint(sum(x*w for x,w in zip(inputs, weights)))",
+          "options": [
+            "输入和权重长度不同，第三个输入没有权重",
+            "sum 不能计算小数",
+            "zip 只能处理字符串",
+            "weights 必须叫 w"
+          ],
+          "answer": 0,
+          "explanation": "zip 只配对三个输入中的前两个，第三个被忽略；长度不一致通常表示数据错误。"
+        },
+        {
+          "id": "cq3",
+          "kind": "parameter",
+          "question": "把第二个权重从 0.5 改成 1.0，输出会怎样变化？",
+          "code": "inputs = [1.0, 2.0]\nweights = [0.5, 0.5]\nbias = 0.0",
+          "options": [
+            "从 1.5 变成 2.5",
+            "仍然是 1.5",
+            "变成 0.5",
+            "代码报错"
+          ],
+          "answer": 0,
+          "explanation": "第二个输入贡献从 1.0 增加到 2.0，总输出增加 1.0。"
+        }
       ]
     },
     {
@@ -145,15 +638,97 @@
       "duration": "50-70 分钟",
       "summary": "理解注意力机制、Token、上下文窗口、预训练和生成文字的基本过程。",
       "file": "07-transformer-llm.md",
-      "practice": "把一句中文拆成几个 Token，并说明上下文窗口为什么有限。",
       "external": [
-        {"title": "Microsoft Generative AI for Beginners", "url": "https://github.com/microsoft/generative-ai-for-beginners"},
-        {"title": "Hugging Face Agents Course", "url": "https://github.com/huggingface/agents-course"}
+        {
+          "title": "Microsoft Generative AI for Beginners",
+          "url": "https://github.com/microsoft/generative-ai-for-beginners"
+        },
+        {
+          "title": "Hugging Face Agents Course",
+          "url": "https://github.com/huggingface/agents-course"
+        }
       ],
       "quiz": [
-        {"id": "q1", "question": "Token 最接近什么概念？", "options": ["模型处理文字的小块单位", "数据库账户", "显卡型号", "网页按钮"], "answer": 0, "explanation": "模型通常先把文字拆成 Token，再进行处理。"},
-        {"id": "q2", "question": "注意力机制帮助模型做什么？", "options": ["判断当前词应该关注上下文的哪些部分", "提高屏幕亮度", "删除训练数据", "自动安装系统"], "answer": 0, "explanation": "注意力机制让模型能够根据上下文动态分配关注程度。"},
-        {"id": "q3", "question": "大语言模型生成文字的本质是？", "options": ["根据上下文预测下一个 Token", "从数据库直接复制唯一答案", "播放录音", "把图片转成 PDF"], "answer": 0, "explanation": "自回归语言模型通常不断预测下一个 Token。"}
+        {
+          "id": "q1",
+          "question": "Token 最接近什么概念？",
+          "options": [
+            "模型处理文字的小块单位",
+            "数据库账户",
+            "显卡型号",
+            "网页按钮"
+          ],
+          "answer": 0,
+          "explanation": "模型通常先把文字拆成 Token，再进行处理。"
+        },
+        {
+          "id": "q2",
+          "question": "注意力机制帮助模型做什么？",
+          "options": [
+            "判断当前词应该关注上下文的哪些部分",
+            "提高屏幕亮度",
+            "删除训练数据",
+            "自动安装系统"
+          ],
+          "answer": 0,
+          "explanation": "注意力机制让模型能够根据上下文动态分配关注程度。"
+        },
+        {
+          "id": "q3",
+          "question": "大语言模型生成文字的本质是？",
+          "options": [
+            "根据上下文预测下一个 Token",
+            "从数据库直接复制唯一答案",
+            "播放录音",
+            "把图片转成 PDF"
+          ],
+          "answer": 0,
+          "explanation": "自回归语言模型通常不断预测下一个 Token。"
+        }
+      ],
+      "code_quiz": [
+        {
+          "id": "cq1",
+          "kind": "output",
+          "question": "运行后输出哪一个列表？",
+          "code": "predictions = {\"机器\": [\"学习\", \"视觉\"], \"人工\": [\"智能\"]}\nprint(predictions[\"机器\"])",
+          "options": [
+            "['学习', '视觉']",
+            "['智能']",
+            "机器",
+            "报错"
+          ],
+          "answer": 0,
+          "explanation": "代码读取键“机器”对应的列表。"
+        },
+        {
+          "id": "cq2",
+          "kind": "bug",
+          "question": "这段代码为什么会报 KeyError？",
+          "code": "predictions = {\"机器\": [\"学习\", \"视觉\"]}\nprint(predictions[\"人工\"])",
+          "options": [
+            "字典中没有“人工”这个键",
+            "列表不能做值",
+            "中文键不支持",
+            "print 不能输出列表"
+          ],
+          "answer": 0,
+          "explanation": "访问字典前必须确认键存在，否则会抛出 KeyError。"
+        },
+        {
+          "id": "cq3",
+          "kind": "parameter",
+          "question": "把 predictions[\"机器\"] 的第二个元素改成“智能”，输出会怎样变化？",
+          "code": "predictions = {\"机器\": [\"学习\", \"视觉\"]}",
+          "options": [
+            "列表第二个元素变成“智能”",
+            "整个字典消失",
+            "第一个元素也变成“智能”",
+            "代码报错"
+          ],
+          "answer": 0,
+          "explanation": "只修改列表的第二个位置，不会影响第一个元素。"
+        }
       ]
     },
     {
@@ -164,15 +739,97 @@
       "duration": "40-55 分钟",
       "summary": "学会把目标、背景、格式和限制说清楚，并理解多轮对话如何携带上下文。",
       "file": "08-prompt-dialogue.md",
-      "practice": "为“把一段话总结成三点”写出包含背景、格式和限制的 Prompt。",
       "external": [
-        {"title": "Microsoft Generative AI for Beginners", "url": "https://github.com/microsoft/generative-ai-for-beginners"},
-        {"title": "OpenAI Prompt Engineering Guide", "url": "https://platform.openai.com/docs/guides/prompt-engineering"}
+        {
+          "title": "Microsoft Generative AI for Beginners",
+          "url": "https://github.com/microsoft/generative-ai-for-beginners"
+        },
+        {
+          "title": "OpenAI Prompt Engineering Guide",
+          "url": "https://platform.openai.com/docs/guides/prompt-engineering"
+        }
       ],
       "quiz": [
-        {"id": "q1", "question": "一个好 Prompt 通常应该包含什么？", "options": ["目标、背景、输出格式和限制", "只有一句“帮我写”", "越短越好且不说明目标", "只写一个标点"], "answer": 0, "explanation": "明确目标、背景、格式和限制能显著减少歧义。"},
-        {"id": "q2", "question": "多轮对话为什么要保存对话编号？", "options": ["让后续问题延续同一上下文", "提高硬盘温度", "自动修改系统时间", "关闭网络"], "answer": 0, "explanation": "对话编号让服务端把当前问题与之前的对话关联起来。"},
-        {"id": "q3", "question": "Prompt 中有哪些内容时，模型更容易给出稳定格式？", "options": ["明确给出示例和输出结构", "不要说明格式", "只使用随机词语", "不断改变要求"], "answer": 0, "explanation": "示例和明确结构能降低模型自由发挥带来的不确定性。"}
+        {
+          "id": "q1",
+          "question": "一个好 Prompt 通常应该包含什么？",
+          "options": [
+            "目标、背景、输出格式和限制",
+            "只有一句“帮我写”",
+            "越短越好且不说明目标",
+            "只写一个标点"
+          ],
+          "answer": 0,
+          "explanation": "明确目标、背景、格式和限制能显著减少歧义。"
+        },
+        {
+          "id": "q2",
+          "question": "多轮对话为什么要保存对话编号？",
+          "options": [
+            "让后续问题延续同一上下文",
+            "提高硬盘温度",
+            "自动修改系统时间",
+            "关闭网络"
+          ],
+          "answer": 0,
+          "explanation": "对话编号让服务端把当前问题与之前的对话关联起来。"
+        },
+        {
+          "id": "q3",
+          "question": "Prompt 中有哪些内容时，模型更容易给出稳定格式？",
+          "options": [
+            "明确给出示例和输出结构",
+            "不要说明格式",
+            "只使用随机词语",
+            "不断改变要求"
+          ],
+          "answer": 0,
+          "explanation": "示例和明确结构能降低模型自由发挥带来的不确定性。"
+        }
+      ],
+      "code_quiz": [
+        {
+          "id": "cq1",
+          "kind": "output",
+          "question": "这段代码输出的 Prompt 中会包含哪个值？",
+          "code": "topic = \"机器学习\"\nprompt = f\"请用三点解释{topic}\"\nprint(prompt)",
+          "options": [
+            "请用三点解释机器学习",
+            "请用三点解释topic",
+            "报错",
+            "只输出 topic"
+          ],
+          "answer": 0,
+          "explanation": "f-string 会把变量 topic 的值插入字符串。"
+        },
+        {
+          "id": "cq2",
+          "kind": "bug",
+          "question": "为什么 Prompt 中可能出现字面量 {topic}？",
+          "code": "topic = \"机器学习\"\nprompt = \"请用三点解释{topic}\"\nprint(prompt)",
+          "options": [
+            "字符串前缺少 f",
+            "topic 必须大写",
+            "print 不能输出中文",
+            "需要用列表"
+          ],
+          "answer": 0,
+          "explanation": "只有 f-string 才会替换花括号中的变量。"
+        },
+        {
+          "id": "cq3",
+          "kind": "parameter",
+          "question": "把 topic 改成“神经网络”，输出会怎样变化？",
+          "code": "topic = \"机器学习\"\nprompt = f\"请用三点解释{topic}\"",
+          "options": [
+            "Prompt 中变成“请用三点解释神经网络”",
+            "Prompt 不变化",
+            "代码报错",
+            "只输出“神经网络”"
+          ],
+          "answer": 0,
+          "explanation": "变量值变化后，f-string 生成的内容也会变化。"
+        }
       ]
     },
     {
@@ -183,15 +840,97 @@
       "duration": "50-75 分钟",
       "summary": "理解 Ollama 的模型管理和 API 调用方式，并用 Python 完成一次本地生成。",
       "file": "09-ollama-api.md",
-      "practice": "启动 Ollama，拉取一个模型，并用 Python 调用一次生成接口。",
       "external": [
-        {"title": "Ollama 官方文档", "url": "https://docs.ollama.com/"},
-        {"title": "Ollama Python Library", "url": "https://github.com/ollama/ollama-python"}
+        {
+          "title": "Ollama 官方文档",
+          "url": "https://docs.ollama.com/"
+        },
+        {
+          "title": "Ollama Python Library",
+          "url": "https://github.com/ollama/ollama-python"
+        }
       ],
       "quiz": [
-        {"id": "q1", "question": "Ollama 的主要职责是什么？", "options": ["在本机运行和管理大模型", "制作网页动画", "替代 Python 解释器", "管理邮箱"], "answer": 0, "explanation": "Ollama 提供本地模型运行和管理能力。"},
-        {"id": "q2", "question": "Ollama 默认常用的 API 端口是？", "options": ["11434", "80", "5000", "3389"], "answer": 0, "explanation": "Ollama 默认常监听本机 11434 端口。"},
-        {"id": "q3", "question": "本地模型相对云 API 的一个明显优势是？", "options": ["数据和推理可以留在本地", "永远不需要显存", "一定比所有云模型聪明", "不需要操作系统"], "answer": 0, "explanation": "本地运行可以减少数据外传，并获得离线或局域网使用能力。"}
+        {
+          "id": "q1",
+          "question": "Ollama 的主要职责是什么？",
+          "options": [
+            "在本机运行和管理大模型",
+            "制作网页动画",
+            "替代 Python 解释器",
+            "管理邮箱"
+          ],
+          "answer": 0,
+          "explanation": "Ollama 提供本地模型运行和管理能力。"
+        },
+        {
+          "id": "q2",
+          "question": "Ollama 默认常用的 API 端口是？",
+          "options": [
+            "11434",
+            "80",
+            "5000",
+            "3389"
+          ],
+          "answer": 0,
+          "explanation": "Ollama 默认常监听本机 11434 端口。"
+        },
+        {
+          "id": "q3",
+          "question": "本地模型相对云 API 的一个明显优势是？",
+          "options": [
+            "数据和推理可以留在本地",
+            "永远不需要显存",
+            "一定比所有云模型聪明",
+            "不需要操作系统"
+          ],
+          "answer": 0,
+          "explanation": "本地运行可以减少数据外传，并获得离线或局域网使用能力。"
+        }
+      ],
+      "code_quiz": [
+        {
+          "id": "cq1",
+          "kind": "output",
+          "question": "如果接口返回 {\"response\": \"你好\"}，代码会输出什么？",
+          "code": "result = {\"response\": \"你好\"}\nprint(result[\"response\"])",
+          "options": [
+            "你好",
+            "response",
+            "{'response': '你好'}",
+            "报错"
+          ],
+          "answer": 0,
+          "explanation": "代码读取 response 键的值。"
+        },
+        {
+          "id": "cq2",
+          "kind": "bug",
+          "question": "这段请求代码最明显的错误是什么？",
+          "code": "requests.post(\n    \"http://127.0.0.1:11434/api/generate\",\n    json={\"prompt\": \"你好\", \"stream\": False},\n)",
+          "options": [
+            "缺少 model 字段",
+            "端口不能用数字",
+            "prompt 不能是中文",
+            "必须使用 GET"
+          ],
+          "answer": 0,
+          "explanation": "Ollama 生成接口需要告诉它使用哪个模型。"
+        },
+        {
+          "id": "cq3",
+          "kind": "parameter",
+          "question": "把 model 从 qwen2.5:1.5b 改成 qwen2.5:7b，最直接的变化是什么？",
+          "code": "json={\"model\": \"qwen2.5:1.5b\", \"prompt\": \"你好\"}",
+          "options": [
+            "使用更大的 7B 模型，通常更慢也更吃显存",
+            "端口自动变成 5000",
+            "Prompt 会被删除",
+            "不需要 Ollama 服务"
+          ],
+          "answer": 0,
+          "explanation": "更大的模型参数更多，通常推理更慢、资源占用更高。"
+        }
       ]
     },
     {
@@ -202,15 +941,97 @@
       "duration": "55-80 分钟",
       "summary": "理解 Embedding、向量数据库、切片、召回和 RAG 的完整流程。",
       "file": "10-embeddings-rag.md",
-      "practice": "把三句短文本转成向量，并找出最相似的一组。",
       "external": [
-        {"title": "Datawhale LLM Universe", "url": "https://github.com/datawhalechina/llm-universe"},
-        {"title": "Microsoft Generative AI for Beginners", "url": "https://github.com/microsoft/generative-ai-for-beginners"}
+        {
+          "title": "Datawhale LLM Universe",
+          "url": "https://github.com/datawhalechina/llm-universe"
+        },
+        {
+          "title": "Microsoft Generative AI for Beginners",
+          "url": "https://github.com/microsoft/generative-ai-for-beginners"
+        }
       ],
       "quiz": [
-        {"id": "q1", "question": "Embedding 的主要作用是什么？", "options": ["把文本变成可以比较的数字向量", "把网页变成图片", "让硬盘速度变快", "压缩系统文件"], "answer": 0, "explanation": "Embedding 把语义信息映射到向量空间。"},
-        {"id": "q2", "question": "RAG 中的 R 通常代表什么？", "options": ["Retrieval，先检索资料", "Restart，重启电脑", "Render，渲染网页", "Remove，删除数据"], "answer": 0, "explanation": "RAG 先检索外部知识，再把检索结果交给模型生成回答。"},
-        {"id": "q3", "question": "做 RAG 时为什么要对文档切片？", "options": ["方便检索到更相关的小段内容", "让文件看起来更整齐", "增加噪声", "避免保存原文"], "answer": 0, "explanation": "合理切片能提高检索的精准度并控制上下文长度。"}
+        {
+          "id": "q1",
+          "question": "Embedding 的主要作用是什么？",
+          "options": [
+            "把文本变成可以比较的数字向量",
+            "把网页变成图片",
+            "让硬盘速度变快",
+            "压缩系统文件"
+          ],
+          "answer": 0,
+          "explanation": "Embedding 把语义信息映射到向量空间。"
+        },
+        {
+          "id": "q2",
+          "question": "RAG 中的 R 通常代表什么？",
+          "options": [
+            "Retrieval，先检索资料",
+            "Restart，重启电脑",
+            "Render，渲染网页",
+            "Remove，删除数据"
+          ],
+          "answer": 0,
+          "explanation": "RAG 先检索外部知识，再把检索结果交给模型生成回答。"
+        },
+        {
+          "id": "q3",
+          "question": "做 RAG 时为什么要对文档切片？",
+          "options": [
+            "方便检索到更相关的小段内容",
+            "让文件看起来更整齐",
+            "增加噪声",
+            "避免保存原文"
+          ],
+          "answer": 0,
+          "explanation": "合理切片能提高检索的精准度并控制上下文长度。"
+        }
+      ],
+      "code_quiz": [
+        {
+          "id": "cq1",
+          "kind": "output",
+          "question": "代码输出哪个数字？",
+          "code": "query = set(\"人工智能\")\ndoc = set(\"人工智能改变世界\")\nprint(len(query & doc))",
+          "options": [
+            "4",
+            "8",
+            "0",
+            "10"
+          ],
+          "answer": 0,
+          "explanation": "“人工智能”四个字符都出现在文档中，交集长度为 4。"
+        },
+        {
+          "id": "cq2",
+          "kind": "bug",
+          "question": "这段代码为什么会报错？",
+          "code": "query = set(\"人工智能\")\ndoc = set(\"人工智能改变世界\")\nprint(query & doc",
+          "options": [
+            "print 的右括号缺失",
+            "set 不能接收字符串",
+            "& 不能比较集合",
+            "中文不能放进集合"
+          ],
+          "answer": 0,
+          "explanation": "函数调用必须补齐右括号。"
+        },
+        {
+          "id": "cq3",
+          "kind": "parameter",
+          "question": "把 doc 换成“今天适合跑步”后，交集最可能变成多少？",
+          "code": "query = set(\"人工智能\")\ndoc = set(\"人工智能改变世界\")",
+          "options": [
+            "接近 0",
+            "仍然是 4",
+            "变成 8",
+            "变成负数"
+          ],
+          "answer": 0,
+          "explanation": "两段文字几乎没有相同字符。"
+        }
       ]
     },
     {
@@ -221,16 +1042,101 @@
       "duration": "60-90 分钟",
       "summary": "理解 Agent Loop、工具 Schema、工具执行、观察结果和停止条件，并阅读 CodeHarness 的设计。",
       "file": "11-agents-tool-calling.md",
-      "practice": "为“查询天气”写一个工具名称、输入参数和输出格式。",
       "external": [
-        {"title": "Hugging Face Agents Course", "url": "https://github.com/huggingface/agents-course"},
-        {"title": "Microsoft AI Agents for Beginners", "url": "https://github.com/microsoft/ai-agents-for-beginners"},
-        {"title": "CodeHarness", "url": "https://github.com/lianhongrui555/CodeHarness"}
+        {
+          "title": "Hugging Face Agents Course",
+          "url": "https://github.com/huggingface/agents-course"
+        },
+        {
+          "title": "Microsoft AI Agents for Beginners",
+          "url": "https://github.com/microsoft/ai-agents-for-beginners"
+        },
+        {
+          "title": "CodeHarness",
+          "url": "https://github.com/lianhongrui555/CodeHarness"
+        }
       ],
       "quiz": [
-        {"id": "q1", "question": "Agent 和普通聊天的最大区别之一是什么？", "options": ["Agent 可以在循环中调用工具并观察结果", "Agent 一定能回答所有问题", "Agent 不需要模型", "Agent 只能生成图片"], "answer": 0, "explanation": "Agent 通常具备工具调用和循环决策能力。"},
-        {"id": "q2", "question": "工具调用通常需要先提供什么？", "options": ["工具名称、参数说明和 JSON Schema", "一张风景图", "一段音乐", "电脑序列号"], "answer": 0, "explanation": "模型需要知道工具能做什么以及参数如何填写。"},
-        {"id": "q3", "question": "Agent Loop 为什么需要停止条件？", "options": ["避免无限循环和资源浪费", "让页面颜色变深", "隐藏 API Key", "提高屏幕分辨率"], "answer": 0, "explanation": "最大步数、超时或任务完成都可以作为停止条件。"}
+        {
+          "id": "q1",
+          "question": "Agent 和普通聊天的最大区别之一是什么？",
+          "options": [
+            "Agent 可以在循环中调用工具并观察结果",
+            "Agent 一定能回答所有问题",
+            "Agent 不需要模型",
+            "Agent 只能生成图片"
+          ],
+          "answer": 0,
+          "explanation": "Agent 通常具备工具调用和循环决策能力。"
+        },
+        {
+          "id": "q2",
+          "question": "工具调用通常需要先提供什么？",
+          "options": [
+            "工具名称、参数说明和 JSON Schema",
+            "一张风景图",
+            "一段音乐",
+            "电脑序列号"
+          ],
+          "answer": 0,
+          "explanation": "模型需要知道工具能做什么以及参数如何填写。"
+        },
+        {
+          "id": "q3",
+          "question": "Agent Loop 为什么需要停止条件？",
+          "options": [
+            "避免无限循环和资源浪费",
+            "让页面颜色变深",
+            "隐藏 API Key",
+            "提高屏幕分辨率"
+          ],
+          "answer": 0,
+          "explanation": "最大步数、超时或任务完成都可以作为停止条件。"
+        }
+      ],
+      "code_quiz": [
+        {
+          "id": "cq1",
+          "kind": "output",
+          "question": "工具执行后会返回什么？",
+          "code": "def get_weather(city):\n    return {\"city\": city, \"temperature\": 26}\n\nprint(get_weather(\"北京\"))",
+          "options": [
+            "{'city': '北京', 'temperature': 26}",
+            "北京",
+            "26",
+            "报错"
+          ],
+          "answer": 0,
+          "explanation": "函数返回字典，print 会输出字典内容。"
+        },
+        {
+          "id": "cq2",
+          "kind": "bug",
+          "question": "这段工具调用为什么可能失败？",
+          "code": "def get_weather(city):\n    return {\"city\": city}\n\nget_weather(\"北京\", \"上海\")",
+          "options": [
+            "函数只接收一个参数，但传入了两个",
+            "city 必须是数字",
+            "return 不能返回字典",
+            "函数不能使用中文"
+          ],
+          "answer": 0,
+          "explanation": "位置参数数量和函数定义不一致。"
+        },
+        {
+          "id": "cq3",
+          "kind": "parameter",
+          "question": "把城市从北京改成上海，返回值会怎样变化？",
+          "code": "get_weather(\"北京\")",
+          "options": [
+            "返回值中的 city 变成上海",
+            "temperature 自动变成 0",
+            "函数名必须修改",
+            "代码无法运行"
+          ],
+          "answer": 0,
+          "explanation": "参数值会传入函数并写入返回字典。"
+        }
       ]
     },
     {
@@ -241,16 +1147,101 @@
       "duration": "90-180 分钟",
       "summary": "把模型、API、对话、工具、RAG 和学习工作台组合起来，形成一个可展示的本地 AI 项目。",
       "file": "12-capstone-local-ai.md",
-      "practice": "按 README 启动一个本地 AI 助手，并记录一次完整对话或天气查询流程。",
       "external": [
-        {"title": "Local AI Agent", "url": "https://github.com/lianhongrui555/Local-AI-Agent"},
-        {"title": "CodeHarness", "url": "https://github.com/lianhongrui555/CodeHarness"},
-        {"title": "YOLO Detection", "url": "https://github.com/lianhongrui555/YOLO-Detection"}
+        {
+          "title": "Local AI Agent",
+          "url": "https://github.com/lianhongrui555/Local-AI-Agent"
+        },
+        {
+          "title": "CodeHarness",
+          "url": "https://github.com/lianhongrui555/CodeHarness"
+        },
+        {
+          "title": "YOLO Detection",
+          "url": "https://github.com/lianhongrui555/YOLO-Detection"
+        }
       ],
       "quiz": [
-        {"id": "q1", "question": "本地 AI 助手的典型组成不包括哪一项？", "options": ["完整替代操作系统的内核", "模型运行层", "应用 API", "前端页面"], "answer": 0, "explanation": "本地 AI 助手不需要替代操作系统内核。"},
-        {"id": "q2", "question": "为什么要让 Flask 后端保存 API Key？", "options": ["避免 Key 暴露给浏览器用户", "让 Key 看起来更长", "提高显卡温度", "让网页无法访问"], "answer": 0, "explanation": "后端代理可以隐藏密钥，浏览器只访问自己的接口。"},
-        {"id": "q3", "question": "面对一个复杂 AI 项目，最稳妥的推进方式是什么？", "options": ["先跑通最小闭环，再逐步增加能力", "先写最复杂的功能", "不做测试直接发布", "把密钥写进前端"], "answer": 0, "explanation": "先跑通端到端最小闭环，才能尽早发现环境、接口和数据问题。"}
+        {
+          "id": "q1",
+          "question": "本地 AI 助手的典型组成不包括哪一项？",
+          "options": [
+            "完整替代操作系统的内核",
+            "模型运行层",
+            "应用 API",
+            "前端页面"
+          ],
+          "answer": 0,
+          "explanation": "本地 AI 助手不需要替代操作系统内核。"
+        },
+        {
+          "id": "q2",
+          "question": "为什么要让 Flask 后端保存 API Key？",
+          "options": [
+            "避免 Key 暴露给浏览器用户",
+            "让 Key 看起来更长",
+            "提高显卡温度",
+            "让网页无法访问"
+          ],
+          "answer": 0,
+          "explanation": "后端代理可以隐藏密钥，浏览器只访问自己的接口。"
+        },
+        {
+          "id": "q3",
+          "question": "面对一个复杂 AI 项目，最稳妥的推进方式是什么？",
+          "options": [
+            "先跑通最小闭环，再逐步增加能力",
+            "先写最复杂的功能",
+            "不做测试直接发布",
+            "把密钥写进前端"
+          ],
+          "answer": 0,
+          "explanation": "先跑通端到端最小闭环，才能尽早发现环境、接口和数据问题。"
+        }
+      ],
+      "code_quiz": [
+        {
+          "id": "cq1",
+          "kind": "output",
+          "question": "访问这个 Flask 接口时返回的 JSON 是什么？",
+          "code": "@app.get(\"/health\")\ndef health():\n    return {\"status\": \"ok\"}",
+          "options": [
+            "{\"status\": \"ok\"}",
+            "ok",
+            "404",
+            "HTML 页面"
+          ],
+          "answer": 0,
+          "explanation": "Flask 会把字典转换成 JSON 响应。"
+        },
+        {
+          "id": "cq2",
+          "kind": "bug",
+          "question": "这个后端代码最大的安全问题是？",
+          "code": "return {\n    \"answer\": answer,\n    \"api_key\": DIFY_API_KEY,\n}",
+          "options": [
+            "把 API Key 返回给浏览器",
+            "answer 不能是字符串",
+            "Flask 不能返回字典",
+            "JSON 不能包含中文"
+          ],
+          "answer": 0,
+          "explanation": "后端必须隐藏密钥，不能把 API Key 放进给前端的响应。"
+        },
+        {
+          "id": "cq3",
+          "kind": "parameter",
+          "question": "把 host 从 127.0.0.1 改成 0.0.0.0，会产生什么变化？",
+          "code": "app.run(host=\"127.0.0.1\", port=5000)",
+          "options": [
+            "同一局域网的其他设备可能可以访问",
+            "网页只能在本机访问得更严格",
+            "端口自动变成 80",
+            "API Key 会被删除"
+          ],
+          "answer": 0,
+          "explanation": "0.0.0.0 表示监听所有网络接口，是否可访问还取决于防火墙。"
+        }
       ]
     }
   ]

@@ -1,16 +1,19 @@
 import unittest
 
-from content_loader import get_lessons, get_projects, load_curriculum, read_lesson_markdown, render_markdown
+from content_loader import get_lessons, get_projects, read_lesson_markdown, render_markdown
 
 
 class ContentLoaderTests(unittest.TestCase):
     def test_curriculum_has_twelve_lessons(self):
         self.assertEqual(len(get_lessons()), 12)
 
-    def test_every_lesson_has_three_quizzes_and_markdown(self):
+    def test_every_lesson_has_concept_and_code_quizzes(self):
         for lesson in get_lessons():
             self.assertEqual(len(lesson["quiz"]), 3, lesson["id"])
+            self.assertEqual(len(lesson["code_quiz"]), 3, lesson["id"])
+            self.assertEqual({item["kind"] for item in lesson["code_quiz"]}, {"output", "bug", "parameter"})
             self.assertTrue(read_lesson_markdown(lesson["id"]).strip(), lesson["id"])
+            self.assertNotIn("practice", lesson)
 
     def test_projects_are_available(self):
         projects = get_projects()

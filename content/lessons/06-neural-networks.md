@@ -29,9 +29,25 @@ output = sum(x * w for x, w in zip(inputs, weights)) + bias
 print("神经元输出：", output)
 ```
 
-## 动手任务
+## 代码阅读示例
 
-画出输入层、隐藏层和输出层，并标注每一层大致在做什么。
+先不要运行代码，直接阅读并尝试判断它做了什么：
+
+```python
+inputs = [1.0, 2.0]
+weights = [0.5, 0.5]
+bias = 0.0
+print(sum(x*w for x,w in zip(inputs, weights)) + bias)
+```
+
+阅读提示：
+
+- 先找变量分别保存了什么。
+- 再追踪每一行执行的顺序。
+- 最后判断输出、错误或参数变化。
+
+页面下方有对应的代码理解题，提交后可以查看逐行解释。
+
 
 ## 课后小测
 
