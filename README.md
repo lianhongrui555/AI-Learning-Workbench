@@ -54,6 +54,12 @@ Copy-Item .env.example .env
 python -X utf8 app.py
 ```
 
+也可以在 Windows 上运行一键启动脚本：
+
+```powershell
+.\scripts\start_workbench.ps1
+```
+
 浏览器打开：
 
 ```text
