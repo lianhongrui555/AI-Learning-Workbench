@@ -134,3 +134,14 @@ textarea:focus, select:focus, input[type="text"]:focus { border-color: var(--cya
   .next-lesson { grid-template-columns: 50px 1fr; }
   .next-lesson .arrow { display: none; }
 }
+/* 项目关卡步骤样式 */
+.project-steps-card, .project-exercises-card { padding: 26px; }
+.project-step { margin-top: 20px; padding: 18px; border: 1px solid var(--border); border-radius: 10px; background: rgba(255,255,255,0.02); }
+.step-check { display: flex; align-items: center; gap: 8px; color: var(--green); font-size: 12px; }
+.step-check input { width: 16px; height: 16px; }
+.project-step h3 { margin-top: 12px; color: var(--cyan); }
+.project-step ul { color: #aebdd0; line-height: 1.8; }
+.exercise-card { margin-top: 22px; padding: 18px; border: 1px solid var(--border); border-radius: 10px; background: #0a0f15; }
+.exercise-card h3 { color: var(--green); margin-bottom: 8px; }
+.answer-box { margin-top: 12px; padding: 12px; border-left: 3px solid var(--green); background: rgba(126,231,135,0.05); }
+.hidden { display: none !important; }

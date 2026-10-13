@@ -26,6 +26,11 @@
       "id": "yolo-practice",
       "title": "第五阶段：YOLO 目标检测实战",
       "description": "从目标检测概念、数据标注、YOLO 训练、模型评估到摄像头部署，完成一条计算机视觉实战路线。"
+    },
+    {
+      "id": "llm-engineering",
+      "title": "第六阶段：LLM 应用工程实战",
+      "description": "用一个连续的 AI 面试知识库助手项目，学习 FastAPI、Flask 对比、LlamaIndex、Ollama、RAG、流式输出、Agent、评测和部署。"
     }
   ],
   "lessons": [
@@ -98,7 +103,8 @@
             "你好，name"
           ],
           "answer": 0,
-          "explanation": "greet 接收字符串 AI，并把它拼到“你好，”后面，所以输出“你好，AI”。"
+          "explanation": "greet 接收字符串 AI，并把它拼到“你好，”后面，所以输出“你好，AI”。",
+          "knowledge_point": "python.function-return"
         },
         {
           "id": "cq2",
@@ -112,7 +118,9 @@
             "return 只能返回数字，不能返回字符串"
           ],
           "answer": 0,
-          "explanation": "Python 定义函数时，def 行末尾必须有冒号。"
+          "explanation": "Python 定义函数时，def 行末尾必须有冒号。",
+          "knowledge_point": "python.function-colon",
+          "error_type": "syntax"
         },
         {
           "id": "cq3",
@@ -126,7 +134,8 @@
             "因为存在默认参数，代码一定会报错"
           ],
           "answer": 2,
-          "explanation": "传入小明后，name 会使用传入值，默认值不再生效。"
+          "explanation": "传入小明后，name 会使用传入值，默认值不再生效。",
+          "knowledge_point": "python.default-parameter"
         }
       ]
     },
@@ -199,12 +208,13 @@
             "报错"
           ],
           "answer": 2,
-          "explanation": "方括号里的 label 是字典键，对应值是“通过”。"
+          "explanation": "方括号里的 label 是字典键，对应值是“通过”。",
+          "knowledge_point": "python.dict-read"
         },
         {
           "id": "cq2",
           "kind": "bug",
-          "question": "为什么这段代码会报 KeyError？",
+          "question": "为什么这段代码找不到 labels 对应的值？",
           "code": "sample = {\"features\": [1, 0, 1], \"label\": \"通过\"}\nprint(sample[\"labels\"])",
           "options": [
             "字符串必须用单引号",
@@ -213,7 +223,9 @@
             "字典里没有 labels 这个键"
           ],
           "answer": 3,
-          "explanation": "字典里定义的键是 label，而不是 labels。"
+          "explanation": "字典里没有 labels 这个键，访问不存在的键会触发键不存在错误。",
+          "knowledge_point": "python.dict-key",
+          "error_type": "key"
         },
         {
           "id": "cq3",
@@ -227,7 +239,8 @@
             "仍然输出通过"
           ],
           "answer": 0,
-          "explanation": "输出读取的是字典当前保存的值，修改值后输出也会改变。"
+          "explanation": "输出读取的是字典当前保存的值，修改值后输出也会改变。",
+          "knowledge_point": "python.dict-update"
         }
       ]
     },
@@ -300,7 +313,8 @@
             "输出 requirements.txt"
           ],
           "answer": 2,
-          "explanation": "第二条命令用虚拟环境中的 Python 输出版本。"
+          "explanation": "第二条命令用虚拟环境中的 Python 输出版本。",
+          "knowledge_point": "python.venv-version"
         },
         {
           "id": "cq2",
@@ -314,7 +328,9 @@
             "先装依赖，后创建虚拟环境"
           ],
           "answer": 3,
-          "explanation": "必须先创建 .venv，之后才能使用其中的 Python 安装依赖。"
+          "explanation": "必须先创建 .venv，之后才能使用其中的 Python 安装依赖。",
+          "knowledge_point": "python.venv-order",
+          "error_type": "order"
         },
         {
           "id": "cq3",
@@ -328,7 +344,8 @@
             "网页端口变成 5000"
           ],
           "answer": 1,
-          "explanation": "参数决定虚拟环境目录名；名称变化后，后续命令也必须一致修改。"
+          "explanation": "参数决定虚拟环境目录名；名称变化后，后续命令也必须一致修改。",
+          "knowledge_point": "python.venv-name"
         }
       ]
     },
@@ -401,7 +418,8 @@
             "0.0"
           ],
           "answer": 3,
-          "explanation": "两个点完全相同，所以距离是 0。"
+          "explanation": "两个点完全相同，所以距离是 0。",
+          "knowledge_point": "python.euclidean-distance"
         },
         {
           "id": "cq2",
@@ -415,7 +433,9 @@
             "没有把列表变成字典"
           ],
           "answer": 0,
-          "explanation": "欧氏距离最后需要对平方和开平方。"
+          "explanation": "欧氏距离最后需要对平方和开平方。",
+          "knowledge_point": "python.math-sqrt",
+          "error_type": "math"
         },
         {
           "id": "cq3",
@@ -429,7 +449,8 @@
             "距离仍然是 0"
           ],
           "answer": 1,
-          "explanation": "两点横向相差 2，纵向相同，所以距离变成 2。"
+          "explanation": "两点横向相差 2，纵向相同，所以距离变成 2。",
+          "knowledge_point": "python.distance-parameter"
         }
       ]
     },
@@ -502,7 +523,8 @@
             "炎热、舒适"
           ],
           "answer": 3,
-          "explanation": "35 大于等于 30，返回炎热；22 小于 30，返回舒适。"
+          "explanation": "35 大于等于 30，返回炎热；22 小于 30，返回舒适。",
+          "knowledge_point": "ml.classification-output"
         },
         {
           "id": "cq2",
@@ -516,7 +538,9 @@
             "比较符号写反了"
           ],
           "answer": 3,
-          "explanation": "目标是 value >= 30 为炎热，代码却写成了 value < 30。"
+          "explanation": "目标是 value >= 30 为炎热，代码却写成了 value < 30。",
+          "knowledge_point": "ml.comparison-operator",
+          "error_type": "comparison"
         },
         {
           "id": "cq3",
@@ -530,7 +554,8 @@
             "舒适"
           ],
           "answer": 3,
-          "explanation": "阈值提高后，32 不再满足 >= 35，因此返回舒适。"
+          "explanation": "阈值提高后，32 不再满足 >= 35，因此返回舒适。",
+          "knowledge_point": "ml.threshold-parameter"
         }
       ]
     },
@@ -603,7 +628,8 @@
             "1.5"
           ],
           "answer": 3,
-          "explanation": "计算是 1×0.5 + 2×0.5 = 1.5。"
+          "explanation": "计算是 1×0.5 + 2×0.5 = 1.5。",
+          "knowledge_point": "neural.weighted-sum"
         },
         {
           "id": "cq2",
@@ -617,7 +643,9 @@
             "sum 不能计算小数"
           ],
           "answer": 0,
-          "explanation": "zip 只配对三个输入中的前两个，第三个被忽略；长度不一致通常表示数据错误。"
+          "explanation": "zip 只配对三个输入中的前两个，第三个被忽略；长度不一致通常表示数据错误。",
+          "knowledge_point": "python.zip-length",
+          "error_type": "length"
         },
         {
           "id": "cq3",
@@ -631,7 +659,8 @@
             "从 1.5 变成 2.5"
           ],
           "answer": 3,
-          "explanation": "第二个输入贡献从 1.0 增加到 2.0，总输出增加 1.0。"
+          "explanation": "第二个输入贡献从 1.0 增加到 2.0，总输出增加 1.0。",
+          "knowledge_point": "neural.weight-parameter"
         }
       ]
     },
@@ -704,21 +733,24 @@
             "['智能']"
           ],
           "answer": 0,
-          "explanation": "代码读取键“机器”对应的列表。"
+          "explanation": "代码读取键“机器”对应的列表。",
+          "knowledge_point": "llm.prediction-dict"
         },
         {
           "id": "cq2",
           "kind": "bug",
-          "question": "这段代码为什么会报 KeyError？",
-          "code": "predictions = {\"机器\": [\"学习\", \"视觉\"]}\nprint(predictions[\"人工\"])",
+          "question": "这段上下文窗口代码为什么没有包含 AI？",
+          "code": "tokens = [\"我\", \"喜欢\", \"学习\", \"AI\"]\ncontext = tokens[:2]\nprint(context)",
           "options": [
-            "列表不能做值",
-            "print 不能输出列表",
-            "字典中没有“人工”这个键",
-            "中文键不支持"
+            "切片 [:2] 只取前两个 Token",
+            "AI 不是字符串",
+            "列表不能切片",
+            "print 不能输出列表"
           ],
-          "answer": 2,
-          "explanation": "访问字典前必须确认键存在，否则会抛出 KeyError。"
+          "answer": 0,
+          "explanation": "切片 [:2] 取索引 0 和 1，因此只有“我”和“喜欢”。",
+          "knowledge_point": "llm.context-window-slice",
+          "error_type": "slicing"
         },
         {
           "id": "cq3",
@@ -732,7 +764,8 @@
             "整个字典消失"
           ],
           "answer": 2,
-          "explanation": "只修改列表的第二个位置，不会影响第一个元素。"
+          "explanation": "只修改列表的第二个位置，不会影响第一个元素。",
+          "knowledge_point": "llm.prediction-parameter"
         }
       ]
     },
@@ -805,7 +838,8 @@
             "请用三点解释机器学习"
           ],
           "answer": 3,
-          "explanation": "f-string 会把变量 topic 的值插入字符串。"
+          "explanation": "f-string 会把变量 topic 的值插入字符串。",
+          "knowledge_point": "prompt.fstring-output"
         },
         {
           "id": "cq2",
@@ -819,7 +853,9 @@
             "print 不能输出中文"
           ],
           "answer": 1,
-          "explanation": "只有 f-string 才会替换花括号中的变量。"
+          "explanation": "只有 f-string 才会替换花括号中的变量。",
+          "knowledge_point": "prompt.fstring-prefix",
+          "error_type": "fstring"
         },
         {
           "id": "cq3",
@@ -833,7 +869,8 @@
             "只输出“神经网络”"
           ],
           "answer": 1,
-          "explanation": "变量值变化后，f-string 生成的内容也会变化。"
+          "explanation": "变量值变化后，f-string 生成的内容也会变化。",
+          "knowledge_point": "prompt.topic-parameter"
         }
       ]
     },
@@ -906,7 +943,8 @@
             "报错"
           ],
           "answer": 2,
-          "explanation": "代码读取 response 键的值。"
+          "explanation": "代码读取 response 键的值。",
+          "knowledge_point": "llm.response-field"
         },
         {
           "id": "cq2",
@@ -920,7 +958,9 @@
             "缺少 model 字段"
           ],
           "answer": 3,
-          "explanation": "Ollama 生成接口需要告诉它使用哪个模型。"
+          "explanation": "Ollama 生成接口需要告诉它使用哪个模型。",
+          "knowledge_point": "llm.request-model-field",
+          "error_type": "config"
         },
         {
           "id": "cq3",
@@ -934,7 +974,8 @@
             "Prompt 会被删除"
           ],
           "answer": 0,
-          "explanation": "更大的模型参数更多，通常推理更慢、资源占用更高。"
+          "explanation": "更大的模型参数更多，通常推理更慢、资源占用更高。",
+          "knowledge_point": "llm.model-parameter"
         }
       ]
     },
@@ -1007,7 +1048,8 @@
             "0"
           ],
           "answer": 2,
-          "explanation": "“人工智能”四个字符都出现在文档中，交集长度为 4。"
+          "explanation": "“人工智能”四个字符都出现在文档中，交集长度为 4。",
+          "knowledge_point": "rag.keyword-intersection"
         },
         {
           "id": "cq2",
@@ -1021,7 +1063,9 @@
             "set 不能接收字符串"
           ],
           "answer": 2,
-          "explanation": "函数调用必须补齐右括号。"
+          "explanation": "函数调用必须补齐右括号。",
+          "knowledge_point": "python.missing-parenthesis",
+          "error_type": "syntax"
         },
         {
           "id": "cq3",
@@ -1035,7 +1079,8 @@
             "变成 8"
           ],
           "answer": 0,
-          "explanation": "两段文字几乎没有相同字符。"
+          "explanation": "两段文字几乎没有相同字符。",
+          "knowledge_point": "rag.document-parameter"
         }
       ]
     },
@@ -1112,7 +1157,8 @@
             "26"
           ],
           "answer": 2,
-          "explanation": "函数返回字典，print 会输出字典内容。"
+          "explanation": "函数返回字典，print 会输出字典内容。",
+          "knowledge_point": "agent.tool-return"
         },
         {
           "id": "cq2",
@@ -1126,7 +1172,9 @@
             "函数不能使用中文"
           ],
           "answer": 2,
-          "explanation": "位置参数数量和函数定义不一致。"
+          "explanation": "位置参数数量和函数定义不一致。",
+          "knowledge_point": "python.argument-count",
+          "error_type": "argument"
         },
         {
           "id": "cq3",
@@ -1140,7 +1188,8 @@
             "函数名必须修改"
           ],
           "answer": 1,
-          "explanation": "参数值会传入函数并写入返回字典。"
+          "explanation": "参数值会传入函数并写入返回字典。",
+          "knowledge_point": "agent.city-parameter"
         }
       ]
     },
@@ -1217,7 +1266,8 @@
             "HTML 页面"
           ],
           "answer": 2,
-          "explanation": "Flask 会把字典转换成 JSON 响应。"
+          "explanation": "Flask 会把字典转换成 JSON 响应。",
+          "knowledge_point": "flask.json-response"
         },
         {
           "id": "cq2",
@@ -1231,7 +1281,9 @@
             "Flask 不能返回字典"
           ],
           "answer": 1,
-          "explanation": "后端必须隐藏密钥，不能把 API Key 放进给前端的响应。"
+          "explanation": "后端必须隐藏密钥，不能把 API Key 放进给前端的响应。",
+          "knowledge_point": "security.api-key-response",
+          "error_type": "security"
         },
         {
           "id": "cq3",
@@ -1245,7 +1297,8 @@
             "端口自动变成 80"
           ],
           "answer": 0,
-          "explanation": "0.0.0.0 表示监听所有网络接口，是否可访问还取决于防火墙。"
+          "explanation": "0.0.0.0 表示监听所有网络接口，是否可访问还取决于防火墙。",
+          "knowledge_point": "flask.host-parameter"
         }
       ]
     },
@@ -1322,7 +1375,8 @@
           ],
           "answer": 0,
           "explanation": ":.0% 会把 0.91 格式化成 91%。",
-          "code": "det = {\"class\": \"car\", \"confidence\": 0.91}\nprint(f\"{det['class']} {det['confidence']:.0%}\")"
+          "code": "det = {\"class\": \"car\", \"confidence\": 0.91}\nprint(f\"{det['class']} {det['confidence']:.0%}\")",
+          "knowledge_point": "yolo.detection-format"
         },
         {
           "id": "cq2",
@@ -1336,7 +1390,9 @@
           ],
           "answer": 3,
           "explanation": "两个角点通常需要四个坐标。",
-          "code": "bbox = [x1, y1, x2]\nprint(bbox)"
+          "code": "bbox = [x1, y1, x2]\nprint(bbox)",
+          "knowledge_point": "yolo.bbox-coordinates",
+          "error_type": "coordinates"
         },
         {
           "id": "cq3",
@@ -1350,7 +1406,8 @@
           ],
           "answer": 1,
           "explanation": "阈值越高，越少的结果能满足条件。",
-          "code": "results = model.predict(frame, conf=0.25)"
+          "code": "results = model.predict(frame, conf=0.25)",
+          "knowledge_point": "yolo.conf-parameter"
         }
       ]
     },
@@ -1414,7 +1471,7 @@
         {
           "id": "cq1",
           "kind": "output",
-          "question": "代码会输出什么？",
+          "question": "解析 YOLO 标签后代码会输出什么？",
           "options": [
             "car",
             "0.5",
@@ -1423,7 +1480,8 @@
           ],
           "answer": 3,
           "explanation": "第一列是类别编号。",
-          "code": "line = \"0 0.5 0.5 0.2 0.3\"\nparts = line.split()\nprint(parts[0])"
+          "code": "line = \"0 0.5 0.5 0.2 0.3\"\nparts = line.split()\nprint(parts[0])",
+          "knowledge_point": "yolo.label-column"
         },
         {
           "id": "cq2",
@@ -1437,7 +1495,9 @@
           ],
           "answer": 3,
           "explanation": "六个值不能直接解包给五个变量。",
-          "code": "line = \"0 0.5 0.5 0.2 0.3 1.0\"\ncls, cx, cy, w, h = line.split()"
+          "code": "line = \"0 0.5 0.5 0.2 0.3 1.0\"\ncls, cx, cy, w, h = line.split()",
+          "knowledge_point": "yolo.label-unpack-count",
+          "error_type": "label-format"
         },
         {
           "id": "cq3",
@@ -1451,7 +1511,8 @@
           ],
           "answer": 0,
           "explanation": "验证样本变少后，指标稳定性通常会下降。",
-          "code": "train_ratio = 0.8\nval_ratio = 0.2"
+          "code": "train_ratio = 0.8\nval_ratio = 0.2",
+          "knowledge_point": "yolo.split-parameter"
         }
       ]
     },
@@ -1524,7 +1585,8 @@
           ],
           "answer": 0,
           "explanation": "Ultralytics 训练默认保存 best 和 last 权重。",
-          "code": "model.train(data=\"coco128.yaml\", epochs=10, imgsz=640)"
+          "code": "model.train(data=\"coco128.yaml\", epochs=10, imgsz=640)",
+          "knowledge_point": "yolo.training-output"
         },
         {
           "id": "cq2",
@@ -1538,7 +1600,9 @@
           ],
           "answer": 0,
           "explanation": "训练必须知道数据集和类别信息。",
-          "code": "model.train(epochs=10, imgsz=640)"
+          "code": "model.train(epochs=10, imgsz=640)",
+          "knowledge_point": "yolo.missing-data-param",
+          "error_type": "config"
         },
         {
           "id": "cq3",
@@ -1552,7 +1616,8 @@
           ],
           "answer": 0,
           "explanation": "轮数增加会延长训练，并改变收敛和过拟合风险。",
-          "code": "model.train(data=\"coco128.yaml\", epochs=10, imgsz=640)"
+          "code": "epochs = 10\nimgsz = 640",
+          "knowledge_point": "yolo.epochs-parameter"
         }
       ]
     },
@@ -1616,7 +1681,7 @@
         {
           "id": "cq1",
           "kind": "output",
-          "question": "代码会输出什么？",
+          "question": "这段读取 mAP50 的代码会输出什么？",
           "options": [
             "0.78",
             "0.52",
@@ -1625,21 +1690,24 @@
           ],
           "answer": 0,
           "explanation": "代码读取 mAP50 对应的值。",
-          "code": "metrics = {\"mAP50\": 0.78, \"mAP50-95\": 0.52}\nprint(metrics[\"mAP50\"])"
+          "code": "metrics = {\"mAP50\": 0.78, \"mAP50-95\": 0.52}\nprint(metrics[\"mAP50\"])",
+          "knowledge_point": "yolo.metric-read"
         },
         {
           "id": "cq2",
           "kind": "bug",
-          "question": "这段读取指标的代码为什么可能报 KeyError？",
+          "question": "这个 Precision 公式哪里错了？",
           "options": [
-            "mAP50 不能作为键",
-            "字典中没有 map 这个键",
-            "print 不能输出浮点数",
-            "小数不能放进字典"
+            "分母应使用 false_positive，而不是 false_negative",
+            "分子不能用 true_positive",
+            "precision 必须写成百分比字符串",
+            "false_negative 不能是整数"
           ],
-          "answer": 1,
-          "explanation": "键名必须和字典中的名称完全一致。",
-          "code": "metrics = {\"mAP50\": 0.78}\nprint(metrics[\"map\"])"
+          "answer": 0,
+          "explanation": "Precision = TP / (TP + FP)，分母是模型报出的正例，不是漏掉的正例。",
+          "code": "true_positive = 8\nfalse_positive = 2\nfalse_negative = 4\nprecision = true_positive / (true_positive + false_negative)",
+          "knowledge_point": "yolo.metric-precision-formula",
+          "error_type": "metric-formula"
         },
         {
           "id": "cq3",
@@ -1653,7 +1721,8 @@
           ],
           "answer": 3,
           "explanation": "阈值提高会过滤更多结果，影响 Precision 和 Recall 的平衡。",
-          "code": "results = model.predict(frame, conf=0.25)"
+          "code": "conf_threshold = 0.25\nprint(conf_threshold)",
+          "knowledge_point": "yolo.conf-evaluation-parameter"
         }
       ]
     },
@@ -1726,7 +1795,8 @@
           ],
           "answer": 0,
           "explanation": "conf 是置信度阈值。",
-          "code": "results = model.predict(frame, conf=0.5)"
+          "code": "results = model.predict(frame, conf=0.5)",
+          "knowledge_point": "yolo.deployment-conf"
         },
         {
           "id": "cq2",
@@ -1740,7 +1810,9 @@
           ],
           "answer": 1,
           "explanation": "预测结果必须解析并绘制，否则返回的还是原图。",
-          "code": "results = model.predict(frame, conf=0.5)\nreturn send_file(\"result.jpg\")"
+          "code": "results = model.predict(frame, conf=0.5)\nreturn send_file(\"result.jpg\")",
+          "knowledge_point": "yolo.draw-results-missing",
+          "error_type": "result-handling"
         },
         {
           "id": "cq3",
@@ -1754,9 +1826,2220 @@
           ],
           "answer": 1,
           "explanation": "输入尺寸变小会降低计算量，也可能损失细节。",
-          "code": "results = model.predict(frame, imgsz=640)"
+          "code": "results = model.predict(frame, imgsz=640)",
+          "knowledge_point": "yolo.imgsz-parameter"
         }
       ]
+    },
+    {
+      "id": "llm-engineering-overview",
+      "number": 18,
+      "title": "LLM 应用工程全景：建立项目骨架",
+      "module": "第六阶段：LLM 应用工程实战",
+      "duration": "60-90 分钟",
+      "summary": "建立 AI 面试知识库助手的项目目录、虚拟环境和运行检查脚本，理解 LLM 应用的分层结构。",
+      "file": "18-llm-engineering-overview.md",
+      "external": [
+        {
+          "title": "FastAPI 官方文档",
+          "url": "https://fastapi.tiangolo.com/"
+        },
+        {
+          "title": "LlamaIndex Framework",
+          "url": "https://developers.llamaindex.ai/python/framework/"
+        },
+        {
+          "title": "Ollama 文档",
+          "url": "https://docs.ollama.com/"
+        }
+      ],
+      "quiz": [
+        {
+          "id": "q1",
+          "question": "一个可维护的 LLM 应用通常应该怎样分层？",
+          "options": [
+            "所有代码都写进一个 app.py",
+            "前端、API、模型、数据检索、评测运维分层",
+            "把训练数据写进网页 HTML",
+            "前端直接保存模型 API Key"
+          ],
+          "answer": 1,
+          "explanation": "分层能让接口、模型、数据和运维各自独立演进。",
+          "knowledge_point": "llm-engineering.architecture-layers"
+        },
+        {
+          "id": "q2",
+          "question": "为什么项目要创建独立虚拟环境？",
+          "options": [
+            "替代 Git 版本管理",
+            "让 Python 自动下载大模型",
+            "让程序不需要联网",
+            "隔离项目依赖，避免不同项目版本冲突"
+          ],
+          "answer": 3,
+          "explanation": "虚拟环境解决依赖隔离，不影响模型下载或版本管理。",
+          "knowledge_point": "python.venv-purpose"
+        },
+        {
+          "id": "q3",
+          "question": "连续项目最稳妥的推进顺序是什么？",
+          "options": [
+            "先做最复杂的 Agent，再补基础接口",
+            "把所有第三方框架一次性装完再开始",
+            "先写 Docker，再决定项目做什么",
+            "先跑通最小 API，再加 RAG、工具、评测和部署"
+          ],
+          "answer": 3,
+          "explanation": "最小闭环先跑通，才能逐步定位问题。",
+          "knowledge_point": "engineering.minimal-loop"
+        }
+      ],
+      "code_quiz": [
+        {
+          "id": "cq1",
+          "question": "这段配置字典会输出什么？",
+          "options": [
+            "报错",
+            "ai-interview-assistant",
+            "app",
+            "8000"
+          ],
+          "answer": 1,
+          "explanation": "代码读取 app 键对应的值。",
+          "knowledge_point": "python.dict-read-config",
+          "kind": "output",
+          "code": "config = {\"app\": \"ai-interview-assistant\", \"port\": 8000}\nprint(config[\"app\"])"
+        },
+        {
+          "id": "cq2",
+          "question": "这行 FastAPI 导入为什么会报错？",
+          "options": [
+            "from import 只能导入数字",
+            "fastapi 不能用于 Python",
+            "必须先导入 uvicorn",
+            "类名应为 FastAPI，首字母必须大写"
+          ],
+          "answer": 3,
+          "explanation": "FastAPI 是类名，Python 区分大小写。",
+          "knowledge_point": "fastapi.import-class",
+          "kind": "bug",
+          "code": "from fastapi import fastapi",
+          "error_type": "import-name"
+        },
+        {
+          "id": "cq3",
+          "question": "把应用端口从 8000 改成 9000 后，最直接的变化是什么？",
+          "options": [
+            "浏览器和接口测试要访问 9000 端口",
+            "模型会自动换一个",
+            "项目目录被重命名",
+            "接口路径全部变成 9000"
+          ],
+          "answer": 0,
+          "explanation": "端口变化后访问地址必须一起修改。",
+          "knowledge_point": "fastapi.port-parameter",
+          "kind": "parameter",
+          "code": "uvicorn.run(app, host=\"127.0.0.1\", port=8000)"
+        }
+      ],
+      "project": {
+        "deliverable": "一个能检查 Python、Ollama、目录和依赖的 check_env.py 脚本。",
+        "estimated_minutes": 75,
+        "prerequisites": [
+          "Windows 10/11",
+          "Python 3.12",
+          "PowerShell"
+        ],
+        "steps": [
+          {
+            "id": "create-folder",
+            "title": "创建项目文件夹",
+            "instruction": "在桌面或 D 盘建立 ai-interview-assistant 项目目录。",
+            "actions": [
+              "打开文件资源管理器",
+              "新建文件夹 ai-interview-assistant",
+              "在文件夹内打开 PowerShell"
+            ],
+            "commands": [
+              "mkdir ai-interview-assistant",
+              "cd ai-interview-assistant"
+            ],
+            "expected": "PowerShell 当前目录显示 ai-interview-assistant。",
+            "common_errors": [
+              "路径含中文导致工具报错",
+              "没有进入正确目录"
+            ]
+          },
+          {
+            "id": "create-venv",
+            "title": "创建虚拟环境",
+            "instruction": "为项目创建独立 Python 环境。",
+            "actions": [
+              "确认 python --version 正常",
+              "执行 venv 命令"
+            ],
+            "commands": [
+              "python -m venv .venv",
+              ".venv\\Scripts\\python.exe --version"
+            ],
+            "expected": "看到 Python 版本号。",
+            "common_errors": [
+              "python 找不到：检查 Add to PATH",
+              "权限不足：换到用户目录"
+            ]
+          },
+          {
+            "id": "create-check-script",
+            "title": "创建环境检查脚本",
+            "instruction": "编写脚本检查 Python、目录和 Ollama 端口。",
+            "actions": [
+              "新建 check_env.py",
+              "写入检查代码",
+              "保存文件"
+            ],
+            "commands": [
+              "python -X utf8 check_env.py"
+            ],
+            "expected": "终端逐项显示 OK 或 FAIL。",
+            "common_errors": [
+              "缩进错误",
+              "requests 未安装"
+            ]
+          },
+          {
+            "id": "install-core",
+            "title": "安装基础依赖",
+            "instruction": "安装 requests、python-dotenv、fastapi、uvicorn。",
+            "actions": [
+              "先升级 pip",
+              "再安装依赖"
+            ],
+            "commands": [
+              "python -m pip install --upgrade pip",
+              ".venv\\Scripts\\python.exe -m pip install requests python-dotenv fastapi uvicorn"
+            ],
+            "expected": "最后显示 Successfully installed。",
+            "common_errors": [
+              "网络超时：使用国内镜像",
+              "pip 来自错误 Python"
+            ]
+          },
+          {
+            "id": "verify",
+            "title": "验证项目骨架",
+            "instruction": "运行检查脚本并记录结果。",
+            "actions": [
+              "再次运行 check_env.py",
+              "把结果写进笔记"
+            ],
+            "commands": [
+              "python -X utf8 check_env.py"
+            ],
+            "expected": "至少 Python 和目录检查通过。",
+            "common_errors": [
+              "Ollama 未启动：先启动 Ollama"
+            ]
+          }
+        ],
+        "exercises": [
+          {
+            "id": "ex-1",
+            "title": "补全版本输出",
+            "prompt": "在 check_env.py 中补全 Python 版本打印。",
+            "starter": "import sys\n\ndef check_python():\n    # 在这里打印 Python 版本\n    pass",
+            "answer": "import sys\n\ndef check_python():\n    print(\"Python\", sys.version.split()[0])",
+            "explanation": "sys.version 包含版本信息，split()[0] 只取第一个部分。"
+          },
+          {
+            "id": "ex-2",
+            "title": "补全目录检查",
+            "prompt": "检查当前目录是否叫 ai-interview-assistant。",
+            "starter": "from pathlib import Path\n\ndef check_folder():\n    current = Path.cwd().name\n    # 补全判断和输出\n    pass",
+            "answer": "from pathlib import Path\n\ndef check_folder():\n    current = Path.cwd().name\n    print(\"目录\", \"OK\" if current == \"ai-interview-assistant\" else f\"FAIL: {current}\")",
+            "explanation": "Path.cwd().name 可以直接拿到当前文件夹名。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "fastapi-flask-compare",
+      "number": 19,
+      "title": "Flask 与 FastAPI 对比：最小模型 API",
+      "module": "第六阶段：LLM 应用工程实战",
+      "duration": "70-90 分钟",
+      "summary": "分别用 Flask 和 FastAPI 写出 /health 接口，理解路由、服务器启动、自动文档和异步的差异。",
+      "file": "19-fastapi-flask-compare.md",
+      "external": [
+        {
+          "title": "FastAPI 官方文档",
+          "url": "https://fastapi.tiangolo.com/"
+        },
+        {
+          "title": "Flask 官方文档",
+          "url": "https://flask.palletsprojects.com/"
+        }
+      ],
+      "quiz": [
+        {
+          "id": "q1",
+          "question": "FastAPI 相比 Flask 的一个明显优势是什么？",
+          "options": [
+            "自动训练大模型",
+            "不需要安装任何依赖",
+            "类型校验和自动生成接口文档",
+            "完全不需要写 Python"
+          ],
+          "answer": 2,
+          "explanation": "FastAPI 结合 Pydantic 能自动校验和生成文档。",
+          "knowledge_point": "fastapi.auto-docs"
+        },
+        {
+          "id": "q2",
+          "question": "启动 FastAPI 开发服务器常用什么命令？",
+          "options": [
+            "flask fastapi run",
+            "uvicorn app:app --reload",
+            "npm start fastapi",
+            "python app.py --train"
+          ],
+          "answer": 1,
+          "explanation": "FastAPI 通常使用 uvicorn 作为 ASGI 服务器。",
+          "knowledge_point": "fastapi.uvicorn"
+        },
+        {
+          "id": "q3",
+          "question": "Flask 和 FastAPI 的共同点是什么？",
+          "options": [
+            "都能接收 HTTP 请求并返回 JSON",
+            "都只能处理图片",
+            "都不需要路由",
+            "都必须用 JavaScript 编写"
+          ],
+          "answer": 0,
+          "explanation": "两者都是 Python Web 框架，都支持 HTTP 和 JSON。",
+          "knowledge_point": "web.framework-common"
+        }
+      ],
+      "code_quiz": [
+        {
+          "id": "cq1",
+          "question": "访问 /health 时返回什么？",
+          "options": [
+            "HTML 页面",
+            "404",
+            "ok",
+            "{\"status\": \"ok\"}"
+          ],
+          "answer": 3,
+          "explanation": "FastAPI 会把字典序列化为 JSON。",
+          "knowledge_point": "fastapi.health-response",
+          "kind": "output",
+          "code": "from fastapi import FastAPI\napp = FastAPI()\n\n@app.get(\"/health\")\ndef health():\n    return {\"status\": \"ok\"}"
+        },
+        {
+          "id": "cq2",
+          "question": "这个 FastAPI 接口为什么不会被注册？",
+          "options": [
+            "缺少 @app.get(\"/health\") 路由装饰器",
+            "返回值不是字符串",
+            "函数名 health 不合法",
+            "FastAPI 不支持字典"
+          ],
+          "answer": 0,
+          "explanation": "只有被装饰器注册的函数才会成为接口。",
+          "knowledge_point": "fastapi.route-decorator",
+          "kind": "bug",
+          "code": "from fastapi import FastAPI\napp = FastAPI()\n\ndef health():\n    return {\"status\": \"ok\"}",
+          "error_type": "missing-decorator"
+        },
+        {
+          "id": "cq3",
+          "question": "把 host 从 127.0.0.1 改成 0.0.0.0 会有什么变化？",
+          "options": [
+            "同一局域网的其他设备可能可以访问",
+            "模型自动换成更大模型",
+            "端口被关闭",
+            "接口路径会变成 0.0.0.0"
+          ],
+          "answer": 0,
+          "explanation": "0.0.0.0 表示监听所有网卡。",
+          "knowledge_point": "fastapi.host-parameter",
+          "kind": "parameter",
+          "code": "uvicorn.run(app, host=\"0.0.0.0\", port=8000)"
+        }
+      ],
+      "project": {
+        "deliverable": "app_flask_compare.py 和 app_fastapi.py 两个可运行的最小接口。",
+        "estimated_minutes": 85,
+        "prerequisites": [
+          "完成第 18 节",
+          "已安装 Flask",
+          "已安装 FastAPI 和 uvicorn"
+        ],
+        "steps": [
+          {
+            "id": "flask-file",
+            "title": "创建 Flask 版本",
+            "instruction": "新建 app_flask_compare.py 并写 /health。",
+            "actions": [
+              "打开编辑器",
+              "写入 Flask 代码",
+              "保存到项目根目录"
+            ],
+            "commands": [
+              "python -X utf8 app_flask_compare.py"
+            ],
+            "expected": "浏览器访问 5000 端口显示 JSON。",
+            "common_errors": [
+              "端口冲突：改用 5001",
+              "导入名错误"
+            ]
+          },
+          {
+            "id": "flask-test",
+            "title": "测试 Flask 接口",
+            "instruction": "访问 /health 并观察响应。",
+            "actions": [
+              "启动 Flask",
+              "打开浏览器",
+              "查看终端请求日志"
+            ],
+            "commands": [
+              "http://127.0.0.1:5000/health"
+            ],
+            "expected": "页面显示 {\"status\": \"ok\"}。",
+            "common_errors": [
+              "浏览器访问错误端口",
+              "服务未启动"
+            ]
+          },
+          {
+            "id": "fastapi-file",
+            "title": "创建 FastAPI 版本",
+            "instruction": "新建 app_fastapi.py 并写 /health。",
+            "actions": [
+              "导入 FastAPI",
+              "创建 app",
+              "添加装饰器"
+            ],
+            "commands": [
+              ".venv\\Scripts\\uvicorn.exe app_fastapi:app --reload --port 8000"
+            ],
+            "expected": "终端显示 Uvicorn running。",
+            "common_errors": [
+              "uvicorn 找不到",
+              "模块名写错"
+            ]
+          },
+          {
+            "id": "fastapi-docs",
+            "title": "访问自动文档",
+            "instruction": "打开 FastAPI 的 /docs 页面。",
+            "actions": [
+              "浏览器访问 /docs",
+              "展开 health 接口",
+              "点击 Try it out"
+            ],
+            "commands": [
+              "http://127.0.0.1:8000/docs"
+            ],
+            "expected": "能看到 Swagger 风格接口文档。",
+            "common_errors": [
+              "页面 404：路由或端口错误"
+            ]
+          },
+          {
+            "id": "compare-note",
+            "title": "比较两者",
+            "instruction": "在笔记里写下 Flask 和 FastAPI 的差异。",
+            "actions": [
+              "记录启动命令",
+              "记录自动文档差异",
+              "记录错误处理体验"
+            ],
+            "commands": [],
+            "expected": "笔记中有至少 3 条对比结论。",
+            "common_errors": [
+              "只抄定义没有自己的观察"
+            ]
+          }
+        ],
+        "exercises": [
+          {
+            "id": "ex-1",
+            "title": "补全 Flask 路由",
+            "prompt": "补全 Flask 的 /health 路由装饰器。",
+            "starter": "from flask import Flask, jsonify\napp = Flask(__name__)\n\n# 在这里写路由\ndef health():\n    return jsonify({\"status\": \"ok\"})",
+            "answer": "from flask import Flask, jsonify\napp = Flask(__name__)\n\n@app.get(\"/health\")\ndef health():\n    return jsonify({\"status\": \"ok\"})",
+            "explanation": "Flask 使用 @app.get 或 @app.route 注册路由。"
+          },
+          {
+            "id": "ex-2",
+            "title": "补全 FastAPI 启动参数",
+            "prompt": "让 FastAPI 监听 9000 端口。",
+            "starter": "import uvicorn\nfrom app_fastapi import app\n\nuvicorn.run(app, host=\"127.0.0.1\", port=8000)",
+            "answer": "import uvicorn\nfrom app_fastapi import app\n\nuvicorn.run(app, host=\"127.0.0.1\", port=9000)",
+            "explanation": "启动端口必须和访问端口保持一致。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "pydantic-config-errors",
+      "number": 20,
+      "title": "Pydantic 配置与错误处理",
+      "module": "第六阶段：LLM 应用工程实战",
+      "duration": "70-90 分钟",
+      "summary": "使用 Pydantic 校验请求和配置，统一处理输入错误、模型错误和服务器错误。",
+      "file": "20-pydantic-config-errors.md",
+      "external": [
+        {
+          "title": "Pydantic 文档",
+          "url": "https://docs.pydantic.dev/"
+        },
+        {
+          "title": "FastAPI 错误处理",
+          "url": "https://fastapi.tiangolo.com/tutorial/handling-errors/"
+        }
+      ],
+      "quiz": [
+        {
+          "id": "q1",
+          "question": "Pydantic 模型的主要作用是什么？",
+          "options": [
+            "生成图片",
+            "定义数据结构并在运行时校验输入",
+            "训练神经网络",
+            "替代 SQLite"
+          ],
+          "answer": 1,
+          "explanation": "Pydantic 用来声明和校验数据。",
+          "knowledge_point": "pydantic.validation"
+        },
+        {
+          "id": "q2",
+          "question": "FastAPI 收到不符合模型定义的请求时通常返回什么？",
+          "options": [
+            "500 模型崩溃",
+            "200 成功",
+            "422 校验错误和字段说明",
+            "404 页面不存在"
+          ],
+          "answer": 2,
+          "explanation": "FastAPI 默认用 422 返回请求体验证错误。",
+          "knowledge_point": "fastapi.422"
+        },
+        {
+          "id": "q3",
+          "question": "为什么配置要放在 settings.py 和 .env？",
+          "options": [
+            "集中管理地址、模型名和密钥，避免散落在代码里",
+            "让前端不能访问接口",
+            "让代码运行得更快",
+            "自动下载模型"
+          ],
+          "answer": 0,
+          "explanation": "集中配置便于修改和隐藏密钥。",
+          "knowledge_point": "settings.centralized-config"
+        }
+      ],
+      "code_quiz": [
+        {
+          "id": "cq1",
+          "question": "合法请求经过 Pydantic 后会得到什么？",
+          "options": [
+            "什么是RAG",
+            "报错",
+            "AskRequest",
+            "question"
+          ],
+          "answer": 0,
+          "explanation": "模型把请求字段保存为属性。",
+          "knowledge_point": "pydantic.model-attribute",
+          "kind": "output",
+          "code": "from pydantic import BaseModel\nclass AskRequest(BaseModel):\n    question: str\n\nitem = AskRequest(question=\"什么是RAG\")\nprint(item.question)"
+        },
+        {
+          "id": "cq2",
+          "question": "为什么 question=123 会触发校验错误？",
+          "options": [
+            "question 声明为字符串，整数不符合严格类型校验",
+            "Pydantic 不能接收整数",
+            "字段名必须是中文",
+            "BaseModel 不能实例化"
+          ],
+          "answer": 0,
+          "explanation": "类型声明和实际输入需要匹配。",
+          "knowledge_point": "pydantic.type-validation",
+          "kind": "bug",
+          "code": "class AskRequest(BaseModel):\n    question: str\n\nAskRequest(question=123)",
+          "error_type": "type"
+        },
+        {
+          "id": "cq3",
+          "question": "把默认端口从 8000 改成 9000，会影响什么？",
+          "options": [
+            "Pydantic 会自动重启服务器",
+            "模型名会变化",
+            "接口路径全部变化",
+            "默认配置端口变化，启动和访问都应使用 9000"
+          ],
+          "answer": 3,
+          "explanation": "默认值变化会影响读取到的配置。",
+          "knowledge_point": "settings.port-default",
+          "kind": "parameter",
+          "code": "class Settings(BaseModel):\n    port: int = 8000"
+        }
+      ],
+      "project": {
+        "deliverable": "settings.py、models.py 和统一错误处理的最小服务。",
+        "estimated_minutes": 90,
+        "prerequisites": [
+          "完成第 19 节"
+        ],
+        "steps": [
+          {
+            "id": "settings-file",
+            "title": "创建 settings.py",
+            "instruction": "用 Pydantic 定义应用配置。",
+            "actions": [
+              "新建 settings.py",
+              "定义 host、port、model、embed_model",
+              "从环境变量读取"
+            ],
+            "commands": [
+              "python -X utf8 -c \"from settings import settings; print(settings)\""
+            ],
+            "expected": "终端打印配置对象。",
+            "common_errors": [
+              "字段类型不匹配",
+              "环境变量未设置"
+            ]
+          },
+          {
+            "id": "env-file",
+            "title": "创建 .env.example",
+            "instruction": "记录配置模板，不写真实密钥。",
+            "actions": [
+              "新建 .env.example",
+              "写入键值对",
+              "复制为 .env 用于本地运行"
+            ],
+            "commands": [
+              "Copy-Item .env.example .env"
+            ],
+            "expected": "项目根目录出现 .env。",
+            "common_errors": [
+              ".env 被提交到 Git"
+            ]
+          },
+          {
+            "id": "models-file",
+            "title": "创建 models.py",
+            "instruction": "定义 AskRequest 和 AskResponse。",
+            "actions": [
+              "新建 models.py",
+              "写 Pydantic 类",
+              "添加字段说明"
+            ],
+            "commands": [
+              "python -X utf8 -c \"from models import AskRequest; print(AskRequest(question='测试'))\""
+            ],
+            "expected": "模型实例校验通过。",
+            "common_errors": [
+              "字段名不一致",
+              "忘记继承 BaseModel"
+            ]
+          },
+          {
+            "id": "error-handler",
+            "title": "添加统一错误处理",
+            "instruction": "捕获校验错误和未处理异常并返回统一 JSON。",
+            "actions": [
+              "在 FastAPI 中注册处理器",
+              "返回 error 和 detail",
+              "测试错误请求"
+            ],
+            "commands": [],
+            "expected": "错误响应结构一致。",
+            "common_errors": [
+              "把异常堆栈直接返回前端"
+            ]
+          },
+          {
+            "id": "verify-invalid",
+            "title": "测试非法请求",
+            "instruction": "发送缺少 question 字段的请求。",
+            "actions": [
+              "用浏览器或 PowerShell 调用",
+              "观察状态码和错误字段"
+            ],
+            "commands": [
+              "Invoke-RestMethod -Uri http://127.0.0.1:8000/ask -Method Post -ContentType application/json -Body '{}'"
+            ],
+            "expected": "收到 422 或统一错误 JSON。",
+            "common_errors": [
+              "服务未启动",
+              "请求体不是 JSON"
+            ]
+          }
+        ],
+        "exercises": [
+          {
+            "id": "ex-1",
+            "title": "补全配置字段",
+            "prompt": "给 Settings 增加 model 字段，默认 qwen2.5:7b。",
+            "starter": "class Settings(BaseModel):\n    host: str = \"127.0.0.1\"\n    port: int = 8000\n    # 增加 model 字段",
+            "answer": "class Settings(BaseModel):\n    host: str = \"127.0.0.1\"\n    port: int = 8000\n    model: str = \"qwen2.5:7b\"",
+            "explanation": "字段声明包含类型和默认值。"
+          },
+          {
+            "id": "ex-2",
+            "title": "补全请求模型",
+            "prompt": "为 AskRequest 增加 question 字符串字段。",
+            "starter": "class AskRequest(BaseModel):\n    # 在这里增加字段\n    pass",
+            "answer": "class AskRequest(BaseModel):\n    question: str",
+            "explanation": "字段名 question 会和前端 JSON 对应。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "llamaindex-basics",
+      "number": 21,
+      "title": "LlamaIndex 入门：加载、切片与索引",
+      "module": "第六阶段：LLM 应用工程实战",
+      "duration": "80-110 分钟",
+      "summary": "安装 LlamaIndex，把 Markdown 和文本资料加载成 Document，切片并构建第一个可持久化索引。",
+      "file": "21-llamaindex-basics.md",
+      "external": [
+        {
+          "title": "LlamaIndex Framework 文档",
+          "url": "https://developers.llamaindex.ai/python/framework/"
+        },
+        {
+          "title": "LlamaIndex GitHub",
+          "url": "https://github.com/run-llama/llama_index"
+        }
+      ],
+      "quiz": [
+        {
+          "id": "q1",
+          "question": "SimpleDirectoryReader 主要做什么？",
+          "options": [
+            "绘制前端图表",
+            "管理 Windows 服务",
+            "训练 YOLO 模型",
+            "从目录批量加载文档"
+          ],
+          "answer": 3,
+          "explanation": "SimpleDirectoryReader 是常用文档加载器。",
+          "knowledge_point": "llamaindex.directory-reader"
+        },
+        {
+          "id": "q2",
+          "question": "为什么要对长文档切片？",
+          "options": [
+            "让文件数量变少",
+            "避免保存原文",
+            "提高检索精度并控制送入模型的上下文长度",
+            "让模型无需 Embedding"
+          ],
+          "answer": 2,
+          "explanation": "切片是 RAG 的关键预处理步骤。",
+          "knowledge_point": "rag.chunking-purpose"
+        },
+        {
+          "id": "q3",
+          "question": "持久化索引的作用是什么？",
+          "options": [
+            "把索引发送到浏览器",
+            "把索引保存到磁盘，下次无需重新构建",
+            "删除原始文档",
+            "提高显卡频率"
+          ],
+          "answer": 1,
+          "explanation": "持久化避免每次启动都重新处理全部文档。",
+          "knowledge_point": "llamaindex.persistence"
+        }
+      ],
+      "code_quiz": [
+        {
+          "id": "cq1",
+          "question": "documents 列表里最可能是什么？",
+          "options": [
+            "True",
+            "data",
+            "SimpleDirectoryReader",
+            "报错"
+          ],
+          "answer": 0,
+          "explanation": "如果 data 中有可读文档，加载结果数量大于 0。",
+          "knowledge_point": "llamaindex.loader-output",
+          "kind": "output",
+          "code": "from llama_index.core import SimpleDirectoryReader\ndocuments = SimpleDirectoryReader(\"data\").load_data()\nprint(len(documents) > 0)"
+        },
+        {
+          "id": "cq2",
+          "question": "这个索引创建代码缺少什么？",
+          "options": [
+            "必须导入 pandas",
+            "需要通过 from_documents(documents) 传入文档",
+            "数据目录要改成 data.txt",
+            "缺少 print 语句"
+          ],
+          "answer": 1,
+          "explanation": "空索引没有文档内容。",
+          "knowledge_point": "llamaindex.index-from-documents",
+          "kind": "bug",
+          "code": "from llama_index.core import VectorStoreIndex\nindex = VectorStoreIndex()",
+          "error_type": "missing-documents"
+        },
+        {
+          "id": "cq3",
+          "question": "把 chunk_size 从 512 改成 128，最可能怎样？",
+          "options": [
+            "Embedding 模型会自动更换",
+            "文档数量一定会减少",
+            "切片更小，检索更细但可能丢失上下文",
+            "索引无法保存"
+          ],
+          "answer": 2,
+          "explanation": "切片大小影响召回精度和上下文完整性。",
+          "knowledge_point": "rag.chunk-size-parameter",
+          "kind": "parameter",
+          "code": "Settings.chunk_size = 512"
+        }
+      ],
+      "project": {
+        "deliverable": "rag.py 能加载 data 目录并生成持久化索引。",
+        "estimated_minutes": 100,
+        "prerequisites": [
+          "完成第 20 节",
+          "本地有面试资料 Markdown 或文本"
+        ],
+        "steps": [
+          {
+            "id": "install-llamaindex",
+            "title": "安装 LlamaIndex",
+            "instruction": "安装 core 和 Ollama 集成。",
+            "actions": [
+              "进入项目目录",
+              "激活或直接使用 .venv Python",
+              "安装依赖"
+            ],
+            "commands": [
+              ".venv\\Scripts\\python.exe -m pip install llama-index-core llama-index-llms-ollama llama-index-embeddings-ollama"
+            ],
+            "expected": "最后显示 Successfully installed。",
+            "common_errors": [
+              "下载慢：使用镜像",
+              "装到了全局 Python"
+            ]
+          },
+          {
+            "id": "prepare-data",
+            "title": "准备 data 目录",
+            "instruction": "放入面试项目说明、工程日志和学习笔记。",
+            "actions": [
+              "创建 data 文件夹",
+              "复制 3～5 个 Markdown 或 txt 文件"
+            ],
+            "commands": [
+              "mkdir data"
+            ],
+            "expected": "data 目录至少有 3 个文本文件。",
+            "common_errors": [
+              "文件是扫描图片而非文本",
+              "目录为空"
+            ]
+          },
+          {
+            "id": "load-docs",
+            "title": "加载文档",
+            "instruction": "用 SimpleDirectoryReader 读取 data 目录。",
+            "actions": [
+              "新建 rag.py",
+              "导入 SimpleDirectoryReader",
+              "打印文档数量"
+            ],
+            "commands": [],
+            "expected": "终端输出文档数量大于 0。",
+            "common_errors": [
+              "路径写错",
+              "编码错误"
+            ]
+          },
+          {
+            "id": "build-index",
+            "title": "构建索引",
+            "instruction": "调用 VectorStoreIndex.from_documents。",
+            "actions": [
+              "导入 VectorStoreIndex",
+              "传入 documents",
+              "保存 index 变量"
+            ],
+            "commands": [],
+            "expected": "没有报错并得到 index 对象。",
+            "common_errors": [
+              "Embedding 未配置",
+              "依赖未安装"
+            ]
+          },
+          {
+            "id": "persist-index",
+            "title": "持久化索引",
+            "instruction": "把索引保存到 storage 目录并重新加载测试。",
+            "actions": [
+              "调用 persist",
+              "使用 StorageContext 加载",
+              "打印加载结果"
+            ],
+            "commands": [],
+            "expected": "storage 目录生成文件，重新加载成功。",
+            "common_errors": [
+              "persist_dir 写错",
+              "权限不足"
+            ]
+          }
+        ],
+        "exercises": [
+          {
+            "id": "ex-1",
+            "title": "补全文档加载",
+            "prompt": "补全 SimpleDirectoryReader 的目录参数。",
+            "starter": "from llama_index.core import SimpleDirectoryReader\n\ndocuments = SimpleDirectoryReader(____).load_data()",
+            "answer": "from llama_index.core import SimpleDirectoryReader\n\ndocuments = SimpleDirectoryReader(\"data\").load_data()",
+            "explanation": "目录参数用字符串路径。"
+          },
+          {
+            "id": "ex-2",
+            "title": "补全索引创建",
+            "prompt": "使用 documents 创建 VectorStoreIndex。",
+            "starter": "index = VectorStoreIndex.____(documents)",
+            "answer": "index = VectorStoreIndex.from_documents(documents)",
+            "explanation": "类方法名是 from_documents。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ollama-embedding",
+      "number": 22,
+      "title": "Ollama 与 Embedding：构建本地知识库",
+      "module": "第六阶段：LLM 应用工程实战",
+      "duration": "80-120 分钟",
+      "summary": "使用 Ollama 的 qwen2.5:7b 和 bge-m3，在 LlamaIndex 中配置本地 LLM 与 Embedding 并构建知识库。",
+      "file": "22-ollama-embedding.md",
+      "external": [
+        {
+          "title": "Ollama 文档",
+          "url": "https://docs.ollama.com/"
+        },
+        {
+          "title": "LlamaIndex Ollama 集成",
+          "url": "https://developers.llamaindex.ai/python/framework/integrations/llm/ollama/"
+        }
+      ],
+      "quiz": [
+        {
+          "id": "q1",
+          "question": "本地知识库中 LLM 和 Embedding 模型分别负责什么？",
+          "options": [
+            "LLM 负责替代向量数据库",
+            "Embedding 负责训练 LLM",
+            "两者都只负责生成图片",
+            "LLM 负责生成回答，Embedding 负责把文本变成可检索向量"
+          ],
+          "answer": 3,
+          "explanation": "生成和检索是两类不同任务。",
+          "knowledge_point": "rag.llm-vs-embedding"
+        },
+        {
+          "id": "q2",
+          "question": "为什么 Embedding 模型要和知识库语言匹配？",
+          "options": [
+            "中文资料通常需要中文或多语言 Embedding 才能检索得更好",
+            "Embedding 模型只影响网页颜色",
+            "英文模型一定更快",
+            "模型越大越不需要匹配"
+          ],
+          "answer": 0,
+          "explanation": "语义空间和语言覆盖会影响召回质量。",
+          "knowledge_point": "rag.embedding-language"
+        },
+        {
+          "id": "q3",
+          "question": "索引持久化后，下次启动不重复做什么？",
+          "options": [
+            "不需要任何磁盘",
+            "不需要用户提问",
+            "不需要重新读取并向量化全部文档",
+            "不需要启动 Ollama"
+          ],
+          "answer": 2,
+          "explanation": "已有索引可以直接加载。",
+          "knowledge_point": "llamaindex.reload-index"
+        }
+      ],
+      "code_quiz": [
+        {
+          "id": "cq1",
+          "question": "这行代码设置的是什么？",
+          "options": [
+            "把 LlamaIndex 默认 LLM 设置为本地 Ollama 模型",
+            "修改 FastAPI 端口",
+            "下载模型到 data 目录",
+            "把 Embedding 模型设置为 qwen2.5:7b"
+          ],
+          "answer": 0,
+          "explanation": "Settings.llm 控制默认生成模型。",
+          "knowledge_point": "llamaindex.settings-llm",
+          "kind": "output",
+          "code": "Settings.llm = Ollama(model=\"qwen2.5:7b\", request_timeout=120.0)"
+        },
+        {
+          "id": "cq2",
+          "question": "为什么加载模型时可能报 model not found？",
+          "options": [
+            "本地 Ollama 没有拉取这个模型名称",
+            "Python 不能连接 Ollama",
+            "Settings 只能设置端口",
+            "模型名不能包含数字"
+          ],
+          "answer": 0,
+          "explanation": "模型必须先在 Ollama 中存在。",
+          "knowledge_point": "ollama.model-not-found",
+          "kind": "bug",
+          "code": "Settings.llm = Ollama(model=\"qwen2.5:7b\")",
+          "error_type": "model-missing"
+        },
+        {
+          "id": "cq3",
+          "question": "把 Embedding 从 bge-m3 换成另一个模型后会怎样？",
+          "options": [
+            "已有索引需要重新构建，向量空间不兼容",
+            "知识库文件被删除",
+            "已有索引自动兼容",
+            "LLM 模型也会同步更换"
+          ],
+          "answer": 0,
+          "explanation": "不同 Embedding 的向量不能直接混用。",
+          "knowledge_point": "rag.embedding-model-change",
+          "kind": "parameter",
+          "code": "Settings.embed_model = OllamaEmbedding(model_name=\"bge-m3\")"
+        }
+      ],
+      "project": {
+        "deliverable": "使用本地 Ollama 和 bge-m3 构建的持久化知识库。",
+        "estimated_minutes": 110,
+        "prerequisites": [
+          "完成第 21 节",
+          "Ollama 正在运行",
+          "已下载 qwen2.5:7b 或更小模型",
+          "已下载 bge-m3"
+        ],
+        "steps": [
+          {
+            "id": "check-ollama",
+            "title": "检查 Ollama 服务",
+            "instruction": "确认 11434 端口和模型列表。",
+            "actions": [
+              "启动 Ollama",
+              "执行 ollama list"
+            ],
+            "commands": [
+              "ollama list"
+            ],
+            "expected": "看到 qwen2.5:7b 和 bge-m3。",
+            "common_errors": [
+              "Connection refused：Ollama 未启动",
+              "模型名不同"
+            ]
+          },
+          {
+            "id": "pull-models",
+            "title": "下载缺失模型",
+            "instruction": "下载对话模型和 Embedding 模型。",
+            "actions": [
+              "运行 ollama pull",
+              "等待下载完成"
+            ],
+            "commands": [
+              "ollama pull qwen2.5:7b",
+              "ollama pull bge-m3"
+            ],
+            "expected": "ollama list 能看到两个模型。",
+            "common_errors": [
+              "磁盘不足",
+              "网络超时"
+            ]
+          },
+          {
+            "id": "configure-settings",
+            "title": "配置 LlamaIndex",
+            "instruction": "在 rag.py 中设置 Settings.llm 和 Settings.embed_model。",
+            "actions": [
+              "导入 Ollama 和 OllamaEmbedding",
+              "设置 timeout",
+              "打印配置"
+            ],
+            "commands": [],
+            "expected": "脚本运行不报模型连接错误。",
+            "common_errors": [
+              "导入包名错误",
+              "Ollama 端口不对"
+            ]
+          },
+          {
+            "id": "build-local-index",
+            "title": "构建本地索引",
+            "instruction": "重新从 data 文档构建向量索引。",
+            "actions": [
+              "运行 rag.py",
+              "观察加载和索引日志"
+            ],
+            "commands": [
+              "python -X utf8 rag.py"
+            ],
+            "expected": "终端显示文档数量并生成 storage。",
+            "common_errors": [
+              "Embedding 超时",
+              "模型未下载"
+            ]
+          },
+          {
+            "id": "reload-test",
+            "title": "测试重新加载",
+            "instruction": "从 storage 加载索引并执行一次查询。",
+            "actions": [
+              "调用 load_index_from_storage",
+              "执行 query",
+              "记录耗时"
+            ],
+            "commands": [],
+            "expected": "无需重建索引即可返回结果。",
+            "common_errors": [
+              "storage 路径错误",
+              "模型配置变化"
+            ]
+          }
+        ],
+        "exercises": [
+          {
+            "id": "ex-1",
+            "title": "补全 LLM 配置",
+            "prompt": "把 Ollama 模型设置为 qwen2.5:7b。",
+            "starter": "from llama_index.llms.ollama import Ollama\nSettings.llm = Ollama(model=____)",
+            "answer": "from llama_index.llms.ollama import Ollama\nSettings.llm = Ollama(model=\"qwen2.5:7b\", request_timeout=120.0)",
+            "explanation": "模型名要用 Ollama 中存在的名称。"
+          },
+          {
+            "id": "ex-2",
+            "title": "补全 Embedding 配置",
+            "prompt": "设置 bge-m3 为 Embedding 模型。",
+            "starter": "from llama_index.embeddings.ollama import OllamaEmbedding\nSettings.embed_model = OllamaEmbedding(model_name=____)",
+            "answer": "from llama_index.embeddings.ollama import OllamaEmbedding\nSettings.embed_model = OllamaEmbedding(model_name=\"bge-m3\")",
+            "explanation": "Embedding 模型负责把文档和问题转成向量。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "rag-query-engine",
+      "number": 23,
+      "title": "RAG 查询引擎：检索、引用与 Prompt 组装",
+      "module": "第六阶段：LLM 应用工程实战",
+      "duration": "80-110 分钟",
+      "summary": "把索引变成查询引擎，让回答带上引用来源，并实现 /ask 接口返回答案、引用和耗时。",
+      "file": "23-rag-query-engine.md",
+      "external": [
+        {
+          "title": "LlamaIndex Query Engine",
+          "url": "https://developers.llamaindex.ai/python/framework/"
+        },
+        {
+          "title": "FastAPI 请求体",
+          "url": "https://fastapi.tiangolo.com/tutorial/body/"
+        }
+      ],
+      "quiz": [
+        {
+          "id": "q1",
+          "question": "查询引擎和索引的分工是什么？",
+          "options": [
+            "两者完全相同",
+            "索引负责生成文字，查询引擎只保存文件",
+            "索引负责组织和保存内容，查询引擎负责检索并生成回答",
+            "查询引擎负责训练 Embedding"
+          ],
+          "answer": 2,
+          "explanation": "索引是数据结构，查询引擎是使用索引回答问题的流程。",
+          "knowledge_point": "rag.index-vs-query-engine"
+        },
+        {
+          "id": "q2",
+          "question": "回答中保留引用来源有什么价值？",
+          "options": [
+            "替代所有测试",
+            "让模型不消耗显存",
+            "帮助用户核查答案来自哪些资料",
+            "让回答字符数一定变多"
+          ],
+          "answer": 2,
+          "explanation": "引用提高可验证性和可信度。",
+          "knowledge_point": "rag.citations"
+        },
+        {
+          "id": "q3",
+          "question": "top_k 通常控制什么？",
+          "options": [
+            "检索时取回多少个相关片段",
+            "最多允许多少用户注册",
+            "模型参数数量",
+            "训练多少轮"
+          ],
+          "answer": 0,
+          "explanation": "top_k 越大召回内容越多，但上下文也更长。",
+          "knowledge_point": "rag.top-k"
+        }
+      ],
+      "code_quiz": [
+        {
+          "id": "cq1",
+          "question": "这行代码返回什么？",
+          "options": [
+            "报错",
+            "RAG 查询生成的文本答案",
+            "检索到的全部文档文件",
+            "QueryEngine 对象"
+          ],
+          "answer": 1,
+          "explanation": "response.response 保存生成答案。",
+          "knowledge_point": "rag.query-response",
+          "kind": "output",
+          "code": "response = query_engine.query(\"什么是RAG？\")\nprint(response.response)"
+        },
+        {
+          "id": "cq2",
+          "question": "为什么这段查询代码无法工作？",
+          "options": [
+            "query 只能返回图片",
+            "问题不能包含中文",
+            "print 必须放在第一行",
+            "没有先根据索引创建 query_engine"
+          ],
+          "answer": 3,
+          "explanation": "None 没有 query 方法。",
+          "knowledge_point": "rag.missing-engine",
+          "kind": "bug",
+          "code": "engine = None\nresponse = engine.query(\"什么是RAG？\")",
+          "error_type": "none-object"
+        },
+        {
+          "id": "cq3",
+          "question": "把 similarity_top_k 从 2 改成 5，通常会怎样？",
+          "options": [
+            "送回模型的检索片段变多，引用和上下文都增加",
+            "模型只会返回 5 个字",
+            "文档数量自动减少",
+            "Embedding 模型被替换"
+          ],
+          "answer": 0,
+          "explanation": "top_k 控制检索片段数量。",
+          "knowledge_point": "rag.top-k-parameter",
+          "kind": "parameter",
+          "code": "query_engine = index.as_query_engine(similarity_top_k=2)"
+        }
+      ],
+      "project": {
+        "deliverable": "带引用来源和耗时的 /ask FastAPI 接口。",
+        "estimated_minutes": 100,
+        "prerequisites": [
+          "完成第 22 节",
+          "storage 索引已可用"
+        ],
+        "steps": [
+          {
+            "id": "create-ask",
+            "title": "创建 ask 函数",
+            "instruction": "在 rag.py 中封装加载索引、查询、引用和耗时。",
+            "actions": [
+              "增加 ask 函数",
+              "记录开始和结束时间",
+              "整理 source 列表"
+            ],
+            "commands": [
+              "python -X utf8 rag.py"
+            ],
+            "expected": "终端打印答案、来源和耗时。",
+            "common_errors": [
+              "索引未加载",
+              "模型未启动"
+            ]
+          },
+          {
+            "id": "prompt-template",
+            "title": "调整回答提示词",
+            "instruction": "要求模型只根据检索内容回答并附引用。",
+            "actions": [
+              "添加 QA prompt 模板",
+              "明确不知道时如何回答",
+              "测试两个问题"
+            ],
+            "commands": [],
+            "expected": "回答中出现引用资料名称。",
+            "common_errors": [
+              "提示词要求与代码输出不一致"
+            ]
+          },
+          {
+            "id": "ask-endpoint",
+            "title": "实现 /ask 接口",
+            "instruction": "在 FastAPI 中接收 question 并调用 ask。",
+            "actions": [
+              "导入请求模型",
+              "添加路由",
+              "返回答案和引用"
+            ],
+            "commands": [
+              "uvicorn app_fastapi:app --reload --port 8000"
+            ],
+            "expected": "/docs 中可以看到 /ask。",
+            "common_errors": [
+              "路由未注册",
+              "请求模型字段不匹配"
+            ]
+          },
+          {
+            "id": "test-ask",
+            "title": "测试 /ask",
+            "instruction": "用 PowerShell 或 /docs 发送问题。",
+            "actions": [
+              "选择一个知识库相关问题",
+              "观察 JSON 字段",
+              "记录耗时"
+            ],
+            "commands": [
+              "Invoke-RestMethod -Uri http://127.0.0.1:8000/ask -Method Post -ContentType application/json -Body '{\"question\":\"项目有哪些AI实践\"}'"
+            ],
+            "expected": "返回 answer、sources、latency_ms。",
+            "common_errors": [
+              "500：检查终端堆栈",
+              "空 sources：检查索引和数据"
+            ]
+          },
+          {
+            "id": "note-result",
+            "title": "写入笔记",
+            "instruction": "把一次完整请求和引用记录到课程笔记。",
+            "actions": [
+              "复制请求 JSON",
+              "复制回答摘要",
+              "记录耗时"
+            ],
+            "commands": [],
+            "expected": "笔记中有一条完整 /ask 实验结果。",
+            "common_errors": [
+              "只记答案没有记录来源和耗时"
+            ]
+          }
+        ],
+        "exercises": [
+          {
+            "id": "ex-1",
+            "title": "创建查询引擎",
+            "prompt": "用 index 创建 query_engine。",
+            "starter": "query_engine = index.____()",
+            "answer": "query_engine = index.as_query_engine(similarity_top_k=3)",
+            "explanation": "as_query_engine 把索引包装成提问入口。"
+          },
+          {
+            "id": "ex-2",
+            "title": "整理引用",
+            "prompt": "把 source_nodes 转成文件名列表。",
+            "starter": "sources = []\nfor node in response.source_nodes:\n    # 补全来源名称\n    pass",
+            "answer": "sources = []\nfor node in response.source_nodes:\n    sources.append(node.metadata.get(\"file_name\", \"unknown\"))",
+            "explanation": "metadata 中通常保存 file_name。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "memory-streaming",
+      "number": 24,
+      "title": "会话记忆与流式输出",
+      "module": "第六阶段：LLM 应用工程实战",
+      "duration": "80-110 分钟",
+      "summary": "保存多轮对话历史，并让 FastAPI 逐步返回模型输出。",
+      "file": "24-memory-streaming.md",
+      "external": [
+        {
+          "title": "FastAPI StreamingResponse",
+          "url": "https://fastapi.tiangolo.com/advanced/custom-response/"
+        },
+        {
+          "title": "LlamaIndex Streaming",
+          "url": "https://developers.llamaindex.ai/python/framework/"
+        }
+      ],
+      "quiz": [
+        {
+          "id": "q1",
+          "question": "会话记忆解决什么问题？",
+          "options": [
+            "让数据库自动扩容",
+            "让后续问题能引用之前对话内容",
+            "让模型记住训练数据",
+            "替代所有提示词"
+          ],
+          "answer": 1,
+          "explanation": "记忆保存的是当前会话上下文。",
+          "knowledge_point": "llm.conversation-memory"
+        },
+        {
+          "id": "q2",
+          "question": "流式输出的主要体验优势是什么？",
+          "options": [
+            "不用等完整答案生成完才看到内容",
+            "不需要网络",
+            "减少所有显存占用",
+            "让模型准确率变成百分之百"
+          ],
+          "answer": 0,
+          "explanation": "流式让用户更早看到首个片段。",
+          "knowledge_point": "llm.streaming-benefit"
+        },
+        {
+          "id": "q3",
+          "question": "为什么流式接口和普通 JSON 接口写法不同？",
+          "options": [
+            "普通接口不能返回文字",
+            "流式需要持续返回多个数据片段，而不是一次返回完整 JSON",
+            "流式接口必须是图片",
+            "流式接口不能使用 HTTP"
+          ],
+          "answer": 1,
+          "explanation": "响应从单次 JSON 变成持续数据流。",
+          "knowledge_point": "fastapi.streaming-response"
+        }
+      ],
+      "code_quiz": [
+        {
+          "id": "cq1",
+          "question": "这段代码保存了什么？",
+          "options": [
+            "0",
+            "1",
+            "报错",
+            "user"
+          ],
+          "answer": 1,
+          "explanation": "history 中新增一条消息。",
+          "knowledge_point": "llm.memory-history",
+          "kind": "output",
+          "code": "history = []\nhistory.append({\"role\": \"user\", \"content\": \"什么是RAG\"})\nprint(len(history))"
+        },
+        {
+          "id": "cq2",
+          "question": "为什么这个流式接口无法逐步输出？",
+          "options": [
+            "必须使用 GET",
+            "函数名不能叫 stream_ask",
+            "返回的是普通字典，不是流式响应对象",
+            "字典不能包含中文"
+          ],
+          "answer": 2,
+          "explanation": "流式需要使用 StreamingResponse 或异步生成器。",
+          "knowledge_point": "fastapi.streaming-return",
+          "kind": "bug",
+          "code": "@app.post(\"/ask/stream\")\ndef stream_ask():\n    return {\"answer\": \"完整答案\"}",
+          "error_type": "wrong-response-type"
+        },
+        {
+          "id": "cq3",
+          "question": "把最大历史轮数从 5 改到 10，会有什么影响？",
+          "options": [
+            "回答一定更准确",
+            "数据库自动删除",
+            "保留更多上下文，但请求 Token 和延迟可能增加",
+            "模型参数量翻倍"
+          ],
+          "answer": 2,
+          "explanation": "上下文越长成本越高。",
+          "knowledge_point": "llm.max-history-parameter",
+          "kind": "parameter",
+          "code": "max_history = 5"
+        }
+      ],
+      "project": {
+        "deliverable": "支持 conversation_id 和流式返回的 /ask/stream。",
+        "estimated_minutes": 100,
+        "prerequisites": [
+          "完成第 23 节"
+        ],
+        "steps": [
+          {
+            "id": "memory-store",
+            "title": "创建会话存储",
+            "instruction": "用 SQLite 或字典保存 conversation_id 和消息。",
+            "actions": [
+              "创建 memory.py",
+              "写 add_message 和 get_history",
+              "限制历史长度"
+            ],
+            "commands": [
+              "python -X utf8 memory.py"
+            ],
+            "expected": "终端打印保存的多轮消息。",
+            "common_errors": [
+              "键名不一致",
+              "没有限制历史长度"
+            ]
+          },
+          {
+            "id": "memory-api",
+            "title": "接入 /ask",
+            "instruction": "请求中带 conversation_id，回答前读取历史。",
+            "actions": [
+              "修改请求模型",
+              "读取历史并拼入查询",
+              "返回 conversation_id"
+            ],
+            "commands": [],
+            "expected": "同一 conversation_id 的第二问能引用上文。",
+            "common_errors": [
+              "每次生成新 id",
+              "历史未传入模型"
+            ]
+          },
+          {
+            "id": "stream-endpoint",
+            "title": "实现流式接口",
+            "instruction": "使用 StreamingResponse 返回文本片段。",
+            "actions": [
+              "写 async generator",
+              "返回 StreamingResponse",
+              "处理中断"
+            ],
+            "commands": [
+              "curl.exe -N -X POST http://127.0.0.1:8000/ask/stream -H \"Content-Type: application/json\" -d '{\"question\":\"介绍项目\"}'"
+            ],
+            "expected": "终端逐步出现内容。",
+            "common_errors": [
+              "全部内容仍一次性返回",
+              "浏览器缓冲导致看不到流"
+            ]
+          },
+          {
+            "id": "stream-test",
+            "title": "测试流式体验",
+            "instruction": "记录首个片段时间和总耗时。",
+            "actions": [
+              "运行 curl",
+              "观察时间",
+              "写入笔记"
+            ],
+            "commands": [],
+            "expected": "笔记中有首 Token 时间和总耗时。",
+            "common_errors": [
+              "只记录最终答案"
+            ]
+          },
+          {
+            "id": "compare-stream",
+            "title": "比较两种接口",
+            "instruction": "对比普通 /ask 和流式 /ask/stream。",
+            "actions": [
+              "分别请求两个接口",
+              "记录差异"
+            ],
+            "commands": [],
+            "expected": "笔记中至少列出 3 条差异。",
+            "common_errors": [
+              "输入问题不同导致比较不公平"
+            ]
+          }
+        ],
+        "exercises": [
+          {
+            "id": "ex-1",
+            "title": "补全会话追加",
+            "prompt": "把用户消息追加到 history。",
+            "starter": "history.append({\"role\": ____, \"content\": question})",
+            "answer": "history.append({\"role\": \"user\", \"content\": question})",
+            "explanation": "role 用 user 表示用户消息。"
+          },
+          {
+            "id": "ex-2",
+            "title": "补全流式响应",
+            "prompt": "返回 FastAPI StreamingResponse。",
+            "starter": "from fastapi.responses import StreamingResponse\nreturn ____(generator(), media_type=\"text/plain\")",
+            "answer": "from fastapi.responses import StreamingResponse\nreturn StreamingResponse(generator(), media_type=\"text/plain\")",
+            "explanation": "StreamingResponse 接收生成器和媒体类型。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "interview-agent-tools",
+      "number": 25,
+      "title": "工具调用与面试题 Agent",
+      "module": "第六阶段：LLM 应用工程实战",
+      "duration": "90-120 分钟",
+      "summary": "给 AI 面试助手增加面试题抽取、分类和随机抽题工具，理解工具 Schema、Agent 循环和最大步数。",
+      "file": "25-interview-agent-tools.md",
+      "external": [
+        {
+          "title": "LlamaIndex Agents",
+          "url": "https://developers.llamaindex.ai/python/framework/"
+        },
+        {
+          "title": "Microsoft Agents for Beginners",
+          "url": "https://github.com/microsoft/ai-agents-for-beginners"
+        }
+      ],
+      "quiz": [
+        {
+          "id": "q1",
+          "question": "工具 Schema 对 Agent 有什么作用？",
+          "options": [
+            "训练 Embedding 模型",
+            "保存用户密码",
+            "告诉模型工具名称、用途和参数格式",
+            "决定网页颜色"
+          ],
+          "answer": 2,
+          "explanation": "工具 Schema 是模型调用工具前的接口说明。",
+          "knowledge_point": "agent.tool-schema"
+        },
+        {
+          "id": "q2",
+          "question": "Agent Loop 为什么需要最大步数？",
+          "options": [
+            "减少数据库表数量",
+            "保证每次回答完全正确",
+            "让模型参数量变小",
+            "防止工具调用无限循环和资源浪费"
+          ],
+          "answer": 3,
+          "explanation": "最大步数是安全停止条件。",
+          "knowledge_point": "agent.max-steps"
+        },
+        {
+          "id": "q3",
+          "question": "面试题随机抽题工具应该返回什么？",
+          "options": [
+            "返回整个知识库文件",
+            "只返回系统时间",
+            "只返回一个随机数字",
+            "题目、分类、难度和参考答案摘要"
+          ],
+          "answer": 3,
+          "explanation": "工具输出应结构化，便于生成提问和点评。",
+          "knowledge_point": "agent.tool-output-shape"
+        }
+      ],
+      "code_quiz": [
+        {
+          "id": "cq1",
+          "question": "这段工具函数返回什么？",
+          "options": [
+            "1",
+            "报错",
+            "RAG是什么",
+            "items"
+          ],
+          "answer": 2,
+          "explanation": "函数返回列表第一个元素。",
+          "knowledge_point": "agent.tool-return-shape",
+          "kind": "output",
+          "code": "def pick_question(items):\n    return items[0]\nprint(pick_question([\"RAG是什么\", \"Agent是什么\"]))"
+        },
+        {
+          "id": "cq2",
+          "question": "这个工具调用为什么可能失败？",
+          "options": [
+            "return 不能返回字符串",
+            "题目不能是中文",
+            "函数缺少 items 参数",
+            "列表不能保存字符串"
+          ],
+          "answer": 2,
+          "explanation": "实参数量必须满足函数参数要求。",
+          "knowledge_point": "agent.tool-missing-argument",
+          "kind": "bug",
+          "code": "def pick_question(items):\n    return items[0]\n\npick_question()",
+          "error_type": "argument"
+        },
+        {
+          "id": "cq3",
+          "question": "把 max_iterations 从 3 改成 1，会有什么影响？",
+          "options": [
+            "数据库被重建",
+            "工具数量减少一半",
+            "模型准确率自动提升",
+            "Agent 更少进行工具循环，复杂任务可能提前停止"
+          ],
+          "answer": 3,
+          "explanation": "最大迭代次数限制决策和工具调用次数。",
+          "knowledge_point": "agent.max-iterations-parameter",
+          "kind": "parameter",
+          "code": "agent = ReActAgent(max_iterations=3)"
+        }
+      ],
+      "project": {
+        "deliverable": "能抽取、分类和随机抽取面试题的 Agent 接口。",
+        "estimated_minutes": 110,
+        "prerequisites": [
+          "完成第 24 节",
+          "知识库中已包含面试题资料"
+        ],
+        "steps": [
+          {
+            "id": "tools-file",
+            "title": "创建工具函数",
+            "instruction": "在 tools.py 中写三个纯 Python 工具。",
+            "actions": [
+              "创建分类统计函数",
+              "创建随机抽题函数",
+              "写简单测试"
+            ],
+            "commands": [
+              "python -X utf8 tools.py"
+            ],
+            "expected": "终端输出分类统计和随机题。",
+            "common_errors": [
+              "函数参数不一致",
+              "随机结果无法测试"
+            ]
+          },
+          {
+            "id": "tool-schemas",
+            "title": "定义工具 Schema",
+            "instruction": "为每个工具写名称、说明和参数结构。",
+            "actions": [
+              "创建 schemas 列表",
+              "给参数加说明",
+              "检查默认值"
+            ],
+            "commands": [],
+            "expected": "打印 Schema 时字段完整。",
+            "common_errors": [
+              "参数类型不明确",
+              "工具名称重复"
+            ]
+          },
+          {
+            "id": "agent-file",
+            "title": "创建 Agent",
+            "instruction": "用 LlamaIndex Agent 注册工具和本地 LLM。",
+            "actions": [
+              "创建 agent.py",
+              "加载 LLM",
+              "注册工具"
+            ],
+            "commands": [],
+            "expected": "Agent 可以处理“随机抽一道 RAG 题”。",
+            "common_errors": [
+              "工具未注册",
+              "模型不支持工具调用"
+            ]
+          },
+          {
+            "id": "agent-endpoint",
+            "title": "增加 /agent 接口",
+            "instruction": "接收任务并返回思考摘要和工具结果。",
+            "actions": [
+              "添加路由",
+              "限制最大步数",
+              "返回结构化结果"
+            ],
+            "commands": [
+              "Invoke-RestMethod -Uri http://127.0.0.1:8000/agent -Method Post -ContentType application/json -Body '{\"task\":\"随机抽一道RAG题\"}'"
+            ],
+            "expected": "返回题目、分类和工具调用记录。",
+            "common_errors": [
+              "无限循环：降低 max_iterations",
+              "模型不调用工具：改小任务"
+            ]
+          },
+          {
+            "id": "agent-note",
+            "title": "记录 Agent 设计",
+            "instruction": "在笔记中写下工具、参数和停止条件。",
+            "actions": [
+              "列出三个工具",
+              "记录一次工具调用",
+              "写失败场景"
+            ],
+            "commands": [],
+            "expected": "笔记能说明 Agent 为什么需要工具 Schema。",
+            "common_errors": [
+              "只记录成功结果"
+            ]
+          }
+        ],
+        "exercises": [
+          {
+            "id": "ex-1",
+            "title": "补全随机抽题",
+            "prompt": "使用 random.choice 返回随机题目。",
+            "starter": "import random\n\ndef pick_question(items):\n    # 返回随机题目\n    pass",
+            "answer": "import random\n\ndef pick_question(items):\n    return random.choice(items)",
+            "explanation": "random.choice 从列表中随机选择一个元素。"
+          },
+          {
+            "id": "ex-2",
+            "title": "补全工具参数",
+            "prompt": "给工具函数增加 question 参数。",
+            "starter": "def classify_question(question):\n    return {\"question\": question, \"category\": \"RAG\"}",
+            "answer": "def classify_question(question: str):\n    return {\"question\": question, \"category\": \"RAG\"}",
+            "explanation": "类型标注能帮助生成清晰的工具 Schema。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "rag-evaluation",
+      "number": 26,
+      "title": "自建评测：命中率、引用覆盖率、延迟与完整度",
+      "module": "第六阶段：LLM 应用工程实战",
+      "duration": "80-110 分钟",
+      "summary": "建立测试问题集，自己实现 RAG 评测指标，生成可展示的评测报告。",
+      "file": "26-rag-evaluation.md",
+      "external": [
+        {
+          "title": "LlamaIndex Evaluation",
+          "url": "https://developers.llamaindex.ai/python/framework/"
+        },
+        {
+          "title": "Microsoft Generative AI for Beginners",
+          "url": "https://github.com/microsoft/generative-ai-for-beginners"
+        }
+      ],
+      "quiz": [
+        {
+          "id": "q1",
+          "question": "命中率通常衡量什么？",
+          "options": [
+            "硬件温度",
+            "数据库文件大小",
+            "模型训练了多少轮",
+            "标准答案关键词或资料是否出现在回答或检索结果中"
+          ],
+          "answer": 3,
+          "explanation": "命中率是最容易实现的轻量检索质量指标。",
+          "knowledge_point": "evaluation.hit-rate"
+        },
+        {
+          "id": "q2",
+          "question": "引用覆盖率衡量什么？",
+          "options": [
+            "用户是否登录",
+            "接口端口是否开放",
+            "显卡是否启用",
+            "回答中有依据的结论覆盖了多少目标资料点"
+          ],
+          "answer": 3,
+          "explanation": "引用覆盖率反映答案对检索资料的使用程度。",
+          "knowledge_point": "evaluation.citation-coverage"
+        },
+        {
+          "id": "q3",
+          "question": "为什么评测要同时看质量和延迟？",
+          "options": [
+            "延迟越高质量越好",
+            "只看延迟就够了",
+            "更完整准确的回答往往需要更多检索和生成时间",
+            "速度和准确率永远无关"
+          ],
+          "answer": 2,
+          "explanation": "工程需要平衡效果和成本。",
+          "knowledge_point": "evaluation.quality-latency-tradeoff"
+        }
+      ],
+      "code_quiz": [
+        {
+          "id": "cq1",
+          "question": "这个命中率函数返回什么？",
+          "options": [
+            "4",
+            "0.75",
+            "3",
+            "True"
+          ],
+          "answer": 1,
+          "explanation": "4 个中有 3 个命中，比例是 0.75。",
+          "knowledge_point": "evaluation.hit-rate-function",
+          "kind": "output",
+          "code": "def hit_rate(answers):\n    return sum(1 for item in answers if item) / len(answers)\nprint(hit_rate([True, False, True, True]))"
+        },
+        {
+          "id": "cq2",
+          "question": "这个命中率函数有什么风险？",
+          "options": [
+            "函数必须有 print",
+            "当 answers 为空时会除以 0",
+            "True 不能参与求和",
+            "sum 不能处理生成器"
+          ],
+          "answer": 1,
+          "explanation": "空测试集会触发 ZeroDivisionError。",
+          "knowledge_point": "evaluation.empty-dataset",
+          "kind": "bug",
+          "code": "def hit_rate(answers):\n    return sum(1 for item in answers if item) / len(answers)",
+          "error_type": "division-by-zero"
+        },
+        {
+          "id": "cq3",
+          "question": "把测试问题从 5 条增加到 30 条，会有什么变化？",
+          "options": [
+            "准确率一定变成 100%",
+            "模型参数增加",
+            "评测时间增加，但指标通常更稳定",
+            "数据库自动删除旧问题"
+          ],
+          "answer": 2,
+          "explanation": "测试样本越多，评估波动通常越小。",
+          "knowledge_point": "evaluation.dataset-size-parameter",
+          "kind": "parameter",
+          "code": "questions = load_questions()"
+        }
+      ],
+      "project": {
+        "deliverable": "evaluate.py 和一份 Markdown/CSV 评测报告。",
+        "estimated_minutes": 100,
+        "prerequisites": [
+          "完成第 25 节",
+          "存在可运行知识库和题库"
+        ],
+        "steps": [
+          {
+            "id": "questions-file",
+            "title": "创建测试问题集",
+            "instruction": "至少写 10 条问题和标准关键词。",
+            "actions": [
+              "创建 data/eval_questions.json",
+              "写 question 和 keywords",
+              "保存"
+            ],
+            "commands": [
+              "python -X utf8 -m json.tool data/eval_questions.json"
+            ],
+            "expected": "JSON 校验通过。",
+            "common_errors": [
+              "JSON 尾逗号",
+              "中文编码"
+            ]
+          },
+          {
+            "id": "metrics-file",
+            "title": "实现指标函数",
+            "instruction": "编写命中率、引用覆盖率、延迟和完整度函数。",
+            "actions": [
+              "创建 metrics.py",
+              "为函数写小测试",
+              "处理空列表"
+            ],
+            "commands": [],
+            "expected": "每个指标函数有预期输入输出。",
+            "common_errors": [
+              "除零错误",
+              "把比例和百分比混淆"
+            ]
+          },
+          {
+            "id": "evaluate-script",
+            "title": "实现 evaluate.py",
+            "instruction": "遍历问题集调用接口并汇总指标。",
+            "actions": [
+              "读取问题",
+              "请求 /ask",
+              "写入 CSV 和 Markdown"
+            ],
+            "commands": [
+              "python -X utf8 evaluate.py"
+            ],
+            "expected": "生成 evaluation_report.md/csv。",
+            "common_errors": [
+              "接口未启动",
+              "超时未处理"
+            ]
+          },
+          {
+            "id": "metric-run",
+            "title": "运行评测",
+            "instruction": "用至少 10 个问题运行并记录结果。",
+            "actions": [
+              "执行评测",
+              "查看失败问题",
+              "写优化建议"
+            ],
+            "commands": [],
+            "expected": "报告中包含 4 个指标和失败案例。",
+            "common_errors": [
+              "只看平均分不看失败样本"
+            ]
+          },
+          {
+            "id": "optimize-note",
+            "title": "提出优化方案",
+            "instruction": "根据评测结果写下一步优化方向。",
+            "actions": [
+              "分析引用覆盖率低的问题",
+              "分析延迟高的问题",
+              "写入笔记"
+            ],
+            "commands": [],
+            "expected": "至少提出 2 条可执行优化建议。",
+            "common_errors": [
+              "建议空泛无法验证"
+            ]
+          }
+        ],
+        "exercises": [
+          {
+            "id": "ex-1",
+            "title": "补全安全除法",
+            "prompt": "避免空测试集导致除零。",
+            "starter": "def safe_ratio(numerator, denominator):\n    # 补全安全除法\n    pass",
+            "answer": "def safe_ratio(numerator, denominator):\n    return numerator / denominator if denominator else 0.0",
+            "explanation": "分母为 0 时返回 0.0。"
+          },
+          {
+            "id": "ex-2",
+            "title": "补全引用覆盖",
+            "prompt": "计算回答包含的引用数量占比。",
+            "starter": "def citation_coverage(answer, sources):\n    # 补全计算\n    pass",
+            "answer": "def citation_coverage(answer, sources):\n    if not sources:\n        return 0.0\n    cited = sum(1 for source in sources if source in answer)\n    return cited / len(sources)",
+            "explanation": "先处理空来源，再统计命中比例。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "frontend-docker",
+      "number": 27,
+      "title": "极简前端与 Docker：完成可演示的 AI 面试助手",
+      "module": "第六阶段：LLM 应用工程实战",
+      "duration": "90-120 分钟",
+      "summary": "完成最小上传/提问页面、Dockerfile、启动文档和面试演示脚本，把连续项目收尾。",
+      "file": "27-frontend-docker.md",
+      "external": [
+        {
+          "title": "FastAPI Templates",
+          "url": "https://fastapi.tiangolo.com/advanced/templates/"
+        },
+        {
+          "title": "Docker Get Started",
+          "url": "https://docs.docker.com/get-started/"
+        }
+      ],
+      "quiz": [
+        {
+          "id": "q1",
+          "question": "为什么 LLM 项目最后需要一个最小前端？",
+          "options": [
+            "让非开发者也能上传资料、提问和查看引用",
+            "前端能替代后端鉴权",
+            "前端可以让模型不用训练",
+            "前端会提高模型参数量"
+          ],
+          "answer": 0,
+          "explanation": "前端负责交互，后端仍负责模型和数据。",
+          "knowledge_point": "frontend.purpose"
+        },
+        {
+          "id": "q2",
+          "question": "Dockerfile 的基本作用是什么？",
+          "options": [
+            "自动生成面试答案",
+            "把应用和运行环境打包成可重复构建的镜像",
+            "替代所有配置文件",
+            "训练模型参数"
+          ],
+          "answer": 1,
+          "explanation": "Docker 解决环境一致性和部署复现。",
+          "knowledge_point": "docker.image-build"
+        },
+        {
+          "id": "q3",
+          "question": "为什么容器端口映射要和应用端口一致？",
+          "options": [
+            "端口相同才能保存文件",
+            "外部访问映射端口，容器内部仍监听应用配置端口",
+            "不映射端口更安全",
+            "端口映射决定模型大小"
+          ],
+          "answer": 1,
+          "explanation": "例如 8000:8000 表示主机 8000 转发到容器 8000。",
+          "knowledge_point": "docker.port-mapping"
+        }
+      ],
+      "code_quiz": [
+        {
+          "id": "cq1",
+          "question": "这段前端请求成功后返回什么？",
+          "options": [
+            "后端返回的 answer 字段",
+            "fetch 函数本身",
+            "整个网页 HTML",
+            "Dockerfile 内容"
+          ],
+          "answer": 0,
+          "explanation": "fetch 解析 JSON 后读取 answer。",
+          "knowledge_point": "frontend.fetch-answer",
+          "kind": "output",
+          "code": "response = await fetch(\"/ask\", {method: \"POST\"})\ndata = await response.json()\nconsole.log(data.answer)"
+        },
+        {
+          "id": "cq2",
+          "question": "这个 POST 请求为什么可能拿不到 JSON？",
+          "options": [
+            "JSON.stringify 会删除字符串",
+            "POST 不能使用 fetch",
+            "必须使用 GET",
+            "没有设置 Content-Type: application/json"
+          ],
+          "answer": 3,
+          "explanation": "后端需要知道请求体是 JSON。",
+          "knowledge_point": "frontend.content-type-header",
+          "kind": "bug",
+          "code": "fetch(\"/ask\", {method: \"POST\", body: JSON.stringify({question: \"RAG是什么\"})})",
+          "error_type": "missing-header"
+        },
+        {
+          "id": "cq3",
+          "question": "Docker 命令把 8000:8000 改成 9000:8000 后会怎样？",
+          "options": [
+            "浏览器会自动使用 8000",
+            "容器内部也变成 9000",
+            "应用端口被删除",
+            "主机访问 9000，容器内部应用仍然监听 8000"
+          ],
+          "answer": 3,
+          "explanation": "冒号左边是主机端口，右边是容器端口。",
+          "knowledge_point": "docker.port-parameter",
+          "kind": "parameter",
+          "code": "docker run -p 8000:8000 ai-interview-assistant"
+        }
+      ],
+      "project": {
+        "deliverable": "带极简前端、Dockerfile 和演示说明的完整 AI 面试知识库助手。",
+        "estimated_minutes": 120,
+        "prerequisites": [
+          "完成第 26 节",
+          "Ollama 可用",
+          "Docker Desktop 可选"
+        ],
+        "steps": [
+          {
+            "id": "html-page",
+            "title": "创建最小前端",
+            "instruction": "用 HTML、CSS 和 fetch 写上传、提问和引用展示。",
+            "actions": [
+              "创建 templates/index.html",
+              "写问题输入和按钮",
+              "写结果区域"
+            ],
+            "commands": [
+              "浏览器打开 http://127.0.0.1:8000/"
+            ],
+            "expected": "页面能显示提问框和结果。",
+            "common_errors": [
+              "JS 语法错误",
+              "API 地址错误"
+            ]
+          },
+          {
+            "id": "serve-page",
+            "title": "后端返回页面",
+            "instruction": "在 FastAPI 中挂载 Jinja2 模板。",
+            "actions": [
+              "安装 jinja2",
+              "使用 TemplateResponse",
+              "测试首页"
+            ],
+            "commands": [],
+            "expected": "访问首页显示 HTML 页面。",
+            "common_errors": [
+              "模板目录错误",
+              "路由冲突"
+            ]
+          },
+          {
+            "id": "frontend-test",
+            "title": "测试完整问答",
+            "instruction": "在网页中提问并检查引用和耗时。",
+            "actions": [
+              "输入 3 个问题",
+              "检查 sources",
+              "检查 latency"
+            ],
+            "commands": [],
+            "expected": "每次回答都能显示答案和来源。",
+            "common_errors": [
+              "CORS 或请求头错误",
+              "问题为空"
+            ]
+          },
+          {
+            "id": "dockerfile",
+            "title": "编写 Dockerfile",
+            "instruction": "创建 Python 3.12 镜像并安装依赖。",
+            "actions": [
+              "写 Dockerfile",
+              "写 .dockerignore",
+              "构建镜像"
+            ],
+            "commands": [
+              "docker build -t ai-interview-assistant ."
+            ],
+            "expected": "镜像构建成功。",
+            "common_errors": [
+              "依赖下载慢",
+              "复制整个 .venv"
+            ]
+          },
+          {
+            "id": "docker-run",
+            "title": "运行并演示",
+            "instruction": "运行容器并完成面试演示说明。",
+            "actions": [
+              "启动容器",
+              "访问端口",
+              "写 3 分钟演示脚本"
+            ],
+            "commands": [
+              "docker run -p 8000:8000 ai-interview-assistant"
+            ],
+            "expected": "浏览器可完成提问并显示引用。",
+            "common_errors": [
+              "端口冲突",
+              "Ollama 在容器外需要 host.docker.internal"
+            ]
+          }
+        ],
+        "exercises": [
+          {
+            "id": "ex-1",
+            "title": "补全前端请求头",
+            "prompt": "给 fetch 增加 JSON 请求头。",
+            "starter": "fetch(\"/ask\", {\n  method: \"POST\",\n  headers: {____},\n  body: JSON.stringify({question})\n})",
+            "answer": "fetch(\"/ask\", {\n  method: \"POST\",\n  headers: {\"Content-Type\": \"application/json\"},\n  body: JSON.stringify({question})\n})",
+            "explanation": "请求头告诉后端请求体是 JSON。"
+          },
+          {
+            "id": "ex-2",
+            "title": "补全 Docker 端口",
+            "prompt": "把主机 8000 映射到容器 8000。",
+            "starter": "docker run -p ____ ai-interview-assistant",
+            "answer": "docker run -p 8000:8000 ai-interview-assistant",
+            "explanation": "冒号左边主机端口，右边容器端口。"
+          }
+        ]
+      }
     }
   ]
 }

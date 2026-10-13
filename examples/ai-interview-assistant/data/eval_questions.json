@@ -1,0 +1,4 @@
+[
+  {"question": "项目使用了哪些本地 AI 技术？", "keywords": ["Ollama", "bge-m3", "LlamaIndex"]},
+  {"question": "项目提供了什么接口？", "keywords": ["FastAPI", "RAG", "ask"]}
+]

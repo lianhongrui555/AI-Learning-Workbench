@@ -58,7 +58,7 @@ http://127.0.0.1:5000/
 
 只使用以下功能时，不需要：
 
-- 17 节课程
+- 27 节课程
 - 学习进度
 - Markdown 笔记
 - 概念选择题和代码理解题
@@ -783,7 +783,7 @@ $shortcut.Save()
 
 ## 02 学习路线
 
-显示 5 个阶段、17 节课程：
+显示 6 个阶段、27 节课程：
 
 1. 什么是 AI、机器学习和生成式 AI
 2. 数据、特征、标签、训练与推理
@@ -802,6 +802,16 @@ $shortcut.Save()
 15. YOLO 训练实战：从配置到 best.pt
 16. 模型评估与调参：Precision、Recall、mAP
 17. YOLO 推理与 Flask 摄像头部署
+18. LLM 应用工程全景：建立项目骨架
+19. Flask 与 FastAPI 对比：最小模型 API
+20. Pydantic 配置与错误处理
+21. LlamaIndex 入门：加载、切片与索引
+22. Ollama 与 Embedding：构建本地知识库
+23. RAG 查询引擎：检索、引用与 Prompt 组装
+24. 会话记忆与流式输出
+25. 工具调用与面试题 Agent
+26. 自建评测：命中率、引用覆盖率、延迟与完整度
+27. 极简前端与 Docker：完成可演示的 AI 面试助手
 
 ## 03 项目实战
 
@@ -955,9 +965,9 @@ AI-Learning-Workbench/
 ├─ app.py                     # Flask 后端
 ├─ content_loader.py          # 课程加载和 Markdown 渲染
 ├─ content/
-│  ├─ curriculum.json         # 17 节课程元数据和小测
+│  ├─ curriculum.json         # 27 节课程元数据和小测
 │  ├─ projects.json           # 项目实战卡片
-│  └─ lessons/                # 17 节 Markdown 正文
+│  └─ lessons/                # 27 节 Markdown 正文
 ├─ templates/                 # 页面模板
 ├─ static/                    # 深色终端风 CSS 和 JavaScript
 ├─ data/                      # 本地 SQLite 数据，不提交

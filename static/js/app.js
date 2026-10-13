@@ -126,6 +126,38 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
+  document.querySelectorAll(".toggle-answer").forEach((button) => {
+    button.addEventListener("click", () => {
+      const target = document.getElementById(button.dataset.target);
+      if (!target) return;
+      const hidden = target.classList.toggle("hidden");
+      button.textContent = hidden ? "查看参考答案" : "收起参考答案";
+    });
+  });
+
+  document.querySelectorAll(".project-step-checkbox").forEach((checkbox) => {
+    checkbox.addEventListener("change", async () => {
+      const lessonPageElement = document.querySelector(".lesson-page");
+      const stepElement = checkbox.closest(".project-step");
+      if (!lessonPageElement || !stepElement) return;
+      const lessonId = lessonPageElement.dataset.lessonId;
+      const stepId = stepElement.dataset.stepId;
+      try {
+        const data = await apiJson(`/api/project-steps/${lessonId}/${stepId}`, {
+          method: "POST",
+          body: JSON.stringify({ completed: checkbox.checked }),
+        });
+        if (data.lesson_completed) {
+          lessonPageElement.dataset.completed = "1";
+          const lessonStatus = lessonPageElement.querySelector(".lesson-status");
+          if (lessonStatus) lessonStatus.textContent = "已完成";
+        }
+      } catch (error) {
+        checkbox.checked = !checkbox.checked;
+        alert(`步骤保存失败：${error.message}`);
+      }
+    });
+  });
   const tutorPage = document.querySelector("[data-tutor-page]");
   if (tutorPage) {
     const select = document.getElementById("tutor-lesson-select");

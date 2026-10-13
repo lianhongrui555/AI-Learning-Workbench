@@ -1,0 +1,10 @@
+fastapi>=0.115
+uvicorn>=0.30
+flask>=3.0
+requests>=2.31
+pydantic>=2.7
+pydantic-settings>=2.3
+llama-index-core>=0.12
+llama-index-llms-ollama>=0.6
+llama-index-embeddings-ollama>=0.5
+jinja2>=3.1

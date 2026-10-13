@@ -58,6 +58,50 @@
     <div id="code-quiz-result" class="result-box"></div>
   </section>
 
+  {% if project_steps %}
+  <section class="card project-steps-card">
+    <div class="eyebrow">PROJECT STEPS</div>
+    <h2>项目关卡</h2>
+    {% if lesson.project %}
+    <p><strong>本节作品：</strong>{{ lesson.project.deliverable }}</p>
+    <p><strong>预计时间：</strong>{{ lesson.project.estimated_minutes }} 分钟</p>
+    {% if lesson.project.prerequisites %}
+    <p><strong>前置条件：</strong>{{ lesson.project.prerequisites | join('；') }}</p>
+    {% endif %}
+    {% endif %}
+    {% for step in project_steps %}
+    <div class="project-step" data-step-id="{{ step.id }}">
+      <label class="step-check"><input type="checkbox" class="project-step-checkbox" {% if step.completed %}checked{% endif %}> 我已完成这一关</label>
+      <h3>{{ loop.index }}. {{ step.title }}</h3>
+      <p>{{ step.instruction }}</p>
+      {% if step.actions %}<ul>{% for action in step.actions %}<li>{{ action }}</li>{% endfor %}</ul>{% endif %}
+      {% if step.commands %}<pre class="code-snippet"><code>{{ step.commands | join('\n') }}</code></pre>{% endif %}
+      <p><strong>预期结果：</strong>{{ step.expected }}</p>
+      {% if step.common_errors %}<p><strong>常见错误：</strong>{{ step.common_errors | join('；') }}</p>{% endif %}
+    </div>
+    {% endfor %}
+  </section>
+  {% endif %}
+
+  {% if project_exercises %}
+  <section class="card project-exercises-card">
+    <div class="eyebrow">CODE EXERCISES</div>
+    <h2>代码填空</h2>
+    <p>先自己尝试补全，再点击“查看参考答案”。答案就在题目下方，不需要来回翻页。</p>
+    {% for exercise in project_exercises %}
+    <div class="exercise-card">
+      <h3>{{ loop.index }}. {{ exercise.title }}</h3>
+      <p>{{ exercise.prompt }}</p>
+      <pre class="code-snippet"><code>{{ exercise.starter }}</code></pre>
+      <button type="button" class="button ghost toggle-answer" data-target="answer-{{ loop.index }}">查看参考答案</button>
+      <div id="answer-{{ loop.index }}" class="answer-box hidden">
+        <pre class="code-snippet"><code>{{ exercise.answer }}</code></pre>
+        <p>{{ exercise.explanation }}</p>
+      </div>
+    </div>
+    {% endfor %}
+  </section>
+  {% endif %}
   <section class="card note-editor" id="notes">
     <div class="eyebrow">MARKDOWN NOTES</div><h2>我的笔记</h2>
     <textarea id="note-content" rows="10" placeholder="用自己的话记录这一节最重要的内容。">{{ note }}</textarea>

@@ -54,6 +54,25 @@ class AppTests(unittest.TestCase):
         self.assertEqual(progress["concept_submitted"], 1)
         self.assertEqual(progress["code_submitted"], 1)
 
+    def test_project_lesson_requires_all_steps(self):
+        from content_loader import get_lesson
+
+        lesson = get_lesson("llm-engineering-overview")
+        concept_answers = {question["id"]: question["answer"] for question in lesson["quiz"]}
+        code_answers = {question["id"]: question["answer"] for question in lesson["code_quiz"]}
+        concept = self.client.post("/api/quiz/llm-engineering-overview/submit", json={"quiz_type": "concept", "answers": concept_answers})
+        self.assertFalse(concept.get_json()["completed"])
+        code = self.client.post("/api/quiz/llm-engineering-overview/submit", json={"quiz_type": "code", "answers": code_answers})
+        self.assertFalse(code.get_json()["completed"])
+        for step in lesson["project"]["steps"]:
+            response = self.client.post(
+                f"/api/project-steps/llm-engineering-overview/{step['id']}",
+                json={"completed": True},
+            )
+            self.assertEqual(response.status_code, 200)
+        self.assertTrue(response.get_json()["lesson_completed"])
+        steps = self.client.get("/api/project-steps/llm-engineering-overview").get_json()["items"]
+        self.assertTrue(all(item["completed"] for item in steps))
     def test_note_persist(self):
         self.assertEqual(self.client.put("/api/notes/ai-overview", json={"content": "# 我的笔记"}).status_code, 200)
         note = self.client.get("/api/notes/ai-overview").get_json()
