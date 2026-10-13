@@ -4,8 +4,8 @@ from content_loader import get_lessons, get_projects, read_lesson_markdown, rend
 
 
 class ContentLoaderTests(unittest.TestCase):
-    def test_curriculum_has_twelve_lessons(self):
-        self.assertEqual(len(get_lessons()), 12)
+    def test_curriculum_has_seventeen_lessons(self):
+        self.assertEqual(len(get_lessons()), 17)
 
     def test_every_lesson_has_concept_and_code_quizzes(self):
         for lesson in get_lessons():

@@ -13,8 +13,8 @@ with (CONTENT / "curriculum.json").open("r", encoding="utf-8") as file:
 lessons = data.get("lessons", [])
 errors = []
 expected_kinds = {"output", "bug", "parameter"}
-if len(lessons) != 12:
-    errors.append(f"课程数量应为 12，实际为 {len(lessons)}")
+if len(lessons) != 17:
+    errors.append(f"课程数量应为 17，实际为 {len(lessons)}")
 
 for lesson in lessons:
     lesson_file = CONTENT / "lessons" / lesson.get("file", "")

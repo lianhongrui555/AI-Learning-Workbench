@@ -58,7 +58,7 @@ http://127.0.0.1:5000/
 
 只使用以下功能时，不需要：
 
-- 12 节课程
+- 17 节课程
 - 学习进度
 - Markdown 笔记
 - 概念选择题和代码理解题
@@ -783,7 +783,7 @@ $shortcut.Save()
 
 ## 02 学习路线
 
-显示 4 个阶段、12 节课程：
+显示 5 个阶段、17 节课程：
 
 1. 什么是 AI、机器学习和生成式 AI
 2. 数据、特征、标签、训练与推理
@@ -797,6 +797,11 @@ $shortcut.Save()
 10. 文本嵌入、向量检索与 RAG
 11. Agent、工具调用与 CodeHarness
 12. 综合项目：搭建本地 AI 助手
+13. 目标检测与 YOLO 入门
+14. 数据集、标注与训练/验证划分
+15. YOLO 训练实战：从配置到 best.pt
+16. 模型评估与调参：Precision、Recall、mAP
+17. YOLO 推理与 Flask 摄像头部署
 
 ## 03 项目实战
 
@@ -950,9 +955,9 @@ AI-Learning-Workbench/
 ├─ app.py                     # Flask 后端
 ├─ content_loader.py          # 课程加载和 Markdown 渲染
 ├─ content/
-│  ├─ curriculum.json         # 12 节课程元数据和小测
+│  ├─ curriculum.json         # 17 节课程元数据和小测
 │  ├─ projects.json           # 项目实战卡片
-│  └─ lessons/                # 12 节 Markdown 正文
+│  └─ lessons/                # 17 节 Markdown 正文
 ├─ templates/                 # 页面模板
 ├─ static/                    # 深色终端风 CSS 和 JavaScript
 ├─ data/                      # 本地 SQLite 数据，不提交

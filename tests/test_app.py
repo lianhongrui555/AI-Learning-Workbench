@@ -26,8 +26,11 @@ class AppTests(unittest.TestCase):
             "DIFY_TUTOR_API_URL": "http://localhost/v1/chat-messages",
         })
         self.client = self.app.test_client()
-        self.concept_answers = {"q1": 1, "q2": 0, "q3": 0}
-        self.code_answers = {"cq1": 0, "cq2": 1, "cq3": 1}
+        from content_loader import get_lesson
+
+        lesson = get_lesson("ai-overview")
+        self.concept_answers = {question["id"]: question["answer"] for question in lesson["quiz"]}
+        self.code_answers = {question["id"]: question["answer"] for question in lesson["code_quiz"]}
 
     def tearDown(self):
         self.temp_dir.cleanup()
